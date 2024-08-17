@@ -1,0 +1,6 @@
+Non-blocking / asynchoronous
+Single thread is used to handle multiple requests
+Nde apps are asynchoronous by defaulttensive 
+Node buildes data intensive / real time apps
+
+Blocking / Synchronous
