@@ -14,14 +14,21 @@ const app = express();
 
 
 // MIDDLEWARE
+// Help to monitor tym
 app.use(express.urlencoded({extended: true}));
 
+// this shows tym
 app.use((req, res, next) => {
     console.log('A new request received at ' + Date.now());
     next();
   });
 
-
+//we attach a middleware to an end point 
+//Simple request time logger for a specific route
+app.use('/first', (req, res, next) => {
+    console.log('A new request received at ' + Date.now());
+    next();
+  });
 
 
 // ROUTES
