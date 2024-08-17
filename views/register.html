@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/register/register.css">
+</head>
+
+<body>
+    <div class="bg-img">
+    <div class="container">
+        <h1 id="my">REGISTER</h1>
+        <form id="register-form" class="register-form">
+            <table>
+                <tr>
+                    <td><label for="username">Username:</label></td>
+                    <td><input type="text" id="username" name="username"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="emai">Email:</label></td>
+                    <td><input type="email" id="email" name="email"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="phoneNumber">Phone Number:</label></td>
+                    <td><input type="text" id="phonenumber" name="phonenumber"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="role">Role:</label>
+                        <select style="width: 130%; padding: 10px;">
+                            
+                            <option value="role"></option>
+                        <option value="manager">Manager:</option>
+                        <option value="salesagent">Sales Agent</option>
+                    </select>
+                </td>
+                </tr>
+
+                <tr>
+                    <td><label for="branch">Branch:</label>
+                                        
+                    <select >
+                        <option value="branch"></option>
+                    <option value="maganjo">Maganjo:</option>
+                    <option value="matuga">Matuga:</option>
+                </select>
+            </td>
+                </tr>
+
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="confirmPassword">Confirm Password:</label></td>
+                    <td><input type="password" id="password" name="password"></td>
+                </tr>
+
+                <tr>
+                    <td><button type="button" class="button">Register:</button></td>
+                </tr>
+                    </table>
+        </form>
+    </div>
+</div>
+<script src="/register/register.js"></script>
+</body>
+</html>
