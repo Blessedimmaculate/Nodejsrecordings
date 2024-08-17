@@ -9,7 +9,8 @@ const app = express();
 
 
 // CONFIGURATIONS
-
+// IMPORT ROUTES
+const studyRoutes = require("./routes/studyRoutes")
 
 
 
@@ -32,21 +33,12 @@ app.use('/first', (req, res, next) => {
 
 
 // ROUTES
-app.get('/', (req, res) => { // new
-    res.send('Homepage! Hello world.');
-});
+// are moved to d routes folder and then imported in index.js
+// Use routes or use imported routes
+// Behaves like a middle ware but here we are using routes
+app.use("/", studyRoutes)
 
-app.get("/first", (req, res) => {
-    res.sendFile (__dirname + "/index.html")
-})
 
-app.get("/quotes", (req, res) =>{
-    res.sendFile (__dirname + "/quotes.html")
-})
-
-app.post("/quotes", (req, res) =>{
-   console.log(req.body)
-})
 
 //Shd not be put above other endpoints
 // for non existing pages
