@@ -6,5 +6,13 @@
 // Blocking / Synchronous
 
 // pug indentation matters alot write the code propery
+// After we render in studyRoutes
+// Then we go to index.js with app.set
+// we set view engine
 
+// Go to index.js and put the two lines that specify
+// Go to yo views and create a pug file
 
+// After usig post in d studyRoutes make sure dat u use console.log
+// then make sure dat u hv post mthd in yo pug files
+// 

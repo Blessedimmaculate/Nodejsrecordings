@@ -8,12 +8,6 @@ const path = require("path");  //path is inbuilt not installed
 const app = express();
 
 
-// Set d view engine to pug
-app.set('view engine', 'pug')
-
-app.set('views', path.join(__dirname, 'views'))
-
-
 
 
 // CONFIGURATIONS
@@ -22,12 +16,17 @@ const studyRoutes = require("./routes/studyRoutes")
 
 
 
+
+// PUG FILE
+// Set d view engine to pug 
+app.set('view engine', 'pug') //specifies the view engine is pug
+
 // to help us access the views we hv imported in the routes
 // set the views path
 // the first view stands for d directory for d uy pages
 // uy pages are to be found a folder called views
 // the last view stand for the directory studyRoutes
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views")); //specifies d view directory
 
 
 

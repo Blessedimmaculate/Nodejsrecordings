@@ -23,9 +23,32 @@ router.post("/quotes", (req, res) =>{
 
 
 // AFTER USING PUG
-router.get("/example", (req, res) => {
+// the name after/ is not necessarily the file's name
+// and its the one written in d browser
+router.get("/learning", (req, res) => {
     res.render ("example");
 })
+
+router.post("/learning", (req, res) => {
+    console.log(req.body);
+})
+
+router.get("/login", (req, res) => {
+    res.render ("index");
+})
+
+router.post("/login", (req, res) => {
+    console.log(req.body);
+})
+
+router.get("/fname", (req, res) => {
+    res.render ("quotes");
+})
+
+router.post("/fname", (req, res) => {
+    console.log(req.body);
+    res.json(req.body);
+});
 
 // We are exporting and must be there
 // This helps to access data in d terminal
