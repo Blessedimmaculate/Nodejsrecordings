@@ -1,9 +1,17 @@
 // DEPENDENCES
 const express = require('express');
+const path = require("path");  //path is inbuilt not installed
+
 
 
 // INSTANTIATIONS
 const app = express();
+
+
+// Set d view engine to pug
+app.set('view engine', 'pug')
+
+app.set('views', path.join(__dirname, 'views'))
 
 
 
@@ -11,6 +19,15 @@ const app = express();
 // CONFIGURATIONS
 // IMPORT ROUTES
 const studyRoutes = require("./routes/studyRoutes")
+
+
+
+// to help us access the views we hv imported in the routes
+// set the views path
+// the first view stands for d directory for d uy pages
+// uy pages are to be found a folder called views
+// the last view stand for the directory studyRoutes
+app.set("views", path.join(__dirname, "views"));
 
 
 
@@ -36,7 +53,7 @@ app.use('/first', (req, res, next) => {
 // are moved to d routes folder and then imported in index.js
 // Use routes or use imported routes
 // Behaves like a middle ware but here we are using routes
-app.use("/", studyRoutes)
+app.use("/", studyRoutes);
 
 
 

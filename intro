@@ -1,6 +1,10 @@
-Non-blocking / asynchoronous
-Single thread is used to handle multiple requests
-Nde apps are asynchoronous by defaulttensive 
-Node buildes data intensive / real time apps
+// Non-blocking / asynchoronous
+// Single thread is used to handle multiple requests
+// Nde apps are asynchoronous by defaulttensive 
+// Node buildes data intensive / real time apps
 
-Blocking / Synchronous
+// Blocking / Synchronous
+
+// pug indentation matters alot write the code propery
+
+

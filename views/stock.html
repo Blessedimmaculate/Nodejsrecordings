@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager's Produce Records</title>
+    <link rel="stylesheet" href="/stock/stock.css">
+   
+</head>
+<body>
+    <div class="bg-img">
+        <div class="container">
+            <h1 id="ab">PROCUREMENT RECORDS</h1>
+            <form id="produce-form">
+                <table>
+                    <tr>
+                        <td><label for="produceName">Name of Produce:</label></td>
+                        <td><input type="text" id="produceName" name="produceName" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="produceType">Type of Produce:</label></td>
+                        <td><input type="text" id="produceType" name="produceType" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="date">Date:</label></td>
+                        <td><input type="date" id="date" name="date" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="time">Time:</label></td>
+                        <td><input type="time" id="time" name="time" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tonnage">Tonnage (kg):</label></td>
+                        <td><input type="number" id="tonnage" name="tonnage" required min="1000"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="cost">Cost (UGX):</label></td>
+                        <td><input type="number" id="cost" name="cost" required min="10000"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="dealerName">Name of Dealer:</label></td>
+                        <td><input type="text" id="dealerName" name="dealerName" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="branchName">Branch Name:</label></td>
+                        <td>
+                            <select id="branchName" name="branchName" required>
+                                <option value="Maganjo">Maganjo</option>
+                                <option value="Matugga">Matugga</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="contact">Contact:</label></td>
+                        <td><input type="tel" id="contact" name="contact" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit"  class="button">Add Produce</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <script src="/stock/stock.js"></script>
+</body>
+</html>
