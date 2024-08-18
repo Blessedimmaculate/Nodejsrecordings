@@ -1,4 +1,4 @@
-// Non-blocking / asynchoronous
+<!-- // Non-blocking / asynchoronous
 // Single thread is used to handle multiple requests
 // Nde apps are asynchoronous by defaulttensive 
 // Node buildes data intensive / real time apps
@@ -16,3 +16,13 @@
 // After usig post in d studyRoutes make sure dat u use console.log
 // then make sure dat u hv post mthd in yo pug files
 // 
+
+Wn U add another route 
+go to server.js import it and also app.use in the routes
+
+
+
+
+
+
+-->

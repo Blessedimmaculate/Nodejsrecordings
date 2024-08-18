@@ -29,12 +29,12 @@ body {
 }
 
 /* Images used */
-.img1 { background-image: url("/public/images/wel.jpg"); }
-.img2 { background-image: url("/public/images/wel1.jpg"); }
-.img3 { background-image: url("/public/images/wel2.jpg"); }
-.img4 { background-image: url("/public/images/wel3.jpg"); }
-.img5 { background-image: url("/public/images/wel4.jpg"); }
-.img6 { background-image: url("/public/images/wel5.jpg"); }
+.img1 { background-image: url("/images/wel.jpg"); }
+.img2 { background-image: url("/images/wel1.jpg"); }
+.img3 { background-image: url("/images/wel2.jpg"); }
+.img4 { background-image: url("/images/wel3.jpg"); }
+.img5 { background-image: url("/images/wel4.jpg"); }
+.img6 { background-image: url("/images/wel5.jpg"); }
 
 /* Position text in the middle of the page/image */
 .bg-text {

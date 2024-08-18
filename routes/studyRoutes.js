@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
-router.get('/', (req, res) => { // new
-    res.send('Homepage! Hello world.');
-});
+const path = require("path");
 
 
 // THE ROUTE NAME SHD NOT ALWAYS BE THE NAME OF THE FILE
@@ -33,13 +30,32 @@ router.post("/learning", (req, res) => {
     console.log(req.body);
 })
 
-router.get("/login", (req, res) => {
+router.get("/index", (req, res) => {
     res.render ("index");
+})
+
+router.post("/index", (req, res) => {
+    console.log(req.body);
+})
+
+router.get("/", (req, res) => {
+    res.render ("welcome");
+})
+
+router.get("/stock", (req, res) => {
+    res.render ("status");
+})
+
+router.get("/login", (req, res) => {
+    res.render ("login");
 })
 
 router.post("/login", (req, res) => {
     console.log(req.body);
+    res.json(req.body)
 })
+
+
 
 router.get("/fname", (req, res) => {
     res.render ("quotes");
@@ -49,6 +65,9 @@ router.post("/fname", (req, res) => {
     console.log(req.body);
     res.json(req.body);
 });
+
+
+
 
 // We are exporting and must be there
 // This helps to access data in d terminal

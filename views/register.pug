@@ -1,0 +1,55 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width,initial-scale=1")
+title Document
+link(rel="stylesheet", href="/css/register.css")
+.bg-img
+  .container
+    h1#my REGISTER
+    form#register-form.register-form(action="/addWorker" method="POST")
+      table
+        tbody
+          tr
+            td
+              label(for="username") Username:
+            td
+              input#username(type="text", name="username")
+          tr
+            td
+              label(for="email") Email:
+            td
+              input#email(type="email", name="email")
+          tr
+            td
+              label(for="phoneNumber") Phone Number:
+            td
+              input#phonenumber(type="text", name="phonenumber")
+          tr
+            td
+              label(for="role") Role:
+            td
+              select(name="role", style="width: 130%; padding: 10px;")
+                option(value="role") Role
+                option(value="manager") Manager
+                option(value="salesagent") Sales Agent
+          tr
+            td
+              label(for="branch") Branch:
+            td
+              select(name="branch")
+                option(value="branch") Branch
+                option(value="maganjo") Maganjo
+                option(value="matuga") Matuga
+          tr
+            td
+              label(for="password") Password:
+            td
+              input#password(type="password", name="password")
+          tr
+            td
+              label(for="confirmPassword") Confirm Password:
+            td
+              input#confirmPassword(type="password", name="confirmPassword")
+          tr
+            td
+              button.button(type="submit") Register
+script(src="/register/register.js")
