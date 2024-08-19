@@ -21,8 +21,14 @@ Wn U add another route
 go to server.js import it and also app.use in the routes
 
 
+After creating a schema, go to the routes file n import that model
+after const must be a capital letter
+we are not sending a json so we remove it
 
-
-
-
+Pushing data to the db
+We created a .env file we put in the url for connecting to the database
+We went to th server sever file n put in d configurations to d mongodb
+We imported the dot env config
+We created a schema in d models folder
+we created a file stock.js wea we put a schema
 -->

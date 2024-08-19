@@ -46,11 +46,11 @@ router.get("/stock", (req, res) => {
     res.render ("status");
 })
 
-router.get("/login", (req, res) => {
+router.get("/start", (req, res) => {
     res.render ("login");
 })
 
-router.post("/login", (req, res) => {
+router.post("/start", (req, res) => {
     console.log(req.body);
     res.json(req.body)
 })
