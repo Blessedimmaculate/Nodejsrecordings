@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+// unique: true for passwords and emails
 const stockListSchema = new mongoose.Schema({
     produceName:{
         type: String,

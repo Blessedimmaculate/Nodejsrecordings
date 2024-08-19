@@ -46,14 +46,14 @@ router.get("/stock", (req, res) => {
     res.render ("status");
 })
 
-router.get("/start", (req, res) => {
-    res.render ("login");
-})
+// router.get("/start", (req, res) => {
+//     res.render ("login");
+// })
 
-router.post("/start", (req, res) => {
-    console.log(req.body);
-    res.json(req.body)
-})
+// router.post("/start", (req, res) => {
+//     console.log(req.body);
+//     res.json(req.body)
+// })
 
 
 

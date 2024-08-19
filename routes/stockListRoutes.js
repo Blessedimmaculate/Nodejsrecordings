@@ -17,6 +17,7 @@ router.get("/viewProduce", async (req, res) => {
 router.post("/viewProduce", async(req, res) => {
     try {
         const produceList = new StockList(req.body);
+        console.log("Print all details from stock", produceList)
         await produceList.save();
         // res.redirect("/viewProduce");  // Redirect to the sales view page
     } catch (error) {

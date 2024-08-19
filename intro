@@ -31,4 +31,14 @@ We went to th server sever file n put in d configurations to d mongodb
 We imported the dot env config
 We created a schema in d models folder
 we created a file stock.js wea we put a schema
+
+ctrl f, then press upside arrow
+
+AUTHORIZATION
+ We add const passport in the server.js as dependences with dotenv below
+
+
+
+
+
 -->
