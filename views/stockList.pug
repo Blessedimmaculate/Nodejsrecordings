@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        title Sales Records
+        link(rel="stylesheet", href="/css/stockList.css")
+    body
+        .container
+            h1 Sales Records
+            table
+                thead
+                    tr
+                        th Produce Name
+                        th Produce Type
+                        th Tonnage (kg)
+                        th Cost (UGX)
+                        th Date
+                        th Actions
+                tbody
+                    if sales && sales.length > 0
+                        each sale in sales
+                            tr
+                                td= sale.produceName
+                                td= sale.typeOfProduce
+                                td= sale.tonnage
+                                td= sale.cost
+                                td= sale.date.toDateString()
+                                td
+                                    form(action=`/sales/update/${sale._id}`, method="POST")
+                                        button(type="submit") Update
+                                    form(action=`/sales/delete/${sale._id}`, method="POST", style="display:inline;")
+                                        button(type="submit") Delete
+                    else
+                        tr
+                            td(colspan="6") No sales records found.
+        script(src="/js/sales.js")

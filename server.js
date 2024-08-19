@@ -15,7 +15,7 @@ require("dotenv").config();
 // IMPORT ROUTES
 const registerRoutes = require("./routes/registerRoutes");
 const studyRoutes = require("./routes/studyRoutes");
-
+const stockListRoutes = require("./routes/stockListRoutes");
 
 
 // Database connection to mongoose
@@ -49,6 +49,7 @@ app.use(express.json()); //helps to capture data in json format
 // ROUTES
 app.use("/", registerRoutes);
 app.use("/", studyRoutes);
+app.use("/", stockListRoutes);
 
 // for non existing pages
 app.get("*", (req, res) => {

@@ -32,8 +32,10 @@ router.get("/addProduce", (req, res) => {
 router.post("/addProduce", async(req, res) => {
     try{
         const newProduce = new Stock(req.body)
+        //dis below helps us to see wc data is going to be pushed to d db
+        console.log("Print all details", newProduce)
         await newProduce.save()
-        res.redirect("/addWorker")
+        res.redirect("/viewProduce")
     } catch (error) {
         res.status(400).render("stock")
         console.log("Error Adding Produce", error)
