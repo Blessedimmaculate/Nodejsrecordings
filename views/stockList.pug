@@ -1,36 +1,36 @@
 doctype html
 html
     head
-        title Sales Records
+        title Stock List
         link(rel="stylesheet", href="/css/stockList.css")
     body
         .container
-            h1 Sales Records
-            form#produceList-form(action="/viewProduce" method="POST")
-            table
+            h1.text-center.mt-5.mb-4 Stock List
+            table.table.table-striped
                 thead
                     tr
-                        th Produce Name
-                        th Produce Type
-                        th Tonnage (kg)
-                        th Cost (UGX)
-                        th Date
-                        th Actions
+                        th(scope="col") Produce Name
+                        th(scope="col") Tonnage (Kg)
+                        th(scope="col") Produce Cost per Kg (UGX)
+                        th(scope="col") Store Branch
+                        th(scope="col") Selling Price per Kg (UGX)
+                        th(scope="col") Action
                 tbody
-                    if sales && sales.length > 0
-                        each sale in sales
+                    if produces.length
+                        each produce in produces
                             tr
-                                td= sale.produceName
-                                td= sale.typeOfProduce
-                                td= sale.tonnage
-                                td= sale.cost
-                                td= sale.date.toDateString()
-                                td
-                                    form(action=`/sales/update/${sale._id}`, method="POST")
-                                        button(type="submit") Update
-                                    form(action=`/sales/delete/${sale._id}`, method="POST", style="display:inline;")
-                                        button(type="submit") Delete
+                                td #{produce.produceName}
+                                td #{produce.tonnage}
+                                td #{produce.cost}
+                                td #{produce.storeBranch}
+                                td #{produce.sellingPrice}
+                                td 
+                                    form(method="post", action="/#")
+                                        input(type="hidden", name="id", value=produce._id)
+                                        button.btn.btn-primary.btn-sm(type="submit") Edit
+                                    form(method="post", action="/#")
+                                        input(type="hidden", name="id", value=produce._id)
+                                        button.btn.btn-danger.btn-sm(type="submit") Delete
                     else
                         tr
-                            td(colspan="6") No sales records found.
-        script(src="/js/sales.js")
+                            td(colspan="6") No produce yet :

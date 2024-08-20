@@ -37,8 +37,10 @@ ctrl f, then press upside arrow
 AUTHORIZATION
  We add const passport in the server.js as dependences with dotenv below
 
+The action must match with yo route
 
-
+navbar  dashboard credit sales  cashsales   
+a manager can do everything but the salesagentisrestricted
 
 
 -->

@@ -68,6 +68,8 @@ router.post( "/start",passport.authenticate("local", { failureRedirect: "/start"
 );
 
 
+
+
 // Logout route  destroys a session wn the user logs out
 router.get("/logout", (req, res) => {
     if (req.session) {
@@ -104,7 +106,8 @@ router.post("/addProduce", async (req, res) => {
     await newProduce.save();
     res.redirect("/viewProduce");
   } catch (error) {
-    res.status(400).render("stock");
+    // res.status(400).render("stock");
+    res.status(400).send("Unable to save produce to db");
     console.log("Error Adding Produce", error);
   }
 });
@@ -114,4 +117,38 @@ router.post("/addProduce", async (req, res) => {
 
 // U hv to export d router always n import the routes
 // After this U go to the server file
+
+
+// WN REDIRECTING USERS TO DIFF PAGES
+// router.get("/makeSale", (req, res) => {
+//     res.render ("addSale");
+// });
+
+// router.post( "/start", async(req, res) =>(req, res) => {
+//     req.session.user = req.user;
+//     try {
+//         const newSale = new Sale(req.body)
+//         newSale.save()
+//  EITHER
+//         if (req.user.role === "manager") {
+//             res.redirect("/salesList");
+//           } if (req.user.role === "salesagent") {
+//             // res.redirect("/salesdashboard");
+//             res.redirect("/receipt");
+//           } 
+//   OR
+//             res.redirect("/receipt");
+//     } 
+//         catch (error) {
+//         console.log("Make sale error", error)
+//     }
+    
+// });
+
+router.get("/viewUser", (req, res) => {
+    res.render ("registerList");
+});
+
+router.post("/viewUser",)
+
 module.exports = router;

@@ -1,41 +1,59 @@
 const mongoose = require("mongoose");
 
 const stockSchema = new mongoose.Schema({
-    produceName:{
+    storeBranch: {
         type: String,
         trim: true
     },
-    typeOfProduce:{
+    produceName: {
         type: String,
         trim: true
     },
-    date:{
+    typeOfProduce: {
+        type: String,
+        trim: true
+    },
+    date: {
         type: Date,  // Store as Date object
     },
-    time:{
+    time: {
         type: String, // Store time as a string (or include it in the date object)
-        trim: true
+        trim: true,
     },
-    tonnage:{
+    tonnage: {
         type: Number,
-        trim: true
+       
     },
-    cost:{
+    cost: {
         type: Number,
-        trim: true
     },
-    dealerName:{
+    totalcost: {
+        type: Number, 
+    },
+    produceSource: {
         type: String,
         trim: true
     },
-    branchName:{
+    dealerName: {
         type: String,
         trim: true
     },
-    contact:{
+    companyName: {
+        type: String,
+        trim: true
+    },
+    branchName: {
+        type: String,
+        trim: true
+    },
+    contact: {
         type: String, // Store contact as a string
         trim: true
     },
+    sellingPrice: {
+        type: Number,
+       
+    }
 });
 
 // Export the model

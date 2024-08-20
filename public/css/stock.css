@@ -11,7 +11,7 @@ body {
     overflow: hidden; /* Prevents scrolling */
 }
 
-#ab{
+#ab {
     margin-bottom: 2px;
     margin-top: 2px;
     text-align: center;
@@ -30,33 +30,55 @@ body {
 }
 
 .container {
-    width: 600px;
-    padding: 0px;
+    width: 700px; /* Increased width for better fit */
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #ffeb85;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 20px; /* Curved corners */
+    border-radius: 35px; /* Curved corners */
     text-align: center;
+    font-size: 25px; /* Adjusted for better readability */
+}
+
+/* Add to your existing CSS */
+.form-row {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+    margin-bottom: 0px; /* Space between rows */
+}
+
+.form-group {
     font-size: 20px;
+    text-align: left;
+    flex: 1;
+    margin: 5px;
+    min-width: 300px; /* Increased for better spacing */
+}
+
+#produce-form select, #produce-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 #produce-form {
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    font-size: 20px;
+    font-size: 16px; /* Adjusted for better readability */
 }
 
-#produce-form input {
+#produce-form input, #produce-form select {
+    width: 100%;
     padding: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px; /* Increased spacing between fields */
     border: 1px solid #ccc;
-    border-radius: 8px; /* Curved borders for input fields */
-    width: 120%; /* Full width of the parent container */
+    border-radius: 8px;
     box-sizing: border-box;
-    transform: translateX(-25%);
 }
 
 h1, h2 {
@@ -96,14 +118,13 @@ input, button {
     text-align: center;
     text-decoration: none;
     display: flex;
-    font-size: 20px;
-    margin: 5px ;
+    font-size: 16px; /* Adjusted for consistency */
+    margin: 10px 0; /* Adjusted spacing */
     border-radius: 15px; /* Curved corners for the button */
     width: 100%; /* Adjusted to fit container width */
-    height: 50px;
+    height: 40px;
     justify-content: center;
     align-items: center;
-   
 }
 
 .button:hover {

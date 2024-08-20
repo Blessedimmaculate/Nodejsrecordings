@@ -16,7 +16,8 @@ require("dotenv").config();  // Load environment variables
 const app = express();
 const port = 3001;
 
-
+// No other model is imported apart from the one that stores info for log in
+// b'se we need to attach/ use the local strategy on that model, all these three
 const Register = require("./models/register")
 
 // import models
@@ -57,14 +58,16 @@ app.use(express.json()); //helps to capture data in json format
 
 
 // express session configs
-app.use(expressSession);
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(expressSession);//use express session
+app.use(passport.initialize()); //initialise passport
+app.use(passport.session());// Helps to use passport session in routes
 
+// No other model is imported apart from the one that stores info for log in
+// b'se we need to attach/ use the local strategy on that model, all these three
 // passport configs
-passport.use(Register.createStrategy());
-passport.serializeUser(Register.serializeUser());
-passport.deserializeUser(Register.deserializeUser());
+passport.use(Register.createStrategy());  //Use the local strategy in routes
+passport.serializeUser(Register.serializeUser());  //Assigns a serial number to a user in d system
+passport.deserializeUser(Register.deserializeUser()); //The serial number is destroyed on logout
 
 
 // ROUTES

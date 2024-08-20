@@ -1,29 +1,36 @@
 const mongoose = require("mongoose");
-// unique: true for passwords and emails
+
 const stockListSchema = new mongoose.Schema({
-    produceName:{
+    produceName: {
         type: String,
-        trim: true
+        trim: true,
     },
-    typeOfProduce:{
+    typeOfProduce: {
         type: String,
-        trim: true
+        trim: true,
     },
-    tonnage:{
+    tonnage: {
         type: Number,
-        trim: true
+        trim: true,
     },
-    cost:{
+    cost: {
         type: Number,
-        trim: true
+        trim: true,
     },
-    date:{
+    date: {
         type: Date,  // Store as Date object
     },
-    actions:{
+    sellingPrice: {
+        type: Number,
+    },
+    storeBranch: {
         type: String,
-        trim: true
+        trim: true,
+    },
+    action: {
+        type: String,
+        trim: true,
     },
 });
 
-module.exports = mongoose.model("StockList", stockListSchema)
+module.exports = mongoose.model("StockList", stockListSchema);

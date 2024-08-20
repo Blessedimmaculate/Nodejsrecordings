@@ -1,61 +1,84 @@
-meta(charset="UTF-8")
-meta(name="viewport", content="width=device-width,initial-scale=1")
-title Manager's Produce Records
-link(rel="stylesheet", href="/css/stock.css")
-.bg-img
-  .container
-    h1#ab PROCUREMENT RECORDS
-    form#produce-form(action="/addProduce" method="POST")
-      table
-        tbody
-          tr
-            td
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Manager's Produce Records
+    link(rel="stylesheet", href="/css/stock.css")
+  body
+    .bg-img
+      .container
+        h1#ab PROCUREMENT RECORDS
+        form#produce-form(action="/addProduce" method="POST")
+          .form-row
+            .form-group
+              label(for="storeBranch") Branch:
+              select#storeBranch(name="storeBranch", required)
+                option(value="") Select Branch
+                option(value="maganjo") Maganjo Store
+                option(value="matuga") Matuga Store
+            .form-group
               label(for="produceName") Produce Name:
-            td
-              input#produceName(type="text", name="produceName", required)
-          tr
-            td
+              select#produceName(name="produceName", required)
+                option(value="") Select Produce
+                option(value="beans") Beans
+                option(value="maize") Maize
+                option(value="cowpeas") Cowpeas
+                option(value="rice") Rice
+                option(value="soybeans") Soybeans
+                option(value="gnuts") G-nuts
+          .form-row
+            .form-group
               label(for="produceType") Produce Type:
-            td
-              input#produceType(type="text", name="typeOfProduce", required)
-          tr
-            td
+              select#produceType(name="produceType", required)
+                option(value="") Select Produce Type
+                option(value="cereals") Cereals
+                option(value="legumes") Legumes
+            .form-group
               label(for="date") Date:
-            td
               input#date(type="date", name="date", required)
-          tr
-            td
+          .form-row
+            .form-group
               label(for="time") Time:
-            td
               input#time(type="time", name="time", required)
-          tr
-            td
+            .form-group
               label(for="tonnage") Tonnage (kg):
-            td
               input#tonnage(type="number", name="tonnage", required, min="1000")
-          tr
-            td
-              label(for="cost") Cost (UGX):
-            td
-              input#cost(type="number", name="cost", required, min="10000")
-          tr
-            td
-              label(for="dealerName") Name of Dealer:
-            td
-              input#dealerName(type="text", name="dealerName", required)
-          tr
-            td
+          .form-row
+            .form-group
+              label(for="dealerName") If Dealer, Dealer Name:
+              input#dealerName(type="text", name="dealerName")
+            .form-group
+              label(for="companyName") If Company, Company Name:
+              input#companyName(type="text", name="companyName")
+          .form-row
+            .form-group
+              label(for="cost") Produce Cost per Kg (UGX):
+              input#cost(type="number", name="cost")
+            .form-group
+              label(for="produceSource") Source of Produce:
+              select#produceSource(name="produceSource", required)
+                option(value="") Select Produce Source
+                option(value="maganjo") Maganjo Farm
+                option(value="matuga") Matuga Farm
+                option(value="dealer") Dealer
+                option(value="othercompany") Other Company
+          .form-row
+            .form-group
               label(for="branchName") Branch Name:
-            td
               select#branchName(name="branchName", required)
                 option(value="Maganjo") Maganjo
                 option(value="Matugga") Matugga
-          tr
-            td
-              label(for="contact") Contact:
-            td
-              input#contact(type="tel", name="contact", required)
-          tr
-            td(colspan="2")
-              button.button(type="submit") Add Produce
-script(src="/stock/stock.js")
+            .form-group
+              label(for="contact") Source Contact:
+              input#contact(type="text", name="contact", required)
+          .form-row
+            .form-group
+              label(for="totalCost") Total Produce Cost (UGX):
+              input#totalCost(type="number", name="totalcost")
+            .form-group
+              label(for="sellingPrice") Selling Price per Kg (UGX):
+              input#sellingPrice(type="number", name="sellingPrice")
+          .form-row
+            button.button(type="submit") Add Produce
+    script(src="/stock/stock.js")
