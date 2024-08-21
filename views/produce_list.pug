@@ -1,0 +1,39 @@
+extends layout3
+
+block content
+  .container
+    h2.text-center.mt-5.mb-4 Produce List
+    table.table.table-striped
+      thead
+        tr
+          th(scope='col') Produce Name
+          th(scope='col') Store Branch
+          th(scope='col') Tonnage (Kg)
+          th(scope='col') Produce Cost per Kg (UGX)
+          th(scope='col') Produce Source
+          th(scope='col') Contact
+          th(scope='col') Selling Price per Kg (UGX)
+          th(scope='col') Action
+          th
+          th
+      tbody
+        if produces.length
+          each produce in produces
+            tr
+              td #{produce.produceName}
+              td #{produce.storeBranch}
+              td #{produce.tonnage}
+              td #{produce.produceCost}
+              td #{produce.produceSource}
+              td #{produce.contact}
+              td #{produce.sellingPrice}
+              td
+                a.btn.btn-secondary.btn-sm(href='/addSale/'+produce._id) Make Sale
+              td
+                a.btn.btn-primary.btn-sm(href='/updateProduce/'+produce._id) Update
+              td
+                form(method="post" action='/deleteProduce')
+                  input(type="hidden" name="id" value=produce._id)
+                  button.btn.btn-danger.btn-sm(type="submit") Delete
+        else
+          p No produce yet :(

@@ -1,36 +1,33 @@
-doctype html
-html
-    head
-        title Stock List
-        link(rel="stylesheet", href="/css/stockList.css")
-    body
-        .container
-            h1.text-center.mt-5.mb-4 Stock List
-            table.table.table-striped
-                thead
+.container
+    h2.text-center.mt-5.mb-4 Produce List
+    table.table.table-striped
+        thead
+            tr
+                th(scope='col') Produce Name
+                th(scope='col') Store Branch
+                th(scope='col') Tonnage (Kg)
+                th(scope='col') Produce Cost per Kg (UGX)
+                th(scope='col') Produce Source
+                th(scope='col') Contact
+                th(scope='col') Selling Price per Kg (UGX)
+                th(scope='col') Action
+        tbody
+            if produces.length
+                each produce in produces
                     tr
-                        th(scope="col") Produce Name
-                        th(scope="col") Tonnage (Kg)
-                        th(scope="col") Produce Cost per Kg (UGX)
-                        th(scope="col") Store Branch
-                        th(scope="col") Selling Price per Kg (UGX)
-                        th(scope="col") Action
-                tbody
-                    if produces.length
-                        each produce in produces
-                            tr
-                                td #{produce.produceName}
-                                td #{produce.tonnage}
-                                td #{produce.cost}
-                                td #{produce.storeBranch}
-                                td #{produce.sellingPrice}
-                                td 
-                                    form(method="post", action="/#")
-                                        input(type="hidden", name="id", value=produce._id)
-                                        button.btn.btn-primary.btn-sm(type="submit") Edit
-                                    form(method="post", action="/#")
-                                        input(type="hidden", name="id", value=produce._id)
-                                        button.btn.btn-danger.btn-sm(type="submit") Delete
-                    else
-                        tr
-                            td(colspan="6") No produce yet :
+                        td #{produce.produceName}
+                        td #{produce.storeBranch}
+                        td #{produce.tonnage}
+                        td #{produce.produceCost}
+                        td #{produce.produceSource}
+                        td #{produce.contact}
+                        td #{produce.sellingPrice}
+                        td
+                            a.btn.btn-primary.btn-sm(href='/updateProduce/'+produce._id) Update
+                        td
+                            form(method="post", action='/deleteProduce')
+                                input(type="hidden", name="id", value=produce._id)
+                                button.btn.btn-danger.btn-sm(type="submit") Delete
+            else
+                tr
+                    td(colspan="8") No produce yet :(

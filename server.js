@@ -1,6 +1,7 @@
 // Dependencies
 const express = require("express");
 const path = require("path"); //path is inbuilt not installed
+const moment = require("moment");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const expressSession = require("express-session")({
@@ -26,7 +27,7 @@ const Register = require("./models/register")
 const registerRoutes = require("./routes/registerRoutes");
 const studyRoutes = require("./routes/studyRoutes");
 const stockListRoutes = require("./routes/stockListRoutes");
-
+const saleRoutes = require("./routes/saleRoutes");
 
 // Database connection to mongoose
 // 
@@ -47,6 +48,7 @@ mongoose.connection
 
 // PUG FILE
 // Set d view engine to pug
+app.locals.moment = moment;
 app.set("view engine", "pug"); //specifies the view engine is pug
 app.set("views", path.join(__dirname, "views")); //specifies d view directory
 
@@ -74,6 +76,8 @@ passport.deserializeUser(Register.deserializeUser()); //The serial number is des
 app.use("/", registerRoutes);
 app.use("/", studyRoutes);
 app.use("/", stockListRoutes);
+app.use("/", saleRoutes);
+
 
 // for non existing pages
 app.get("*", (req, res) => {

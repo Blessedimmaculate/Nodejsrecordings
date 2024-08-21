@@ -17,6 +17,10 @@ const stockListSchema = new mongoose.Schema({
         type: Number,
         trim: true,
     },
+    totalcost: {
+        type: Number,
+        trim: true,
+    },
     date: {
         type: Date,  // Store as Date object
     },

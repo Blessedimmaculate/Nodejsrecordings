@@ -11,6 +11,13 @@ document.addEventListener("DOMContentLoaded", function() {
     timeInput.value = `${hours}:${minutes}`;
 });
 
+document.getElementById("totalCost").addEventListener("change", function(){
+    let tonnage = document.getElementById("tonnage").value;
+    let cost = document.getElementById("cost").value;
+    let totalcostInput = document.getElementById("totalcost");
+    totalcostInput.value = tonnage * cost;
+});
+
 document.getElementById('produce-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -20,6 +27,7 @@ document.getElementById('produce-form').addEventListener('submit', function(even
     const time = document.getElementById('time').value;
     const tonnage = document.getElementById('tonnage').value;
     const cost = document.getElementById('cost').value;
+    const totalcost = document.getElementById('totalcost').value;
     const dealerName = document.getElementById('dealerName').value;
     const branchName = document.getElementById('branchName').value;
     const contact = document.getElementById('contact').value;

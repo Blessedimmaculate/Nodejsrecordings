@@ -1,0 +1,80 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Manager's Produce Records
+    link(rel="stylesheet", href="/css/stock.css")
+  body
+    .bg-img
+      .container
+        h1#ab Edit Produce
+        form#produce-form(action="/updateProduce?id="+produce._id method="POST" name="updateStock")
+          .form-row
+            .form-group
+              label(for="storeBranch") Branch:
+              select#storeBranch(name="storeBranch")
+                option(value="maganjo" selected = produce.storeBranch === "maganjo") Maganjo Store
+                option(value="matuga" selected = produce.storeBranch === "matuga") Matuga Store
+            .form-group
+              label(for="produceName") Produce Name:
+              select#produceName(name="produceName")
+                option(value="beans" selected = produce.produceName === "beans") Beans
+                option(value="maize" selected = produce.produceName === "maize") Maize
+                option(value="cowpeas" selected = produce.produceName === "cowpeas") Cowpeas
+                option(value="rice" selected = produce.produceName === "rice") Rice
+                option(value="soybeans" selected = produce.produceName === "soybeans") Soybeans
+                option(value="gnuts" selected = produce.produceName === "gnuts") G-nuts
+          .form-row
+            .form-group
+              label(for="produceType") Produce Type:
+              select#produceType(name="produceType")
+                option(value="cereals" selected = produce.produceType === "cereals") Cereals
+                option(value="legumes" selected = produce.produceType === "legumes") Legumes
+            .form-group
+              label(for="date") Date:
+              input#date(type="date", name="date" value = produce.date)
+          .form-row
+            .form-group
+              label(for="time") Time:
+              input#time(type="time", name="time" value = produce.time)
+            .form-group
+              label(for="tonnage") Tonnage (kg):
+              input#tonnage(type="number", name="tonnage" value = produce.tonnage)
+          .form-row
+            .form-group
+              label(for="dealerName") If Dealer, Dealer Name:
+              input#dealerName(type="text", name="dealerName" value = produce.dealerName)
+            .form-group
+              label(for="companyName") If Company, Company Name:
+              input#companyName(type="text", name="companyName" value = produce.companyName)
+          .form-row
+            .form-group
+              label(for="cost") Produce Cost per Kg (UGX):
+              input#cost(type="number", name="cost" value = produce.cost)
+            .form-group
+              label(for="produceSource") Source of Produce:
+              select#produceSource(name="produceSource")
+                option(value="maganjo" selected = produce.produceSource === "maganjo") Maganjo Farm
+                option(value="matuga" selected = produce.produceSource === "matuga") Matuga Farm
+                option(value="dealer" selected = produce.produceSource === "dealer") Dealer
+                option(value="othercompany" selected = produce.produceSource === "othercompany") Other Company
+          .form-row
+            .form-group
+              label(for="branchName") Branch Name:
+              select#branchName(name="branchName")  
+                option(value="Maganjo" selected = produce.storeBranch === "maganjo") Maganjo
+                option(value="Matugga" selected = produce.storeBranch === "matugga") Matugga
+            .form-group
+              label(for="contact") Source Contact:
+              input#contact(type="text" name="contact" value = produce.contact)
+          .form-row
+            .form-group
+              label(for="totalCost") Total Produce Cost (UGX):
+              input#totalCost(type="number", name="totalcost" value = produce.totalCost)
+            .form-group
+              label(for="sellingPrice") Selling Price per Kg (UGX):
+              input#sellingPrice(type="number", name="sellingPrice" value = sellingPrice)
+          .form-row
+            button.button(type="submit") Add Produce
+    script(src="js/total-cost.js") 

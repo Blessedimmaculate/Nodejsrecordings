@@ -5,7 +5,7 @@ const passport = require("passport");
 //we hv to import the model after schema
 // Double dots help u to jump out of d folder u are in
 const Stock = require("../models/stock");
-const Register = require("../models/register");
+const Register = require("../models/register");             
 
 
 // REGISTER
