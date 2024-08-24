@@ -1,0 +1,39 @@
+
+
+block content
+  .container.d-flex.justify-content-center.align-items-center.min-vh-100
+    .row.justify-content-center
+      .col-md-6
+        .add-sale-form.p-4
+          h2.text-center.mb-4 Add Sale
+          form#add-sale-form(action=`/addSale/${produce._id}` method='POST')
+            .mb-3
+              label.form-label(for='nproduce') Produce Name
+              select#nproduce.form-control(name='produceName')
+                option(value=produce._id) #{produce.produceName}
+              small#pnameErr.text-danger
+            .mb-3
+              label.form-label(for='tonnage') Tonnage (Kgs)
+              input#tonnage.form-control(type='number' name='saleTonnage' required)
+              small#tonnageErr.text-danger
+            .mb-3
+              label.form-label(for='amount') Amount Paid (UGX)
+              input#amount.form-control(type='number' name='amount' required)
+              small#amountErr.text-danger
+            .mb-3
+              label.form-label(for='buyername') Buyer's Name
+              input#buyername.form-control(type='text' name='buyerName' required)
+              small#buyernameErr.text-danger
+            .mb-3
+              label.form-label(for='salesAgent') Sales Agent
+              select#salesAgent.form-control(name='salesAgent')
+                if agents.length
+                  each agent in agents
+                    option(value=agent._id) #{username}
+              small#salesAgentErr.text-danger
+            .mb-3
+              label.form-label(for='dateofpurchase') Date of Sale
+              input#dateofpurchase.form-control(type='date' name='saledate' required)
+              small#dateofpurchaseErr.text-danger
+            .text-center
+              button.btn.btn-primary(type='submit') Make Sale

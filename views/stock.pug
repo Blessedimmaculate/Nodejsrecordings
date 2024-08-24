@@ -9,17 +9,17 @@ html
     .bg-img
       .container
         h1#ab PROCUREMENT RECORDS
-        form#produce-form(action="/addProduce" method="POST")
+        form#produce-form(action="/addProduce" method="POST" name="stock")
           .form-row
             .form-group
               label(for="storeBranch") Branch:
-              select#storeBranch(name="storeBranch", required)
+              select#storeBranch(name="storeBranch")
                 option(value="") Select Branch
                 option(value="maganjo") Maganjo Store
                 option(value="matuga") Matuga Store
             .form-group
               label(for="produceName") Produce Name:
-              select#produceName(name="produceName", required)
+              select#produceName(name="produceName")
                 option(value="") Select Produce
                 option(value="beans") Beans
                 option(value="maize") Maize
@@ -30,20 +30,20 @@ html
           .form-row
             .form-group
               label(for="produceType") Produce Type:
-              select#produceType(name="produceType", required)
+              select#produceType(name="produceType")
                 option(value="") Select Produce Type
                 option(value="cereals") Cereals
                 option(value="legumes") Legumes
             .form-group
               label(for="date") Date:
-              input#date(type="date", name="date", required)
+              input#date(type="date", name="date")
           .form-row
             .form-group
               label(for="time") Time:
-              input#time(type="time", name="time", required)
+              input#time(type="time", name="time")
             .form-group
               label(for="tonnage") Tonnage (kg):
-              input#tonnage(type="number", name="tonnage", required, min="1000")
+              input#tonnage(type="number", name="tonnage")
           .form-row
             .form-group
               label(for="dealerName") If Dealer, Dealer Name:
@@ -54,10 +54,10 @@ html
           .form-row
             .form-group
               label(for="cost") Produce Cost per Kg (UGX):
-              input#cost(type="number", name="cost")
+              input#cost(type="number", name="produceCost")
             .form-group
               label(for="produceSource") Source of Produce:
-              select#produceSource(name="produceSource", required)
+              select#produceSource(name="produceSource")
                 option(value="") Select Produce Source
                 option(value="maganjo") Maganjo Farm
                 option(value="matuga") Matuga Farm
@@ -66,12 +66,12 @@ html
           .form-row
             .form-group
               label(for="branchName") Branch Name:
-              select#branchName(name="branchName", required)
+              select#branchName(name="branchName")
                 option(value="Maganjo") Maganjo
                 option(value="Matugga") Matugga
             .form-group
               label(for="contact") Source Contact:
-              input#contact(type="text", name="contact", required)
+              input#contact(type="text", name="contact")
           .form-row
             .form-group
               label(for="totalCost") Total Produce Cost (UGX):
@@ -81,5 +81,6 @@ html
               input#sellingPrice(type="number", name="sellingPrice")
           .form-row
             button.button(type="submit") Add Produce
+            
     //- script(src="/stock/stock.js")
     script(src="js/stock.js") 

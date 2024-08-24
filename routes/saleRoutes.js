@@ -1,92 +1,139 @@
 const express = require("express");
 const router = express.Router();
-// const connectEnsureLogin = require("connect-ensure-login")
-
 
 const Sale = require("../models/Sale");
-const Stock = require("../models/stock");
-const Register = require("../models/register"); 
+const Register = require('../models/register');
+const Stock = require('../models/stock');
 
 
+// Route to display the form for adding a new sale
 router.get("/addSale/:id", async (req, res) => {
   try {
     const agents = await Register.find({ role: "salesagent" });
-    const produce = await Stock.findOne({ _id: req.params.id });
-    res.render("add_sale", {
-      title: "Sale",
-      agents: agents,
-      produce: produce,
-    });
+    const produce = await Stock.findById(req.params.id);
+    if (!produce) {
+      return res.status(404).send("Produce not found");
+    }
+    res.render("add_sale", { title: "Add Sale", agents, produce });
   } catch (error) {
-    res.status(400).send("Unable to find sales agents in the database");
+    console.error("Error retrieving agents or produce:", error);
+    res.status(500).send("Internal server error");
   }
 });
 
+// Route to handle the submission of a new sale
 router.post("/addSale/:id", async (req, res) => {
   try {
     const { saleTonnage } = req.body;
-    // saleTonnage is the same as req.body.saleTonnage, it's an input name in the add sale pug file
-    const produce = await Produce.findById({ _id: req.params.id });
+    const produce = await Stock.findById(req.params.id);
+
     if (!produce) {
-      return res.status(404).send("produce not found");
+      return res.status(404).send("Produce not found");
     }
 
     if (produce.tonnage < saleTonnage) {
-      return res
-        .status(400)
-        .send(
-          `Not enough tones in stock,there are ${produce.tonnage} Kgs in stock`
-        );
+      return res.status(400).send(`Not enough stock, only ${produce.tonnage} Kgs available`);
     }
-    if (produce && produce.tonnage > 0) {
-      const newsale = new Sale(req.body);
-      await newsale.save();
-      produce.tonnage -= saleTonnage; // short form of what is below
-      // produce.tonnage = produce.tonnage - saleTonnage // long form of the above
-      await produce.save();
-      res.redirect("/salesList");
-    } else {
-      return res.status(404).json({ error: "Produce out of stock" });
-    }
+
+    const newSale = new Sale(req.body);
+    await newSale.save();
+
+    produce.tonnage -= saleTonnage;
+    await produce.save();
+
+    res.redirect("/salesList");
   } catch (error) {
-    console.error("Error saling produce:", error);
-    return res.status(500).json({ error: "Internal server error" });
+    console.error("Error adding sale:", error);
+    res.status(500).send("Internal server error");
   }
 });
 
-// retrieve sales from the database
+// Route to display the list of all sales
 router.get("/salesList", async (req, res) => {
   try {
     const sales = await Sale.find()
-      .sort({ $natural: -1 })
       .populate("produceName", "produceName")
-      .populate("salesAgent", "firstName lastName");
-    res.render("sales_list", {
-      title: "Sales List",
-      sales: sales,
-    });
+      .populate("salesAgent", "firstName lastName")
+      .sort({ $natural: -1 });
+
+    res.render("sales_list", { title: "Sales List", sales });
   } catch (error) {
-    res.status(400).send("Unable to find items in the database");
+    console.error("Error retrieving sales:", error);
+    res.status(500).send("Internal server error");
   }
 });
 
-module.exports = router;
+// Route to display the form for editing an existing sale
+router.get("/updateSale/:id", async (req, res) => {
+  try {
+    const sale = await Sale.findById(req.params.id)
+      .populate("produceName", "produceName")
+      .populate("salesAgent", "firstName lastName");
+
+    if (!sale) {
+      return res.status(404).send("Sale not found");
+    }
+
+    const agents = await Register.find({ role: "salesagent" });
+    res.render("edit_sale", { title: "Edit Sale", sale, agents });
+  } catch (error) {
+    console.error("Error retrieving sale or agents:", error);
+    res.status(500).send("Internal server error");
+  }
+});
+
+// Route to handle the submission of an edited sale
+router.post("/updateSale/:id", async (req, res) => {
+  try {
+    const sale = await Sale.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+
+    if (!sale) {
+      return res.status(404).send("Sale not found");
+    }
+
+    res.redirect("/salesList");
+  } catch (error) {
+    console.error("Error updating sale:", error);
+    res.status(500).send("Internal server error");
+  }
+});
+
+// Route to handle the deletion of a sale
+router.post("/deleteSale/:id", async (req, res) => {
+  try {
+    const sale = await Sale.findByIdAndDelete(req.params.id);
+
+    if (!sale) {
+      return res.status(404).send("Sale not found");
+    }
+
+    res.redirect("/salesList");
+  } catch (error) {
+    console.error("Error deleting sale:", error);
+    res.status(500).send("Internal server error");
+  }
+});
 
 
-// TO AUTHORISE A CERTAIN USER
-//  router.get("/addSale/:id", async (req, res) => {
+// // RECEIPT
+// router.get("/receipt/:id", async (req, res) => {
 //   try {
-//     if(req.user.role == "salesagent"){
+//     const sale = await Sale.findOne(req.params.id)
+//       .populate("produceName", "produceName")
+      //  const formattedDate = formatDate(sale.saledate);
+      //  res.render("")
+
+//     if (!sale) {
+//       return res.status(404).send("Sale not found");
+//     }
+
 //     const agents = await Register.find({ role: "salesagent" });
-//     const produce = await Stock.findOne({ _id: req.params.id });
-//     res.render("add_sale", {
-//       title: "Sale",
-//       agents: agents,
-//       produce: produce,
-//     });
-//   }    else{res.send("This page is only accessed by Sales agents")
-//    }
-//   }catch (error) {
-//     res.status(400).send("Unable to find sales agents in the database");
+//     res.render("edit_sale", { title: "Edit Sale", sale, agents });
+//   } catch (error) {
+//     console.error("Error retrieving sale or agents:", error);
+//     res.status(500).send("Internal server error");
 //   }
 // });
+module.exports = router;

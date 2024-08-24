@@ -1,0 +1,68 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Sales Records Management
+  link(rel='stylesheet' href='/sales/sales.css')
+.bg-img
+  // Added background image container
+  .container
+    h1#im SALES RECORDS
+    form#sales-form.sales-form(action="/saleProduce" method="POST")
+      // Added sales-form class
+      table
+        tr
+          td
+            label(for='produceNameSale') Produce Name:
+             select#produceName(name="produceName")
+                option(value="beans") Beans
+                option(value="maize") Maize
+                option(value="cowpeas") Cowpeas
+                option(value="rice") Rice
+                option(value="soybeans") Soybeans
+                option(value="gnuts") G-nuts
+          td
+            input#produceNameSale(type='text' name='produceNameSale')
+        tr
+          td
+            label(for='tonnageSale') Tonnage (kg):
+          td
+            input#tonnageSale(type='number' name='tonnageSale')
+        tr
+          td
+            label(for='amountPaid') Amount Paid (UGX):
+          td
+            input#amountPaid(type='number' name='amountPaid')
+        tr
+          td
+            label(for='buyerNameSale') Buyer&apos;s Name:
+          td
+            input#buyerNameSale(type='text' name='buyerNameSale')
+        tr
+          td
+            label(for='buyerNameSale') Branch&apos;s Name:
+            select#branchName(name="branchName")  
+                option(value="Maganjo") Maganjo
+                option(value="Matugga") Matugga
+          td
+            input#branchName(type='text' name='branchName')
+        tr
+          td
+            label(for='salesAgentNameSale') Sales Agent&apos;s Name:
+          td
+            input#salesAgentNameSale(type='text' name='salesAgentNameSale')
+        tr
+          td
+            label(for='dateSale') Date:
+          td
+            input#dateSale(type='date' name='dateSale')
+        tr
+          td
+            label(for='timeSale') Time:
+          td
+            input#timeSale(type='time' name='timeSale')
+        tr
+          td(colspan='2')
+            button.button(type='submit') Add Sale
+          // Added button class
+script(src='/sales/sales.js')

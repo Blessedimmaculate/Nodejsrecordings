@@ -25,6 +25,10 @@
                         td
                             a.btn.btn-primary.btn-sm(href='/updateProduce/'+produce._id) Update
                         td
+                            a.btn.btn-primary.btn-sm(href='/addSale/'+produce._id) Make Sale
+                        td
+                            a.btn.btn-primary.btn-sm(href='/addProduce/'+produce._id) Add Stock
+                        td
                             form(method="post", action='/deleteProduce')
                                 input(type="hidden", name="id", value=produce._id)
                                 button.btn.btn-danger.btn-sm(type="submit") Delete

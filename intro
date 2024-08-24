@@ -43,4 +43,6 @@ navbar  dashboard credit sales  cashsales
 a manager can do everything but the salesagentisrestricted
 
 for radio buttons, selected =  checked
+
+form#add-sale-form(action=`/addSale/${produce._id}` method='POST' name='addSale')
 -->

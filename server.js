@@ -28,6 +28,7 @@ const registerRoutes = require("./routes/registerRoutes");
 const studyRoutes = require("./routes/studyRoutes");
 const stockListRoutes = require("./routes/stockListRoutes");
 const saleRoutes = require("./routes/saleRoutes");
+const makeSaleRoutes = require("./routes/makeSaleRoutes");
 
 // Database connection to mongoose
 // 
@@ -77,6 +78,7 @@ app.use("/", registerRoutes);
 app.use("/", studyRoutes);
 app.use("/", stockListRoutes);
 app.use("/", saleRoutes);
+app.use("/", makeSaleRoutes);
 
 
 // for non existing pages

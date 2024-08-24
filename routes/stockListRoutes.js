@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Stock = require("../models/stock");
 
+
 router.get("/viewProduce", async (req, res) => {
     try {
         const procuredProduce = await Stock.find().sort({ $natural: -1 });
