@@ -1,0 +1,52 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Sales Records Management
+    link(rel="stylesheet" href="/sales/sales.css")
+  body
+    .bg-img
+      .container
+        h1#im SALES RECORDS
+        form#sales-form.sales-form(action="/makeSale" method="post"  name="sales")
+          table
+            tr
+              td
+                label(for="produceNameSale") Produce Name:
+              td
+                input(type="text" id="produceNameSale" name="produceNameSale")
+            tr
+              td
+                label(for="tonnageSale") Tonnage (kg):
+              td
+                input(type="number" id="tonnageSale" name="tonnageSale")
+            tr
+              td
+                label(for="amountPaid") Amount Paid (UGX):
+              td
+                input(type="number" id="amountPaid" name="amountPaid")
+            tr
+              td
+                label(for="buyerNameSale") Buyer's Name:
+              td
+                input(type="text" id="buyerNameSale" name="buyerNameSale")
+            tr
+              td
+                label(for="salesAgentNameSale") Sales Agent's Name:
+              td
+                input(type="text" id="salesAgentNameSale" name="salesAgentNameSale")
+            tr
+              td
+                label(for="dateSale") Date:
+              td
+                input(type="date" id="dateSale" name="dateSale")
+            tr
+              td
+                label(for="timeSale") Time:
+              td
+                input(type="time" id="timeSale" name="timeSale")
+            tr
+              td(colspan="2")
+                button.button(type="submit") Add Sale
+    script(src="/sales/sales.js")

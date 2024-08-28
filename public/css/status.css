@@ -13,6 +13,7 @@
 
 .card-body{
     background-color: #fffcea;
+    border-radius: 7px;
 }
 
 .card-text {

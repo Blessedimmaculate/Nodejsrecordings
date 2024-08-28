@@ -14,21 +14,17 @@ const stockSchema = new mongoose.Schema({
         trim: true
     },
     date: {
-        type: Date,  // Store as Date object
+        type: Date, 
     },
     time: {
-        type: String, // Store time as a string (or include it in the date object)
+        type: String, 
         trim: true,
     },
     tonnage: {
         type: Number,
-       
     },
     cost: {
         type: Number,
-    },
-    produceCost: {
-        type: Number, 
     },
     produceSource: {
         type: String,
@@ -47,14 +43,12 @@ const stockSchema = new mongoose.Schema({
         trim: true
     },
     contact: {
-        type: String, // Store contact as a string
+        type: String,
         trim: true
     },
     sellingPrice: {
         type: Number,
-       
     }
 });
 
-// Export the model
 module.exports = mongoose.model("Stock", stockSchema);

@@ -5,6 +5,22 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title Manager's Produce Records
     link(rel="stylesheet", href="/css/stock.css")
+    script.
+      // Function to set the current date and time
+      function setCurrentDateTime() {
+        const now = new Date();
+        // Format date as YYYY-MM-DD
+        const dateStr = now.toISOString().split('T')[0];
+        // Format time as HH:MM
+        const timeStr = now.toTimeString().split(' ')[0].slice(0, 5);
+
+        // Set date and time input fields
+        document.getElementById('date').value = dateStr;
+        document.getElementById('time').value = timeStr;
+      }
+
+      // Call the function when the page loads
+      window.onload = setCurrentDateTime;
   body
     .bg-img
       .container
@@ -81,6 +97,4 @@ html
               input#sellingPrice(type="number", name="sellingPrice")
           .form-row
             button.button(type="submit") Add Produce
-            
-    //- script(src="/stock/stock.js")
-    script(src="js/stock.js") 
+script(src="js/total-cost.js") 

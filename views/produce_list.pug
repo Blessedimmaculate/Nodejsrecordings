@@ -1,5 +1,3 @@
-
-
 block content
   .container
     h2.text-center.mt-5.mb-4 Produce List
@@ -7,33 +5,50 @@ block content
       thead
         tr
           th(scope='col') Produce Name
-          th(scope='col') Store Branch
           th(scope='col') Tonnage (Kg)
-          th(scope='col') Produce Cost per Kg (UGX)
-          th(scope='col') Produce Source
-          th(scope='col') Contact
-          th(scope='col') Selling Price per Kg (UGX)
+          th(scope='col') Amount Paid (UGX)
+          th(scope='col') Buyer Name
+          th(scope='col') Sales Agent
+          th(scope='col') Date
+          th(scope='col') Time
           th(scope='col') Action
-          th
-          th
       tbody
-        if produces.length
-          each produce in produces
+        if sales && sales.length
+          each sale in sales
             tr
-              td #{produce.produceName}
-              td #{produce.storeBranch}
-              td #{produce.tonnage}
-              td #{produce.produceCost}
-              td #{produce.produceSource}
-              td #{produce.contact}
-              td #{produce.sellingPrice}
+              td #{sale.produceName}
+              td #{sale.tonnage}
+              td #{sale.amountPaid}
+              td #{sale.buyerName}
+              td #{sale.salesAgent}
+              td #{new Date(sale.date).toLocaleDateString()}
+              td #{sale.time}
               td
-                a.btn.btn-secondary.btn-sm(href='/addSale/'+produce._id) Make Sale
+                form(method='POST' action=`/makeSale/${sale._id}`)
+                  .mb-3
+                    label.form-label(for='saleTonnage') Tonnage (Kg)
+                    input#saleTonnage.form-control(type='number' name='saleTonnage' required)
+                  .mb-3
+                    label.form-label(for='amountPaid') Amount Paid (UGX)
+                    input#amountPaid.form-control(type='number' name='amountPaid' required)
+                  .mb-3
+                    label.form-label(for='buyerName') Buyer Name
+                    input#buyerName.form-control(type='text' name='buyerName' required)
+                  .mb-3
+                    label.form-label(for='salesAgent') Sales Agent
+                    input#salesAgent.form-control(type='text' name='salesAgent' required)
+                  .mb-3
+                    label.form-label(for='date') Date
+                    input#date.form-control(type='date' name='date' required)
+                  .mb-3
+                    label.form-label(for='time') Time
+                    input#time.form-control(type='text' name='time' required)
+                  button.btn.btn-primary(type='submit') Make Sale
               td
-                a.btn.btn-primary.btn-sm(href='/updateProduce/'+produce._id) Update
+                a.btn.btn-primary.btn-sm(href='/updateProduce/'+sale._id) Update
               td
                 form(method="post" action='/deleteProduce')
-                  input(type="hidden" name="id" value=produce._id)
+                  input(type='hidden' name='id' value=sale._id)
                   button.btn.btn-danger.btn-sm(type="submit") Delete
         else
-          p No produce yet :(
+          p No produce recorded yet :(

@@ -1,139 +1,105 @@
 const express = require("express");
 const router = express.Router();
-
 const Sale = require("../models/Sale");
-const Register = require('../models/register');
-const Stock = require('../models/stock');
+const Produce = require("../models/stock");
+const Register = require("../models/register");
 
-
-// Route to display the form for adding a new sale
+// Add a Sale - Display Form
 router.get("/addSale/:id", async (req, res) => {
   try {
     const agents = await Register.find({ role: "salesagent" });
-    const produce = await Stock.findById(req.params.id);
-    if (!produce) {
-      return res.status(404).send("Produce not found");
-    }
+    const produce = await Produce.findById(req.params.id);
     res.render("add_sale", { title: "Add Sale", agents, produce });
   } catch (error) {
-    console.error("Error retrieving agents or produce:", error);
-    res.status(500).send("Internal server error");
+    res.status(400).send("Unable to load the page");
   }
 });
 
-// Route to handle the submission of a new sale
+// Add a Sale - Handle Submission
 router.post("/addSale/:id", async (req, res) => {
   try {
     const { saleTonnage } = req.body;
-    const produce = await Stock.findById(req.params.id);
+    const produce = await Produce.findById(req.params.id);
 
-    if (!produce) {
-      return res.status(404).send("Produce not found");
-    }
+    if (!produce) return res.status(404).send("Produce not found");
+    if (produce.tonnage < saleTonnage)
+      return res.status(400).send(`Not enough stock. Only ${produce.tonnage} Kgs available`);
 
-    if (produce.tonnage < saleTonnage) {
-      return res.status(400).send(`Not enough stock, only ${produce.tonnage} Kgs available`);
-    }
-
-    const newSale = new Sale(req.body);
-    await newSale.save();
-
+    const sale = new Sale(req.body);
+    await sale.save();
     produce.tonnage -= saleTonnage;
     await produce.save();
 
     res.redirect("/salesList");
   } catch (error) {
-    console.error("Error adding sale:", error);
-    res.status(500).send("Internal server error");
+    res.status(500).send("Internal Server Error");
   }
 });
 
-// Route to display the list of all sales
+// View Sales List
 router.get("/salesList", async (req, res) => {
   try {
     const sales = await Sale.find()
       .populate("produceName", "produceName")
-      .populate("salesAgent", "firstName lastName")
-      .sort({ $natural: -1 });
-
+      .populate("salesAgent", "firstName lastName");
     res.render("sales_list", { title: "Sales List", sales });
   } catch (error) {
-    console.error("Error retrieving sales:", error);
-    res.status(500).send("Internal server error");
+    res.status(400).send("Unable to load sales list");
   }
 });
 
-// Route to display the form for editing an existing sale
+// Update Sale - Display Form
 router.get("/updateSale/:id", async (req, res) => {
   try {
     const sale = await Sale.findById(req.params.id)
       .populate("produceName", "produceName")
       .populate("salesAgent", "firstName lastName");
-
-    if (!sale) {
-      return res.status(404).send("Sale not found");
-    }
-
     const agents = await Register.find({ role: "salesagent" });
     res.render("edit_sale", { title: "Edit Sale", sale, agents });
   } catch (error) {
-    console.error("Error retrieving sale or agents:", error);
-    res.status(500).send("Internal server error");
+    res.status(500).send("Internal Server Error");
   }
 });
 
-// Route to handle the submission of an edited sale
+// Update Sale - Handle Submission
 router.post("/updateSale/:id", async (req, res) => {
   try {
-    const sale = await Sale.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-
-    if (!sale) {
-      return res.status(404).send("Sale not found");
-    }
-
+    await Sale.findByIdAndUpdate(req.params.id, req.body);
     res.redirect("/salesList");
   } catch (error) {
-    console.error("Error updating sale:", error);
-    res.status(500).send("Internal server error");
+    res.status(500).send("Internal Server Error");
   }
 });
 
-// Route to handle the deletion of a sale
+// Delete Sale
 router.post("/deleteSale/:id", async (req, res) => {
   try {
-    const sale = await Sale.findByIdAndDelete(req.params.id);
-
-    if (!sale) {
-      return res.status(404).send("Sale not found");
-    }
-
+    await Sale.findByIdAndDelete(req.params.id);
     res.redirect("/salesList");
   } catch (error) {
-    console.error("Error deleting sale:", error);
-    res.status(500).send("Internal server error");
+    res.status(500).send("Internal Server Error");
   }
 });
 
 
-// // RECEIPT
-// router.get("/receipt/:id", async (req, res) => {
-//   try {
-//     const sale = await Sale.findOne(req.params.id)
-//       .populate("produceName", "produceName")
-      //  const formattedDate = formatDate(sale.saledate);
-      //  res.render("")
 
-//     if (!sale) {
-//       return res.status(404).send("Sale not found");
-//     }
+// MAKE RECEIPT
+router.get("/receipt/:id", async (req,res) => {
+  try {
+    const sale = await Sale.findOne({_id: req.params.id})
+    .populate("produceName", "produceName"
+    .populate("salesAgent", "username")
+    );
+    console.log("my sale", sale)
+    const formatedDate = formatDate(sale.saledate);
+    res.render("sales_receipt", {
+      sale,
+      formatedDate,
+      title: "Receipt", 
+    });
+  } catch (error) {
+    res.status(400).send("Unable to find item in the database")
+  }
+})
 
-//     const agents = await Register.find({ role: "salesagent" });
-//     res.render("edit_sale", { title: "Edit Sale", sale, agents });
-//   } catch (error) {
-//     console.error("Error retrieving sale or agents:", error);
-//     res.status(500).send("Internal server error");
-//   }
-// });
 module.exports = router;

@@ -1,37 +1,29 @@
 .container
-    h2.text-center.mt-5.mb-4 Produce List
-    table.table.table-striped
-        thead
-            tr
-                th(scope='col') Produce Name
-                th(scope='col') Store Branch
-                th(scope='col') Tonnage (Kg)
-                th(scope='col') Produce Cost per Kg (UGX)
-                th(scope='col') Produce Source
-                th(scope='col') Contact
-                th(scope='col') Selling Price per Kg (UGX)
-                th(scope='col') Action
-        tbody
-            if produces.length
-                each produce in produces
-                    tr
-                        td #{produce.produceName}
-                        td #{produce.storeBranch}
-                        td #{produce.tonnage}
-                        td #{produce.produceCost}
-                        td #{produce.produceSource}
-                        td #{produce.contact}
-                        td #{produce.sellingPrice}
-                        td
-                            a.btn.btn-primary.btn-sm(href='/updateProduce/'+produce._id) Update
-                        td
-                            a.btn.btn-primary.btn-sm(href='/addSale/'+produce._id) Make Sale
-                        td
-                            a.btn.btn-primary.btn-sm(href='/addProduce/'+produce._id) Add Stock
-                        td
-                            form(method="post", action='/deleteProduce')
-                                input(type="hidden", name="id", value=produce._id)
-                                button.btn.btn-danger.btn-sm(type="submit") Delete
-            else
-                tr
-                    td(colspan="8") No produce yet :(
+  h2.text-center.mt-5.mb-4 Produce List
+  table.table.table-striped
+    thead
+      tr
+        th(scope='col') Produce Name
+        th(scope='col') Store Branch
+        th(scope='col') Tonnage (Kg)
+        th(scope='col') Produce Cost per Kg (UGX)
+        th(scope='col') Total Cost (UGX)
+        th(scope='col') Date
+        th(scope='col') Time
+        th(scope='col') Action
+    tbody
+      each produce in produces
+        tr
+          td #{produce.produceName}
+          td #{produce.storeBranch}
+          td #{produce.tonnage}
+          td #{produce.cost}
+          td #{produce.tonnage * produce.cost}
+          td #{moment(produce.date).format('YYYY-MM-DD')}
+          td #{produce.time}
+          td
+            a.btn.btn-success(href="/addSale/" + produce._id) Make Sale
+            a.btn.btn-primary(href="/updateProduce/" + produce._id) Update
+            form(action="/deleteProduce" method="POST" style="display:inline;")
+              input(type="hidden" name="id" value=produce._id)
+              button.btn.btn-danger(type="submit") Delete

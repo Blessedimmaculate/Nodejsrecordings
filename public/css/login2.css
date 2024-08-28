@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Times New Roman', Times, serif;
+}
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: white;
+    --main-color: #6ccff6;
+    --header-color:#2C4E80;
+    --background-color: #a9d6e5;
+}
+body {
+    background-image: url("/images/we.avif");
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 6% 2rem;
+    background: #e2d17c;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+.logo{
+    font-size: 2rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.logo:hover{
+    transform: scale(1.1);
+}
+.logo span{
+    text-shadow: 0 0 25px var(--background-color);
+}
+
+#menu-icon{
+    font-size: 2.6rem;
+    color: var(--main-color);
+    display: none;
+}
+span{
+    color: var(--main-color);
+}
+.logo span{
+    color: var(--second-bg-color);
+}
+
+.container {
+    margin-top: 20px;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+form {
+    background: #ffeb85;
+    padding: 3em;
+    height: 400px;
+    width: 130%;
+    border-radius: 20px;
+    border-left: 1px solid var(--second-bg-color);
+    border-top: 1px solid var(--second-bg-color);
+    --webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px var(--text-color);
+    text-align: center;
+    position: relative;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+form:hover {
+    margin: 4px;
+}
+
+::-webkit-input-placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #fffcea;
+}
+
+.drops {
+    background: var(--main-color);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border-left: 1px solid var(--second-bg-color);
+    border-top: 1px solid var(--second-bg-color);
+    box-shadow: 10px 10px 60px -8px var(--main-color);
+    position: absolute;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+ 
+form p {
+    font-weight: 900;
+    color: #080808;
+    opacity: 0.7;
+    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px var(--background-color);
+}
+
+form a {
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+form a:hover {
+    text-shadow: 2px 2px 6px var(--text-color);
+}
+
+form a:active {
+    text-shadow: none;
+}
+
+form input {
+    background: transparent;
+    width: 250px;
+    padding: 1em;
+    margin-bottom: 2em;
+    border: none;
+    border-left: 1px solid var(--second-bg-color);
+    border-top: 1px solid var(--second-bg-color);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur (5px);
+    text-align: center;
+    position: relative;
+    --webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    color: #080808;
+    font-weight: 500;
+    border-radius: 5000px;
+    font-size: 20px;
+}
+form input:hover{
+    background: #fffcea;
+}
+form input[type="email"]:focus,
+form input[type="password"]:focus{
+    background: var(--text-color);
+}
+form input[type="button"]{
+    width: 170px;
+    font-size: 2rem;
+}
+form input[type="button"]:hover{
+    cursor: pointer;
+}
+form:hover{
+    margin: 4px;
+}
+::-webkit-input-placeholder{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    color: white;
+}
+a,
+input:focus,
+button:focus,
+select:focus{
+    outline: none;
+}
+footer {
+    background-color:  #e2d17c;
+    color: var(--second-bg-color);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+  }
+
+.login-button {
+    background-color: var(--second-bg-color); 
+    color: #FFFFFF; 
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #fffcea; 
+    color: #080808;
+  }

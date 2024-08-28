@@ -1,18 +1,16 @@
-
-
 block content
   .container
-    h2.text-center.mt-5.mb-4 Sales List
-    table.table.table-striped
+    h2 Sales List
+    table.table
       thead
         tr
-          th(scope='col') Produce Name
-          th(scope='col') Tonnage (Kgs)
-          th(scope='col') Amount Paid (UGX)
-          th(scope='col') Buyer's Name
-          th(scope='col') Sales Agent
-          th(scope='col') Date of Sale
-          th(scope='col') Action
+          th Produce Name
+          th Tonnage (Kgs)
+          th Amount Paid (UGX)
+          th Buyer's Name
+          th Sales Agent
+          th Date of Sale
+          th Action
       tbody
         if sales.length
           each sale in sales
@@ -21,15 +19,15 @@ block content
               td #{sale.saleTonnage}
               td #{sale.amount}
               td #{sale.buyerName}
-              td #{sale.salesAgent.firstName + " " + sale.salesAgent.lastName}
-              td #{moment(sale.saledate).format('DD-MM-YYYY')}
+              td #{sale.salesAgent.firstName} #{sale.salesAgent.lastName}
+              td #{sale.saledate.toLocaleDateString()}
               td
-                a.btn.btn-secondary.btn-sm(href=`/updateSale/${sale._id}`) Update
-                form(method='POST' action=`/deleteSale/${sale._id}` style='display:inline')
-                  input(type='hidden' name='_method' value='DELETE')
+                a.btn.btn-secondary.btn-sm(href='/updateSale/'+sale._id) Update
+              td 
+                form(action='/deleteSale' method='POST')
+                  input(type="hidden", placeholder="". name="id", value=sale._id)
                   button.btn.btn-danger.btn-sm(type='submit') Delete
+              td 
+                a.btn.btn-secondary.btn-sm(href="/receipt/"+sale._id) Receipt
         else
-          tr
-            td(colspan='7') No sales records yet :(
-
-
+              p No sales records yet :(

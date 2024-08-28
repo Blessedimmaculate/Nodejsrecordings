@@ -9,36 +9,48 @@ const updateStockSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    typeOfProduce: {
+    produceType: {
         type: String,
         trim: true
     },
-   
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    time: {
+        type: String
+    },
     tonnage: {
-        type: Number,
-       
+        type: Number
+    },
+    dealerName: {
+        type: String,
+        trim: true
+    },
+    companyName: {
+        type: String,
+        trim: true
     },
     cost: {
-        type: Number,
+        type: Number
     },
     totalcost: {
-        type: Number, 
+        type: Number
     },
     produceSource: {
         type: String,
         trim: true
     },
-   
+    contact: {
+        type: Number
+    },
     branchName: {
         type: String,
         trim: true
     },
-   
     sellingPrice: {
-        type: Number,
-       
+        type: Number
     }
 });
 
-// Export the model
 module.exports = mongoose.model("UpdateStock", updateStockSchema);

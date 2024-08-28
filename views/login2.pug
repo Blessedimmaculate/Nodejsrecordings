@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    title Login
+    link(rel='stylesheet' href='/css/login2.css')
+  header.header
+    a.logo(href='index.html')
+      | Happy Hoe 
+      span Grocery Store
+    i#menu-icon.fa-solid.fa-bars
+  .container
+    form#loginform(action='/login' method='POST')
+      p Welcome
+      input(type='email' placeholder='Email' name='email')
+      br
+      input(type='password' placeholder='Password' name='password') 
+      br
+      input(type='submit' value='LOGIN' class='login-button') 
+      br
+    .drops
+      .drop.drop-1
+      .drop.drop-2
+      .drop.drop-3
+      .drop.drop-4
+      .drop.drop-5
+  footer
+    p &copy; Abakwase Immaculate @2024. All rights reserved.
+  script(src='/js/login2.js')

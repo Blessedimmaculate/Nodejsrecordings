@@ -1,37 +1,32 @@
 // Dependencies
 const express = require("express");
-const path = require("path"); //path is inbuilt not installed
+const path = require("path"); // Path is inbuilt, not installed
 const moment = require("moment");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const expressSession = require("express-session")({
-  secret: "secret",  //can be like an id "secret" can change and named anything
-  resave: false,  //we don't want to save d sessions
-  saveUninitialized: false  //we don't want to keep details of those who hv bn providing wrong emails
+  secret: "secret",  // This can be changed and named anything
+  resave: false,  // We don't want to resave sessions
+  saveUninitialized: false  // We don't want to save uninitialized sessions
 });
 
-// helps us to connect to d .env file
-require("dotenv").config();  // Load environment variables
+// Load environment variables
+require("dotenv").config();
 
 // INSTANTIATIONS
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
-// No other model is imported apart from the one that stores info for log in
-// b'se we need to attach/ use the local strategy on that model, all these three
-const Register = require("./models/register")
+// Import models
+const Register = require("./models/register");
 
-// import models
-// CONFIGURATIONS
-// IMPORT ROUTES
+// Import routes
 const registerRoutes = require("./routes/registerRoutes");
 const studyRoutes = require("./routes/studyRoutes");
 const stockListRoutes = require("./routes/stockListRoutes");
 const saleRoutes = require("./routes/saleRoutes");
-const makeSaleRoutes = require("./routes/makeSaleRoutes");
 
-// Database connection to mongoose
-// 
+// Database connection
 mongoose.connect(process.env.DATABASE_LOCAL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -45,47 +40,36 @@ mongoose.connection
     console.error(`Connection error: ${err.message}`);
   });
 
-
-
 // PUG FILE
-// Set d view engine to pug
 app.locals.moment = moment;
-app.set("view engine", "pug"); //specifies the view engine is pug
-app.set("views", path.join(__dirname, "views")); //specifies d view directory
+app.set("view engine", "pug"); // Specifies the view engine is pug
+app.set("views", path.join(__dirname, "views")); // Specifies the view directory
 
 // MIDDLEWARE
-// The first two lines enable settings though they hv app.use
-app.use(express.static(path.join(__dirname, "public"))); //specify a folder for static files
-app.use(express.urlencoded({ extended: true })); //helps to parse data for forms
-app.use(express.json()); //helps to capture data in json format
+app.use(express.static(path.join(__dirname, "public"))); // Specifies a folder for static files
+app.use(express.urlencoded({ extended: true })); // Helps to parse data from forms
+app.use(express.json()); // Helps to capture data in JSON format
 
+// Express session configurations
+app.use(expressSession); // Use express session
+app.use(passport.initialize()); // Initialize passport
+app.use(passport.session()); // Helps to use passport session in routes
 
-// express session configs
-app.use(expressSession);//use express session
-app.use(passport.initialize()); //initialise passport
-app.use(passport.session());// Helps to use passport session in routes
-
-// No other model is imported apart from the one that stores info for log in
-// b'se we need to attach/ use the local strategy on that model, all these three
-// passport configs
-passport.use(Register.createStrategy());  //Use the local strategy in routes
-passport.serializeUser(Register.serializeUser());  //Assigns a serial number to a user in d system
-passport.deserializeUser(Register.deserializeUser()); //The serial number is destroyed on logout
-
+// Passport configuration for Register model
+passport.use(Register.createStrategy()); // Use the local strategy in routes
+passport.serializeUser(Register.serializeUser()); // Serializes the user for the session
+passport.deserializeUser(Register.deserializeUser()); // Deserializes the user from the session
 
 // ROUTES
 app.use("/", registerRoutes);
 app.use("/", studyRoutes);
 app.use("/", stockListRoutes);
 app.use("/", saleRoutes);
-app.use("/", makeSaleRoutes);
 
-
-// for non existing pages
+// Handle non-existing pages
 app.get("*", (req, res) => {
-  res.send("error! Page does not exist");
+  res.send("Error! Page does not exist.");
 });
 
-// bootstrapping a server
-// app.listen(3001, () => console.log('listening on port 3001'));
-app.listen(port, () => console.log(`listening on port ${port}`));
+// Bootstrapping the server
+app.listen(port, () => console.log(`Listening on port ${port}`));
