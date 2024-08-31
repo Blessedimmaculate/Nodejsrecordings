@@ -1,13 +1,19 @@
-block content
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Sales Records Management
+    link(rel="stylesheet" href="/css/sales.css")
   .container
     h2 Add Sale
     form(action=`/addSale/${produce._id}` method='POST')
       .form-group
         label Produce Name
         select.form-control(name='produceName')
-          option(value=produce._id) #{produce.produceName}
+          option(value=produce.produceName) #{produce.produceName}
       .form-group
-        label Tonnage (Kgs)
+        label Tonnage (Kgs) #{produce.tonnage} Remaining
         input.form-control(type='number' name='saleTonnage' required)
       .form-group
         label Amount Paid (UGX)
@@ -19,7 +25,7 @@ block content
         label Sales Agent
         select.form-control(name='salesAgent')
           each agent in agents
-            option(value=agent._id) #{agent.firstName} #{agent.lastName}
+            option(value=agent.username) #{agent.username}
       .form-group
         label Date of Sale
         input.form-control(type='date' name='saledate' required)

@@ -1,11 +1,12 @@
 meta(charset="UTF-8")
-meta(name="viewport", content="width=device-width,initial-scale=1")
+meta(name="viewport", content="width=device-width, initial-scale=1")
 title Document
 link(rel="stylesheet", href="/css/register.css")
+
 .bg-img
   .container
     h1#my REGISTER
-    form#register-form.register-form(action="/addWorker" method="POST")
+    form#register-form.register-form(action="/addWorker" method="POST" onsubmit="return Validate(event);" name="registerForm")
       table
         tbody
           tr
@@ -52,4 +53,5 @@ link(rel="stylesheet", href="/css/register.css")
           tr
             td
               button.button(type="submit") Register
-script(src="/register/register.js")
+//- script(src="/register/register.js")
+script(src="/js/valid_copy.js")

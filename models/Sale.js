@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 
 const saleSchema = new mongoose.Schema({
   produceName: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Produce"
+    type: String,
+    trim: true,
+    required: true,
   },
   saleTonnage: {
     type: Number,
@@ -21,8 +22,9 @@ const saleSchema = new mongoose.Schema({
     required: true,
   },
   salesAgent: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Register",
+    type: String,
+    trim: true,
+    required: true,
   },
   saledate: {
     type: Date,

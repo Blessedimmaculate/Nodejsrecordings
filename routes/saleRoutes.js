@@ -20,7 +20,6 @@ router.post("/addSale/:id", async (req, res) => {
   try {
     const { saleTonnage } = req.body;
     const produce = await Produce.findById(req.params.id);
-
     if (!produce) return res.status(404).send("Produce not found");
     if (produce.tonnage < saleTonnage)
       return res.status(400).send(`Not enough stock. Only ${produce.tonnage} Kgs available`);
@@ -29,9 +28,9 @@ router.post("/addSale/:id", async (req, res) => {
     await sale.save();
     produce.tonnage -= saleTonnage;
     await produce.save();
-
-    res.redirect("/salesList");
-  } catch (error) {
+    const sales = await Sale.find().sort({ $natural: -1 });
+    return res.render("sales_list1", { title: "Sales List", sales });
+      } catch (error) {
     res.status(500).send("Internal Server Error");
   }
 });
@@ -40,11 +39,9 @@ router.post("/addSale/:id", async (req, res) => {
 router.get("/salesList", async (req, res) => {
   try {
     const sales = await Sale.find()
-      .populate("produceName", "produceName")
-      .populate("salesAgent", "firstName lastName");
-    res.render("sales_list", { title: "Sales List", sales });
-  } catch (error) {
-    res.status(400).send("Unable to load sales list");
+       res.render("sales_list1", { title: "Sales List", sales });
+      } catch (error) {
+          res.status(500).send("Unable to load sales list");
   }
 });
 
@@ -53,7 +50,7 @@ router.get("/updateSale/:id", async (req, res) => {
   try {
     const sale = await Sale.findById(req.params.id)
       .populate("produceName", "produceName")
-      .populate("salesAgent", "firstName lastName");
+      .populate("salesAgent", "username");
     const agents = await Register.find({ role: "salesagent" });
     res.render("edit_sale", { title: "Edit Sale", sale, agents });
   } catch (error) {
@@ -64,7 +61,7 @@ router.get("/updateSale/:id", async (req, res) => {
 // Update Sale - Handle Submission
 router.post("/updateSale/:id", async (req, res) => {
   try {
-    await Sale.findByIdAndUpdate(req.params.id, req.body);
+    await Sale.findOneAndUpdate(req.params.id, req.body);
     res.redirect("/salesList");
   } catch (error) {
     res.status(500).send("Internal Server Error");
@@ -74,13 +71,14 @@ router.post("/updateSale/:id", async (req, res) => {
 // Delete Sale
 router.post("/deleteSale/:id", async (req, res) => {
   try {
-    await Sale.findByIdAndDelete(req.params.id);
-    res.redirect("/salesList");
+    const saleId = req.params.id; // Get the sale ID from the URL parameters
+    await Sale.deleteOne({ _id: saleId }); // Delete the sale with the specific ID
+    res.redirect("back"); // Redirect back to the previous page
   } catch (error) {
-    res.status(500).send("Internal Server Error");
+    console.error(error); // Log the error for debugging
+    res.status(500).send("Internal Server Error"); // Send an error response
   }
 });
-
 
 
 // MAKE RECEIPT

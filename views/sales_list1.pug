@@ -1,4 +1,10 @@
-block content
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Sales Records Management
+    link(rel="stylesheet" href="/css/sales.css")
   .container
     h2.text-center.mt-5.mb-4 Sales List
     table.table.table-striped
@@ -15,11 +21,11 @@ block content
         if sales.length
           each sale in sales
             tr
-              td #{sale.produceName.produceName}
+              td #{sale.produceName}
               td #{sale.saleTonnage}
               td #{sale.amount}
               td #{sale.buyerName}
-              td #{sale.salesAgent.firstName + " " + sale.salesAgent.lastName}
+              td #{sale.salesAgent}
               td #{moment(sale.saledate, "YYYY-MM-DD").format('DD-MM-YYYY')}
               td
                 a.btn.btn-secondary.btn-sm(href=`/updateSale/${sale._id}`) Update
@@ -28,7 +34,7 @@ block content
                   input(type='hidden' name='_method' value='DELETE')
                   button.btn.btn-danger.btn-sm(type='submit') Delete
               td 
-                a.btn.btn.secondary.btn-sm(href="/receipt/"+sale._id) Make Receipt   
+                a.btn.btn.secondary.btn-sm(href="/receipt/"+sale._id) Receipt   
           else
               p No sales records yet :(
 

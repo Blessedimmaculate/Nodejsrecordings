@@ -25,6 +25,7 @@ const registerRoutes = require("./routes/registerRoutes");
 const studyRoutes = require("./routes/studyRoutes");
 const stockListRoutes = require("./routes/stockListRoutes");
 const saleRoutes = require("./routes/saleRoutes");
+const agentRoutes = require('./routes/agentRoutes');
 
 // Database connection
 mongoose.connect(process.env.DATABASE_LOCAL, {
@@ -65,6 +66,7 @@ app.use("/", registerRoutes);
 app.use("/", studyRoutes);
 app.use("/", stockListRoutes);
 app.use("/", saleRoutes);
+app.use('/', agentRoutes);
 
 // Handle non-existing pages
 app.get("*", (req, res) => {

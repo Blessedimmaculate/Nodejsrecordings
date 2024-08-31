@@ -1,0 +1,140 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Manager Dashboard
+  link(rel='stylesheet' href='/css/mngdash.css')
+.side-menu
+  .brand-name
+    h1 Happy Hoe
+  ul
+    li
+      a(href='/dashboard/mngdash.html')
+        img(src='/images/adm.png' alt='')
+        span Dashboard
+    li
+      a(href='/addProduce')
+        img(src='/images/man.png' alt='')
+        span Procurement
+    li
+      a(href='/stock')
+        img(src='/images/agent.png' alt='')
+        span Stock Status
+    li
+      a(href='/index/index.html')
+        img(src='/images/logout.png' alt='')
+        span Log Out
+.container(action='/agent_page' method='POST')
+  .header
+    .nav
+      .search
+        input(type='text' placeholder='search..')
+        button(type='submit')
+          img(src='/images/sach.png' alt='Search Icon')
+      .user
+        a.btn(href='#') Add New
+        img(src='/images/reg.png' alt='')
+        .img-case
+          a(href='/index/index.html')
+            img(src='/images/logout.png' alt='Go to Index Page')
+  .content
+    .bg-img
+      .cards
+        a.card-link(href='/procreport/procreport.html')
+          .card
+            .box
+              h2 Procurement Report
+      .cards
+        a.card-link(href='/report/report.html')
+          .card
+            .box
+              h2 Cash Sales Report
+      .cards
+        a.card-link(href='/creditreport/credit.html')
+          .card
+            .box
+              h2 Credit Cash Report
+      a.card-link(href='/procreport/procreport.html')
+        .card
+          .box
+            h2 Procurement Report
+    .content-2
+      .recent-payments
+        .title
+          h2 SALES OVERVIEW
+          a.btn(href='#') View All
+          .search1
+            input(type='text' placeholder='search1..')
+            button(type='submit')
+              img(src='/images/sach.png' alt='Search Icon')
+        table
+          tr
+            th Produce Name
+            th Produce Type
+            th
+              | Unit Cost
+              br
+              |  (UgX)
+            th
+              | Qty Sold 
+              br
+              | (Tonnes)
+            th
+              | Qty in Stock 
+              br
+              | (Tonnes)
+            th Action
+          tr
+            td Maize
+            td Cereal
+            td 50000
+            td G-nuts
+            td 30000
+            td
+              a.btn(href='#') Edit
+              a.btn(href='#') Delete
+          tr
+            td Maize
+            td Cereal
+            td 20000
+            td G-nuts
+            td 30000
+            td
+              a.btn(href='#') Edit
+              a.btn(href='#') Delete
+          tr
+            td Maize
+            td Cereal
+            td 20000
+            td G-nuts
+            td 30000
+            td
+              a.btn(href='#') Edit
+              a.btn(href='#') Delete
+          tr
+            td Maize
+            td Cereal
+            td 20000
+            td G-nuts
+            td 30000
+            td
+              a.btn(href='#') Edit
+              a.btn(href='#') Delete
+          tr
+            td Maize
+            td Cereal
+            td 20000
+            td G-nuts
+            td 30000
+            td
+              a.btn(href='#') Edit
+              a.btn(href='#') Delete
+          tr
+            td Maize
+            td Cereal
+            td 20000
+            td G-nuts
+            td 30000
+            td
+              a.btn(href='#') Edit
+              a.btn(href='#') Delete

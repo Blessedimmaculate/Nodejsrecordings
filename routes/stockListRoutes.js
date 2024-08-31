@@ -12,13 +12,10 @@ router.post("/makeSale/:id", async (req, res) => {
     if (!produce) {
       return res.status(404).send("Produce not found");
     }
-
-    if (produce.tonnage < saleTonnage) {
-      return res.status(400).send(`Not enough stock, only ${produce.tonnage} Kg available`);
-    }
+    
 
     const newSale = new Sale({
-      produceName: produce._id,
+      produceName: produce.produceName,
       saleTonnage,
       amount: amountPaid,
       buyerName,
