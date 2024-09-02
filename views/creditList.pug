@@ -1,0 +1,53 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Credit Sales List
+    //- link(rel="stylesheet" href="/css/credit.css")
+  body
+    .bg-img
+      .container
+        h1#ab Credit Sales List
+        table
+          thead
+            tr
+              th Produce Name
+              th Produce Type
+              th Store Branch
+              th Buyer Name
+              th Time
+              th Tonnage
+              th Cost per Kg
+              th Total Cost
+              th Amount Paid
+              th Amount Due
+              th Date of Dispatch
+              th Due Date
+              th Buyer Location
+              th Contacts
+              th National ID
+              th Sales Agent Name
+              th Actions
+          tbody
+            each sale in salesData
+              tr
+                td= sale.produceName
+                td= sale.produceType
+                td= sale.storeBranch
+                td= sale.buyerName
+                td= sale.time
+                td= sale.tonnage
+                td= sale.produceCost
+                td= sale.totalCost
+                td= sale.amountPaid
+                td= sale.amountDue
+                td= sale.dateOfDispatch
+                td= moment(sale.dueDate).format('MM/DD/YYYY')
+                td= sale.buyerLocation
+                td= sale.contacts
+                td= sale.nationalID
+                td= sale.salesAgentName
+                td
+                  a(href=`/edit/${sale._id}`) Edit
+                  a(href=`/delete/${sale._id}`) Delete

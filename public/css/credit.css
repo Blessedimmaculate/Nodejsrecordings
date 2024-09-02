@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita:wght@400;700&display=swap');
+
+body {
+    font-family: Sansita, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevents scrolling */
+    font-size: 20px;
+}
+
+#ab {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 0; /* Add space below the text */
+}
+
+.bg-img {
+    background-image: url("/images/we.avif");
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px; /* Add padding on left and right for some space */
+}
+
+.container {
+    margin: auto;
+    width: 600px;
+    padding: 20px;
+    background-color: #ffeb85;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px; /* Adjusted from 35% to 35px for a better look */
+}
+
+#form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between rows */
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between columns */
+}
+
+.form-column {
+    flex: 1;
+    min-width: 0;
+}
+
+#form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#form-container input,
+#form-container select {
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 12px; /* Curved borders */
+    width: 100%; /* Full width to match other inputs */
+    box-sizing: border-box;
+    font-family: Sansita, sans-serif; /* Ensuring font consistency */
+}
+
+#form-container select {
+    appearance: none; /* Removes the default arrow */
+    background-color: white; /* Background color */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns="http://www.w3.org/2000/svg"%20viewBox="0%200%204%205"><path%20fill="none"%20stroke="black"%20d="M0%201%20l2%202%202-2"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 10px;
+    padding-right: 30px; /* Space for the arrow */
+}
+
+h1, h2 {
+    margin-top: 0; /* Ensures no extra space above the headings */
+    color: #333;
+}
+
+.button {
+    font-family: 'Sansita', sans-serif;
+    background-color: #ffc71b;
+    border: none;
+    color: black;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 20px;
+    margin: 0;
+    border-radius: 35px;
+    width: 100%; /* Adjusted to fit container width */
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover {
+    background-color: #fffcea;
+    color: black;
+    opacity: 0.6;
+}
