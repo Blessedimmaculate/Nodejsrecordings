@@ -39,8 +39,8 @@ const creditSchema = new mongoose.Schema({
         trim: true,
       },
     amountDue: {
-            type: Number,
-            trim: true,
+         type: Number,
+         trim: true,
       }, 
     dueDate: {
         type: Date,
