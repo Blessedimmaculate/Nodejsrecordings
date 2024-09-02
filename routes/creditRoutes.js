@@ -29,4 +29,24 @@ router.get('/creditList', async (req, res) => {
   });
   
 
+router.get("/updateCredit/:id", async (req, res) => {
+  try {
+    const creditsale = await Credit.findById(req.params.id)
+    res.render("creditUpdate", { title: "Edit Credit Sale", sale: creditsale})
+  } catch (error) {
+    console.log(req.body)
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+router.post("/updateCredit/:id", async (req, res) => {
+  try {
+    await Credit.findOneAndUpdate({_id: req.params.id }, req.body);
+    res.redirect("/creditList");
+  } catch (error) {
+    console.log(req.body)
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 module.exports = router;   

@@ -13,10 +13,10 @@ html(lang="en")
           thead
             tr
               th Produce Name
-              th Produce Type
+              
               th Store Branch
               th Buyer Name
-              th Time
+              
               th Tonnage
               th Cost per Kg
               th Total Cost
@@ -27,27 +27,26 @@ html(lang="en")
               th Buyer Location
               th Contacts
               th National ID
-              th Sales Agent Name
               th Actions
           tbody
             each sale in salesData
               tr
                 td= sale.produceName
-                td= sale.produceType
+                
                 td= sale.storeBranch
                 td= sale.buyerName
-                td= sale.time
+              
                 td= sale.tonnage
                 td= sale.produceCost
                 td= sale.totalCost
                 td= sale.amountPaid
                 td= sale.amountDue
-                td= sale.dateOfDispatch
+                td= moment(sale.dateOfDispatch).format('MM/DD/YYYY')
                 td= moment(sale.dueDate).format('MM/DD/YYYY')
                 td= sale.buyerLocation
                 td= sale.contacts
                 td= sale.nationalID
-                td= sale.salesAgentName
+                
                 td
-                  a(href=`/edit/${sale._id}`) Edit
+                  a(href=`/edit/${sale._id}`) Update
                   a(href=`/delete/${sale._id}`) Delete

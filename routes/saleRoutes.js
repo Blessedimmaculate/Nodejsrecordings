@@ -98,6 +98,6 @@ router.get("/receipt/:id", async (req,res) => {
   } catch (error) {
     res.status(400).send("Unable to find item in the database")
   }
-})
+});
 
 module.exports = router;

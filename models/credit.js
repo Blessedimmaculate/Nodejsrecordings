@@ -38,6 +38,14 @@ const creditSchema = new mongoose.Schema({
         type: Number,
         trim: true,
       },
+    produceCost: {
+        type: Number,
+        trim: true,
+      },
+    totalCost: {
+        type: Number,
+        trim: true,
+      },
     amountDue: {
          type: Number,
          trim: true,
@@ -53,7 +61,7 @@ const creditSchema = new mongoose.Schema({
         type: Number,
         trim: true,
       },
-    dateofDispatch: {
+    dateOfDispatch: {
         type: Date,
       },
     salesAgent: {

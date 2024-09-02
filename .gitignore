@@ -1,9 +1,9 @@
 node_modules/
 .vscode/
 bootstrap/
-welcome.pug
-stock.pug
-updateStock.pug
-login2.pug
-login2.css
-registerRoutes.js
+welcome.pug/
+stock.pug/
+updateStock.pug/
+login2.pug/
+login2.css/
+registerRoutes.js/

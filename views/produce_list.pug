@@ -50,7 +50,7 @@ head
                     input#time.form-control(type='text' name='time' required)
                   button.btn.btn-primary(type='submit') Make Sale
               td
-                a.btn.btn-primary.btn-sm(href='/updateProduce/'+sale._id) Update
+                a.btn-primary.btn-sm(href='/updateProduce/'+sale._id) Update
               td
                 form(method="post" action='/deleteProduce')
                   input(type='hidden' name='id' value=sale._id)
