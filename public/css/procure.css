@@ -61,12 +61,17 @@ nav.navbar {
     border-radius: 10px;
 }
 
-/* Form and content layout */
+/* Main Content Layout */
 .main-container {
     display: flex;
-    margin-top: 80px; /* To avoid overlapping with navbar */
+    margin-top: 60px; /* To avoid overlapping with navbar */
     padding-left: 180px; /* To make space for the sidebar */
     width: calc(100% - 180px); /* Adjust for sidebar width */
+    height: calc(100vh - 60px); /* Full height minus navbar */
+    background-image: url('/images/we.avif'); /* Background starts from here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     justify-content: center;
     align-items: flex-start; /* Align items at the start */
 }
@@ -77,12 +82,6 @@ nav.navbar {
     justify-content: center;
     align-items: center; /* Center items vertically */
     flex-grow: 1;
-    background-image: url('/images/we.avif');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: calc(100vh - 60px); /* Full viewport height minus navbar height */
-    position: relative;
     z-index: 1;
     padding: 20px; /* Add padding to avoid content touching edges */
     box-sizing: border-box; /* Include padding in the element’s total width and height */
@@ -91,7 +90,7 @@ nav.navbar {
 /* Form Container */
 .form-container {
     padding: 20px; /* Increased padding for better spacing */
-    background: transparent;
+    background:transparent;
     backdrop-filter: blur(30px);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
@@ -157,7 +156,6 @@ input, select {
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    transform: translateY(-10px); /* Slightly adjusted */
 }
 
 .submit button:hover {

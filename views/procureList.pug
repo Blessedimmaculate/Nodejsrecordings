@@ -1,13 +1,15 @@
 doctype html
 html
   head
-    title Credit List
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title PROCUREMENT LIST
     link(rel='stylesheet', href='/css/produceList.css')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js')
   body
     nav.navbar
       .brand-name
-        h1 Happy Hoe Grocery Store
+        h1 HAPPY HOE GROCERY STORE
     .sidebar
       ul
         li CREDIT SALE
@@ -17,7 +19,7 @@ html
         li LOG OUT
     .main-container
       .container
-        h2.text-center.mt-5.mb-4 CREDIT LIST
+        h2.text-center.mt-5.mb-4 PROCUREMENT LIST
         table.table.table-striped
           thead
             tr
@@ -39,7 +41,7 @@ html
                 tr
                   td #{procure.produceName}
                   td= moment(procure.date || new Date()).format('MM/DD/YYYY')
-                  td #{procure.time}
+                  td= moment(procure.time, 'HH:mm').format('hh:mm A') 
                   td #{procure.stock}
                   td #{procure.cost}
                   td #{procure.totalcost}

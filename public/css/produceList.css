@@ -37,16 +37,15 @@ h2 {
 
 /* Sidebar */
 .sidebar {
-    width: 160px;
-    padding: 20px;
-    background-color: rgb(35, 31, 31); 
-    border-right: 2px solid #e6d7a2;
-    height: calc(100vh - 60px); /* Adjust based on navbar height */
-    position: fixed;
-    top: 60px; /* Adjust based on navbar height */
-    left: 0;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Adds vertical scrollbar if content exceeds height */
+  width: 180px;
+  padding: 20px;
+  background-color: rgb(35, 31, 31);
+  border-right: 2px solid #e6d7a2;
+  height: calc(100vh - 60px); /* Adjust for navbar height */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar ul {
@@ -91,7 +90,7 @@ h1 {
 }
 
 table {
-  width: 90%; /* Set to 100% to use the available space */
+  width: 95%; /* Set to 100% to use the available space */
   margin: auto;
   border-collapse: collapse;
   border-radius: 15px; /* Add border-radius here */

@@ -1,138 +1,77 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Produce Sales Form
-  link(rel='stylesheet' href='/css/sales.css')
-nav.navbar
-  .logo
-    img(src='/img/logo1.png' alt='Logo')
-  .brand-name
-    h1 Happy Hoe Grocery Store
-br
-br
-br
-form#Form(action='/makeSale' method='POST' name='sales')
-  h1 Sales Form
-  .form-container
-    .form-group
-      label(for='') Name of Produce:
-      select#produceName(name='produceName')
-        option(value='') Select produce
-        option(value='Beans') Beans
-        option(value='Maize') Maize
-        option(value='Rice') Rice
-        option(value='Soyabeans') Soyabeans
-        option(value='Cowpeas') Cowpeas
-        option(value='Gnuts') G-nuts
-    .form-group
-      label(for='tonnage') Tonnage (kgs):
-      input#tonnage(type='number' name='tonnage')
-    .form-group
-      label(for='amountPaid') Amount Paid (UGX per kg):
-      input#amountPaid(type='text' name='amountPaid')
-    .form-group
-      label(for='buyerName') Buyer's Name:
-      input#buyerName(type='text' name='buyername')
-    .form-group
-      label(for='salesAgentName') SalesAgent's Name:
-      input#salesAgentName(type='text' name='salesagent')
-    .form-group
-      label(for='branch') Branch Name:
-      select#branch(name='branch')
-        option(value='') Select Branch
-        option(value='Maganjo') Maganjo
-        option(value='Matugga') Matugga
-    .form-group
-      label(for='dateTime') Date and Time:
-      input#dateTime(type='datetime-local' name='dateTime')
-    .form-group
-      label(for='totalpayment') Total Payment:
-      input#totalpayment(type='number' name='totalpayment')  
-      br
-      br
-  button(type='submit') MakeSale
-script(src='/js/ddd.js')
-
-
-//- doctype html
-//- html(lang="en")
-//-   head
-//-     meta(charset="UTF-8")
-//-     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-//-     title Sales Records Management
-//-     link(rel="stylesheet" href="/css/make_sale.css")
-//-   body
-//-     .bg-img
-//-       .container
-//-         h1#im SALES RECORDS
-//-         form#sales-form.sales-form(action='/makeSale' method='POST' name='sales')
-//-           table
-//-             tr
-//-               td
-//-                 label(for="produceName") Produce Name:
-//-               td
-//-                 select#produceName(name="produceName")
-//-                   option(value="") Select Produce
-//-                   option(value="Beans") Beans
-//-                   option(value="Maize") Maize
-//-                   option(value="Rice") Rice
-//-                   option(value="Soyabeans") Soyabeans
-//-                   option(value="Cowpeas") Cowpeas
-//-                   option(value="Gnuts") G-nuts
-//-             tr
-//-               td
-//-                 label(for="produceType") Produce Type:
-//-               td
-//-                 select#produceType(name="produceType")
-//-                   option(value="") Select Produce Type
-//-                   option(value="Cereals") Cereals
-//-                   option(value="Legumes") Legumes
-//-             tr
-//-               td
-//-                 label(for="tonnage") Tonnage (kg):
-//-               td
-//-                 input(type="number" id="tonnage" name="tonnage")
-//-             tr
-//-               td
-//-                 label(for="produceCost") Cost Per Kg (UGX):
-//-               td
-//-                 input(type="number" id="produceCost" name="produceCost")
-//-             tr
-//-               td
-//-                 label(for="amountPaid") Amount Paid (UGX):
-//-               td
-//-                 input(type="number" id="amountPaid" name="amountPaid")
-//-             tr
-//-               td
-//-                 label(for="buyerName") Buyer's Name:
-//-               td
-//-                 input(type="text" id="buyerName" name="buyerName")
-//-             tr
-//-               td
-//-                 label(for="salesAgentName") Sales Agent's Name:
-//-               td
-//-                 input(type="text" id="salesAgentName" name="salesAgentName")
-//-             tr
-//-               td
-//-                 label(for="branch") Branch:
-//-               td
-//-                 select#branch(name="branch")
-//-                   option(value="") Select Branch
-//-                   option(value="Maganjo") Maganjo
-//-                   option(value="Matugga") Matugga
-//-             tr
-//-               td
-//-                 label(for="date") Date:
-//-               td
-//-                 input(type="date" id="date" name="date")
-//-             tr
-//-               td
-//-                 label(for="time") Time:
-//-               td
-//-                 input(type="time" id="time" name="time")
-//-             tr
-//-               td(colspan="2")
-//-                 button.button(type="submit") Add Sale
-//-     script(src='/js/make_sale.js')
-                                     
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Credit Sales Form
+    link(rel='stylesheet' type='text/css' href='/css/credit.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+        ul
+          li CREDIT SALE
+          li CREDIT LIST
+          li STOCK STATUS
+          li PRODUCE LIST
+          li LOG OUT
+      .form-section
+        .form-container
+          .form-header
+            h1 CREDIT SALES FORM
+          form(name='salesForm', onsubmit='return validateForm()', action=`/debit/${produce ? procure._id : ''}` method='POST')
+            .form-row
+              .form-column
+                .form-group
+                  label(for='produceName') Produce Name:
+                  select#produceName.form-control(name='produceName')
+                    option(value='') Select Produce
+                    option(value='Rice') Rice
+                    option(value='Beans') Beans
+                    option(value='Maize') Maize
+                    option(value='Cowpeas') Cowpeas
+                    option(value='Soyabeans') Soyabeans
+                    option(value='Gnuts') G-nuts
+                .form-group
+                  label(for='produceType') Type of Produce:
+                  select#produceType.form-control(name='produceType')
+                    option(value='') Select Produce Type
+                    option(value='Cereals') Cereals
+                    option(value='Legumes') Legumes
+                .form-group
+                  label(for='buyerName') Buyer Name:
+                  input#buyerName.form-control(type='text' name='buyerName')
+                .form-group
+                  label(for='tonnage') Tonnage:
+                  input#tonnage.form-control(type='number' name='tonnage')
+                .form-group
+                  label(for='produceCost') Cost Per Kg (UGX):
+                  input#produceCost.form-control(type='text' name='produceCost')
+              .form-group
+                label(for='totalpayment') Total Payment:
+                input#totalpayment(type='number' name='totalpayment')  
+              .form-column
+                .form-group
+                  label(for='contacts') Buyer's Contact:
+                  input#contacts.form-control(type='text' name='contact')
+                .form-group
+                  label(for='date') Date of Sale:
+                  input#date.form-control(type='date' name='date')
+                .form-group
+                  label(for='time') Time:
+                  input#time.form-control(type='time' name='time')
+                .form-group
+                  label(for='branch') Branch Name:
+                  select#branch.form-control(name='branch')
+                    option(value='') Select Branch
+                    option(value='Maganjo') Maganjo
+                    option(value='Matugga') Matugga
+                .form-group
+                  label(for='salesAgent') Sales Agent Name:
+                  input#salesAgent.form-control(type='text' name='salesagent')
+            .submit
+              button(type='submit') Submit
+          #result
+    script(src='/js/credit.js')
