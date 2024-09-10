@@ -1,0 +1,111 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width, initial-scale=1")
+title Document
+link(rel="stylesheet", href="/css/register.css")
+
+.bg-img
+  .container
+    h1#my REGISTER
+    form#register-form.register-form(action="/addWorker" method="POST" onsubmit="return Validate(event);" name="registerForm")
+      table
+        tbody
+          tr
+            td
+              label(for="username") Username:
+            td
+              input#username(type="text", name="username")
+          tr
+            td
+              label(for="email") Email:
+            td
+              input#email(type="email", name="email")
+          tr
+            td
+              label(for="phoneNumber") Phone Number:
+            td
+              input#phonenumber(type="text", name="phonenumber")
+          tr
+            td
+              label(for="role") Role:
+            td
+              select(name="role", style="width: 100%; padding: 10px;")
+                option(value="") Select your Role
+                option(value="manager") Manager
+                option(value="salesagent") Sales Agent
+          tr
+            td
+              label(for="branch") Branch:
+            td
+              select(name="branch")
+                option(value="branch") Branch
+                option(value="maganjo") Maganjo
+                option(value="matuga") Matuga
+          tr
+            td
+              label(for="password") Password:
+            td
+              input#password(type="password", name="password")
+          tr
+            td
+              label(for="confirmPassword") Confirm Password:
+            td
+              input#confirmPassword(type="password", name="confirmPassword")
+          tr
+            td
+              label(for="registrationDate") Registration Date:
+            td
+              input#registrationDate(type="date", name="registrationDate")
+          tr
+            td
+              button.button(type="submit") Register
+              
+//- script(src="/register/register.js")
+script(src="/js/valid_copy.js")
+//- script(src='/js/signup.js')
+
+
+
+
+
+//- doctype html
+//- head
+//-   meta(charset='UTF-8')
+//-   meta(name='viewport' content='width=device-width, initial-scale=1.0')
+//-   title Sign Up
+//-   link(rel='stylesheet' href='/css/signup.css')
+//- nav.navbar
+//-   .logo
+//-     img(src='/img/logo1.png' alt='Logo')
+//-   .brand-name
+//-     h1 Happy Hoe Grocery Store
+//- br
+//- br
+//- br   
+//- form.signup-form(action='/addUser' method='POST')
+//-   h1 Sign Up
+//-   .form-row
+//-     .form-column
+//-       label(for='fname') Fullname:
+//-       input#name.form-input(type='text' name='fname')
+//-       label(for='username') Username:
+//-       input#username.form-input(type='text' name='username')
+//-       label(for='role') Role:
+//-       select#role.form-input(name='role')
+//-         option(value='') Select a role
+//-         option(value='salesagent') Sales Agent
+//-         option(value='manager') Manager
+//-     .form-column
+//-       label(for='phone') Phone Number:
+//-       input#phone.form-input(type='text' name='phoneNumber')
+//-       label(for='email') Email:
+//-       input#email.form-input(type='email' name='email')
+//-       label(for='branch') Branch:
+//-       select#branch.form-input(name='branch')
+//-         option(value='') Select branch
+//-         option(value='Matugga') Matugga
+//-         option(value='Maganjo') Maganjo
+//-   label(for='password') Password:
+//-   input#password.form-input(type='password' name='password')
+//-   input(type='submit' value='Submit')
+//-   a(href='/login') Already have an account? Login
+//- script(src='/js/signup.js')

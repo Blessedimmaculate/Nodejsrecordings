@@ -1,33 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
   
     // Prepopulate the current time in the 'saleTime' input
-    const timeInput = document.querySelector('input[name="time"]');
+    const timeSaleInput = document.querySelector('input[name="timeSale"]');
     const now = new Date();
     const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-    timeInput.value = formattedTime;
+    timeSaleInput.value = formattedTime;
   
-    // Prepopulate the current date in the 'saledate' input
-    const dateInput = document.querySelector('input[name="date"]');
+    // Prepopulate the current date in the 'dateSale' input
+    const dateSaleInput = document.querySelector('input[name="dateSale"]');
     const formattedDate = now.toISOString().slice(0, 10); // Format date as 'YYYY-MM-DD'
-    dateInput.value = formattedDate;
+    dateSaleInput.value = formattedDate;
   
     // Get the tonnage and cost per kg inputs and the total cost input
-    const tonnageInput = document.querySelector('input[name="tonnage"]');
+    const tonnageSaleInput = document.querySelector('input[name="tonnageSale"]');
     const produceCostInput = document.querySelector('input[name="produceCost"]');
-    const totalcostInput = document.querySelector('input[name="totalcost"]');
+    const amountPaidInput = document.querySelector('input[name="amountPaid"]');
   
     // Function to update the total cost field
     function updateTotalCost() {
-      const tonnage = parseFloat(tonnageInput.value) || 0; // Use 0 if value is empty or NaN
+      const tonnageSale = parseFloat(tonnageSaleInput.value) || 0; // Use 0 if value is empty or NaN
       const produceCost = parseFloat(produceCostInput.value) || 0; // Use 0 if value is empty or NaN
-      const totalcost = tonnage * produceCost;
-      totalcostInput.value = Math.floor(totalcost); // Remove decimal points
+      const amountPaid = tonnageSale * produceCost;
+      amountPaidInput.value = Math.floor(amountPaid); // Remove decimal points
     }
   
     // Add event listeners to the tonnage and cost per kg inputs
-    tonnageInput.addEventListener('input', updateTotalCost);
+    tonnageSaleInput.addEventListener('input', updateTotalCost);
     produceCostInput.addEventListener('input', updateTotalCost);
   
     // Disable editing for total cost input
-    totalcostInput.setAttribute('readonly', true);
+    amountPaidInput.setAttribute('readonly', true);
 });

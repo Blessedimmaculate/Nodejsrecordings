@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita:wght@400;700&display=swap');
+
+body {
+  font-family: 'Sansita', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: black;
+  background-image: url('/images/we.avif'); /* Background image path */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+  margin: 0;
+}
+
+.receipt-table {
+  margin: 0 auto; /* Center the table */
+  width: 100%; /* Full width */
+}
+
+.receipt-table tr {
+  text-align: center; /* Centers content in rows */
+}
+
+.receipt-table th, .receipt-table td {
+  text-align: left; /* Aligns table headers and data */
+  padding: 5px; /* Padding for readability */
+  /* Removed border */
+}
+
+.receipt-container {
+  width: 100%; /* Ensure container fits the page width */
+  max-width: 400px; /* Maximum width for the container */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f3f0f0;
+  margin: 0 auto; /* Center container horizontally */
+  page-break-inside: avoid; /* Prevent page break inside container */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.table-bordered th, .table-bordered td {
+  padding: 10px;
+  text-align: left;
+  /* Removed border */
+}
+
+.table-bordered th {
+  background-color: #f8f8f8;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.Thank {
+  text-align: center;
+  font-size: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Full width */
+  max-width: 600px; /* Maximum width for buttons */
+  margin-bottom: 20px;
+}
+
+.btn-print {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 17px;
+  color: black;
+  background-color: #ffeb85;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-print:hover {
+  background-color: #ffa500;
+  transform: scale(1.05);
+}
+
+footer {
+  background-color: rgb(77, 74, 74);
+  color: #fff;
+  padding: 5px; /* Adjusted padding */
+  text-align: center;
+  font-size: 16px; /* Adjusted font size */
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+/* Print specific styles */
+@media print {
+  @page {
+    size: auto; /* Use the default paper size */
+    margin: 0; /* Remove default margins */
+    overflow: hidden;
+  }
+
+  body {
+    background: none; /* Remove background image for print */
+    color: black;
+  }
+
+  .receipt-container {
+    page-break-inside: avoid; /* Ensure receipt stays on one page */
+  }
+
+  .buttons-container, footer {
+    display: none; /* Hide buttons and footer in print view */
+  }
+
+  /* Optional: Scale down content to fit on one page */
+  .receipt-container {
+    transform: scale(0.9); /* Adjust the scale to fit content */
+    transform-origin: top left;
+    width: 100%; /* Ensure it fits within the page width */
+  }
+}

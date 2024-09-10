@@ -1,52 +1,128 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login');
 
-const Credit = require("../models/credit");
+// import model
+const Credit = require('../models/credit');
+const Procure = require('../models/procure');
 
 
-router.get("/creditSale", async (req, res) => {
-    res.render('credit');
+router.get('/debit',
+    //  connectEnsureLogin.ensureLoggedIn(), 
+(req, res) => {
+    res.render('credit',{title: "Sales"});
 })
 
-router.post("/creditSale", async (req, res) => {
+router.post('/debit', async (req, res) => {
     try {
-        const dueSale = new Credit(req.body);
-        await dueSale.save();
-        res.redirect("/creditList");
-    } catch (error) {
-       res.status(400).send("Unable to make credit sale");
-    }
-});
-
-
-router.get('/creditList', async (req, res) => {
-    try {
-      const salesData = await Credit.find(); // Retrieve all sales from the database
-      res.render('creditList', { salesData }); // Render the list view with the sales data
+        const { produceName, tonnage } = req.body;
+        
+        // Find the procure item
+        let procure = await Procure.findOne({ produceName });
+        
+        if (!procure) {
+            return res.status(404).send('Produce not found');
+        }
+        
+        // Check stock availability
+        if (procure.stock < tonnage) {
+            return res.status(400).send('Not enough stock available');
+        }
+        
+        // Update stock and save procure item
+        procure.stock -= tonnage;
+        await procure.save();
+        
+        // Create a new sales entry
+        const newCredit = new Credit(req.body);
+        await newCredit.save();
+        
+        res.redirect('/creditList');
     } catch (err) {
-      res.status(500).send('Error retrieving sales data');
+        console.error('Error handling sale:', err);
+        res.status(500).send('Server error');
     }
-  });
-  
-
-router.get("/updateCredit/:id", async (req, res) => {
-  try {
-    const creditsale = await Credit.findById(req.params.id)
-    res.render("creditUpdate", { title: "Edit Credit Sale", sale: creditsale})
-  } catch (error) {
-    console.log(req.body)
-    res.status(500).send("Internal Server Error");
-  }
 });
 
-router.post("/updateCredit/:id", async (req, res) => {
-  try {
-    await Credit.findOneAndUpdate({_id: req.params.id }, req.body);
-    res.redirect("/creditList");
-  } catch (error) {
-    console.log(req.body)
-    res.status(500).send("Internal Server Error");
-  }
+router.get('/creditList',
+    //  connectEnsureLogin.ensureLoggedIn(), 
+     async (req, res) => {
+    try{
+       const creditItems = await Credit.find();
+       res.render('creditlist', {
+       title: "Credit List",
+       credits: creditItems,
+       user: req.user
+
+    });
+
+    } catch (error) {
+        res.status(404).send("Unable to find items in the db");
+}
 });
 
-module.exports = router;   
+
+
+router.get("/updateCredit/:id", 
+    // connectEnsureLogin.ensureLoggedIn(), 
+    async (req, res) => {
+    try {
+        const item = await Credit.findOne({ _id: req.params.id })
+        res.render("updateCredit", {
+            credit: item,
+            title: "Update Produce",
+            user: req.user,
+        })
+    } catch(error) {
+        res.status(400).send("Unable to find item in the database");
+    }
+    
+    
+});
+
+
+// post updated produce
+router.post("/updateCredit", async (req, res) => {
+    try {
+        await Credit.findOneAndUpdate({ _id: req.query.id }, req.body);
+        res.redirect("/creditList");
+    } catch (err) {
+        res.status(404).send("Unable to update item in the database");
+    }
+});
+
+
+// delete Produce
+router.post("/deleteCredit", async (req, res) => {
+    try {
+    await Credit.deleteOne({ _id: req.body.id });
+    res.redirect("back");
+    } catch (err) {
+    res.status(400).send("Unable to delete item in the database");
+    }
+    });
+   
+   
+
+    router.get("/creditReceipt/:id", 
+        // connectEnsureLogin.ensureLoggedIn(), 
+        async (req, res) => {
+        try{
+            const credit = await Credit.findOne({_id: req.params.id})
+            .populate("produceName","produceName")
+            .populate("salesagent","name");
+            console.log("my sale",credit)
+            res.render("creditReceipt",{
+                credit,
+                title: "Receipt"
+            });
+        } catch (error) {
+            res.status(400).send("The item isn't in the database")
+        }
+
+    })
+
+
+
+
+module.exports = router;

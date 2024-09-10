@@ -1,84 +1,77 @@
 doctype html
-html(lang="en")
+html
   head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Credit Sales Management
-    link(rel="stylesheet" href="/css/credit.css")
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Credit Sales Form
+    link(rel='stylesheet' type='text/css' href='/css/credit.css')
   body
-    .bg-img
-      .container
-        h1#ab CREDIT SALES
-        form#form-container(action="/creditSale" method="post")
-          .form-row
-            .form-column
-              label(for="produceName") Produce Name:
-              select#produceName(name="produceName")
-                option(value="") Select Produce
-                option(value="beans") Beans
-                option(value="maize") Maize
-                option(value="cowpeas") Cowpeas
-                option(value="rice") Rice
-                option(value="soybeans") Soybeans
-                option(value="gnuts") G-nuts
-            .form-column
-              label(for="typeOfProduce") Type of Produce:
-              select#produceType(name="typeofProduce")
-                option(value="") Select Produce Type
-                option(value="cereals") Cereals
-                option(value="legumes") Legumes
-          .form-row
-            .form-column
-              label(for="storeBranch") Branch:
-              select#storeBranch(name="storeBranch")
-                option(value="") Select Branch
-                option(value="maganjo") Maganjo Store
-                option(value="matuga") Matuga Store
-            .form-column
-              label(for="buyerName") Buyer's Name:
-              input(type="text" id="buyerName" name="buyerName")
-          .form-row
-            .form-column
-              label(for="time") Time:
-              input(type="time" id="time" name="time")
-            .form-column
-              label(for="tonnage") Tonnage (kg):
-              input(type="number" id="tonnage" name="tonnage")
-          .form-row
-            .form-column
-              label(for="cost") Cost per Kg (UGX):
-              input(type="number" id="produceCost" name="produceCost")
-            .form-column
-              label(for="totalCost") Total Amount:
-              input(type="number" id="totalCost" name="totalCost" readonly)
-          .form-row
-            .form-column
-              label(for="amountPaid") Amount Paid (UGX):
-              input(type="number" id="amountPaid" name="amountPaid")
-            .form-column
-              label(for="amountDue") Amount Due (UGX):
-              input(type="number" id="amountDue" name="amountDue" readonly)
-          .form-row
-            .form-column
-              label(for="dateOfDispatch") Date of Dispatch:
-              input(type="date" id="dateOfDispatch" name="dateOfDispatch")
-            .form-column
-              label(for="dueDate") Due Date:
-              input(type="date" id="dueDate" name="dueDate")
-          .form-row
-            .form-column
-              label(for="location") Buyer Location:
-              input(type="text" id="location" name="buyerLocation")
-            .form-column
-              label(for="contacts") Buyer Contact:
-              input(type="tel" id="contacts" name="contacts")
-          .form-row
-            .form-column
-              label(for="nationalID") National ID:
-              input(type="text" id="nationalID" name="nationalID")
-            .form-column
-              label(for="salesAgentName") Sales Agent Name:
-              input(type="text" id="salesAgentName" name="salesAgentName")
-          .form-row
-            button.button(type="submit") Add Credit Sale
-    script(src="/js/credit.js")
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+        ul
+          li CREDIT SALE
+          li CREDIT LIST
+          li STOCK STATUS 
+          li PRODUCE LIST
+          li LOG OUT
+      .form-section
+        .form-container
+          .form-header
+            h1 CREDIT SALES FORM
+          form(name='salesForm', onsubmit='return validateForm()', action=`/debit/${produce ? procure._id : ''}` method='POST')
+            .form-row
+              .form-column
+                label(for='produceName') Produce Name:
+                select#produceName(type='text' name='produceName')
+                  option(value='') Select Produce
+                  option(value='Rice') Rice
+                  option(value='Beans') Beans
+                  option(value='Maize') Maize
+                  option(value='Cowpeas') Cowpeas
+                  option(value='Soyabeans') Soyabeans
+                  option(value='Gnuts') G-nuts
+                label(for='produceType') Type of Produce:
+                select#produceName(type='text' name='produceType')
+                  option(value='') Select Produce Type
+                  option(value='Cereals') Cereals
+                  option(value='Legumes') Legumes
+                label(for='buyerName') Buyer Name:
+                input#buyerName(type='text' name='buyerName')
+                label(for='tonnage') Tonnage:
+                input#tonnage(type='number' name='tonnage')
+                label(for='produceCost') Cost Per Kg (UGX):
+                input#produceCost(type='text' name='produceCost')
+                label(for='totalCost') Total Amount (UGX):
+                input#totalCost(type='number' name='totalCost' readonly)
+                label(for='amountPaid') Amount Paid (UGX):
+                input#amountPaid(type='text' name='amountPaid')
+                label(for='amountDue') Amount Due (UGX):
+                input#amountDue(type='text' name='amountDue' readonly)
+              .form-column
+                label(for='nationalId') National ID (NIN):
+                input#nationalId(type='text' name='nationalid')
+                label(for='location') Location:
+                input#location(type='text' name='location')
+                label(for='contacts') Buyer's Contact:
+                input#contacts(type='text' name='contact')
+                label(for='dispatchDate') Date of Dispatch:
+                input#dispatchDate(type='date' name='dispatchDate')
+                label(for='time') Time:
+                input#time(type='time' name='time')
+                label(for='dueDate') Due Date:
+                input#dueDate(type='date' name='dueDate')
+                label(for='branch') Branch Name:
+                select#branch(name='branch')
+                  option(value='') Select Branch
+                  option(value='Maganjo') Maganjo
+                  option(value='Matugga') Matugga
+                label(for='salesagent') Sales Agent Name:
+                input#salesAgent(type='text' name='salesagent')
+            .submit
+              button(type='submit') Submit
+          #result
+    script(src='/js/credit.js')
+

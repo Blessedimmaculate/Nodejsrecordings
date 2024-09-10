@@ -34,9 +34,9 @@ nav.navbar {
     padding: 20px;
     background-color: rgb(35, 31, 31);
     border-right: 2px solid #e6d7a2;
-    height: 100vh;
+    height: calc(100vh - 60px); /* Adjust for navbar height */
     position: fixed;
-    top: 60px; /* Adjust based on navbar height */
+    top: 60px;
     left: 0;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -65,49 +65,56 @@ nav.navbar {
 .main-container {
     display: flex;
     margin-top: 80px; /* To avoid overlapping with navbar */
-    padding-left: 220px; /* To make space for the sidebar */
-    width: 100%;
+    padding-left: 180px; /* To make space for the sidebar */
+    width: calc(100% - 180px); /* Adjust for sidebar width */
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align items at the start */
 }
 
+/* Form Section */
 .form-section {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Center items vertically */
     flex-grow: 1;
     background-image: url('/images/we.avif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 110%; /* Ensure it takes the full available height */
+    height: calc(100vh - 60px); /* Full viewport height minus navbar height */
     position: relative;
-    z-index: 1; /* Keep form section above background */
+    z-index: 1;
+    padding: 20px; /* Add padding to avoid content touching edges */
+    box-sizing: border-box; /* Include padding in the element’s total width and height */
 }
 
+/* Form Container */
 .form-container {
-    padding: 2px;
-    background:transparent;
+    padding: 20px; /* Increased padding for better spacing */
+    background: transparent;
     backdrop-filter: blur(30px);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    width: 600px; /* Adjusted width */
-    color: #333;
-    z-index: 2; /* Ensure the form container is above background */
+    width: 100%; /* Adjust to full width of parent container */
+    max-width: 600px; /* Set a maximum width for larger screens */
+    box-sizing: border-box; /* Include padding and border in element’s total width and height */
 }
 
+/* Form Header */
 .form-header h1 {
     font-size: 28px;
     text-align: center;
     color: white;
 }
 
+/* Form Layout */
 .form-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Space between form fields */
+    gap: 15px; /* Space between form fields */
 }
 
+/* Form Column */
 .form-column {
     flex: 1;
     min-width: 240px;
@@ -116,21 +123,23 @@ nav.navbar {
     padding: 5px;
 }
 
+/* Form Elements */
 label {
     font-size: 18px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     color: white;
 }
 
 input, select {
-    padding: 6px;
+    padding: 8px;
     font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 8px;
     width: 100%; /* Ensure equal width */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    box-sizing: border-box; /* Include padding and border in element’s total width and height */
 }
 
+/* Submit Button */
 .submit {
     margin-top: 20px;
     text-align: center;
@@ -141,14 +150,14 @@ input, select {
     background-color: #fff5c5;
     border: none;
     color: black;
-    padding: 5px 15px;
+    padding: 10px 20px;
     text-align: center;
     font-size: 20px;
     border-radius: 35px;
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    transform: translateY(-45%);
+    transform: translateY(-10px); /* Slightly adjusted */
 }
 
 .submit button:hover {
@@ -161,4 +170,3 @@ input, select {
     text-align: center;
     color: #000;
 }
-

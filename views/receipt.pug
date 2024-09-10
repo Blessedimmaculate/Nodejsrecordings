@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Receipt
+    link(rel='stylesheet' href='/css/receipt.css')
+  body
+    nav.navbar
+      .logo
+        img(src='/img/logo1.png' alt='Logo')
+      .brand-name
+        h1 Happy Hoe Grocery Store
+    br
+    br
+    br   
+    .receipt-container 
+      h1 Sales Receipt
+      table.receipt-table
+        tr
+          th Produce Name
+          td #{sales.produceName}
+        tr
+          th Date and Time
+          td #{sales.dateTime}
+        tr
+          th Tonnage
+          td #{sales.tonnage}
+        tr
+          th Amount Paid
+          td #{sales.amountPaid}
+        tr
+          th Agent's Name
+          td #{sales.salesagent}
+        tr
+          th Branch
+          td #{sales.branch}
+        tr
+          th Buyer's Name
+          td #{sales.buyername} 
+      p.para  Thank you for your purchase! 
+    br   
+    .submit3
+      a.button(href='/salesList') BACK
+    br
+    footer.footer
+      p &copy; 2024 Immaculate Abakwase. All rights reserved.

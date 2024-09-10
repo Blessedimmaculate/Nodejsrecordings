@@ -1,73 +1,70 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const creditSchema = new mongoose.Schema({
-    produceName: {
+    produceName:{
         type: String,
         trim: true,
-        required: true,
-      },
-    buyerName: {
+    },
+    buyerName:{
         type: String,
         trim: true,
-        required: true,
-      },
-    time: {
-        type: String, 
-        trim: true,
-      },
-    storeBranch: {
+    },
+    nationalid:{
         type: String,
         trim: true,
-        required: true,
-      },
-    nationalID: {
+    },
+    location:{
         type: String,
         trim: true,
-        required: true,
-      },
-    buyerLocation: {
+    },
+    contact:{
         type: String,
         trim: true,
-        required: true,
-      },
-    contacts: {
+    },
+    produceCost:{
         type: Number,
         trim: true,
-      },
-    amountPaid: {
+    },
+    totalCost:{
         type: Number,
         trim: true,
-      },
-    produceCost: {
+    },
+    amountPaid:{
         type: Number,
         trim: true,
-      },
-    totalCost: {
-        type: Number,
-        trim: true,
-      },
-    amountDue: {
-         type: Number,
-         trim: true,
-      }, 
-    dueDate: {
-        type: Date,
-      },
-    typeofProduce: {
+    },
+    amountDue:{
         type: String,
         trim: true,
-      },
-    tonnage: {
-        type: Number,
-        trim: true,
-      },
-    dateOfDispatch: {
-        type: Date,
-      },
-    salesAgent: {
+    },
+    salesagent:{
         type: String,
         trim: true,
-      },
-});
+    },
+    time:{
+        type: String,
+        trim: true,
+    },
+    dueDate:{
+        type: String,
+        trim: true,
+    },
+    branch:{
+        type: String,
+        trim: true,
+    },
+    produceType:{
+        type: String,
+        trim: true,
+    },
+    tonnage:{
+        type: Number,
+        trim: true,
+    },
+    dispatchDate:{
+        type: String,
+        trim: true,
+    }
+})
 
-module.exports = mongoose.model("Credit", creditSchema);
+module.exports = mongoose.model('credit', creditSchema);

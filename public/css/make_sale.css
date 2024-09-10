@@ -1,0 +1,97 @@
+body {
+    font-family: 'Sansita', sans-serif;
+    background-image: url('/images/we.avif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    margin: auto;
+    width: 110%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Increased width of inputs and selects */
+.form-control, select, input[type="number"], input[type="text"], input[type="date"], input[type="time"] {
+    width: 140%; /* Increase width to 110% */
+    padding: 8px; /* Slightly increased padding inside inputs */
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    margin-bottom: 8px; /* Increase space between inputs */
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: none;
+}
+
+/* Style for buttons */
+.button {
+    font-family: 'Sansita', sans-serif;
+    background-color: #fff5c5;
+    border: none;
+    color: black;
+    padding: 11px;
+    font-size: 18px;
+    margin-top: 15px;
+    border-radius: 35px;
+    width: 112%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transform: translateX(5%);
+}
+
+.button:hover {
+    background-color: #ffeb85;
+}
+
+/* Responsive grid layout for the form */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Increase space between rows */
+}
+
+.col-md-6 {
+    flex-basis: 48%;
+    margin-bottom: 20px; /* Increase space between columns */
+}
+
+@media (max-width: 768px) {
+    .col-md-6 {
+        flex-basis: 100%;
+    }
+}

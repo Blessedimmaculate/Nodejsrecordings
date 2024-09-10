@@ -1,0 +1,111 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Produce Sales Form
+    link(rel='stylesheet' href='/css/sales.css')
+  body
+    nav.navbar
+      .logo
+        img(src='/img/logo1.png' alt='Logo')
+      .brand-name
+        h1 Happy Hoe Grocery Store
+
+    br
+    br
+    br  
+
+    form#Form(action='/updateSales?id=' + sales._id method='POST')
+      h1 Sales Form
+      .form-container 
+        .form-group
+          label(for='produceName') Name of Produce:
+          select#produceName(name='produceName' value=sales.produceName)
+            option(value='') Select produce
+            option(value='Beans' selected=sales.produceName === 'Beans') Beans 
+            option(value='Maize' selected=sales.produceName === 'Maize') Maize 
+            option(value='Rice' selected=sales.produceName === 'Rice') Rice 
+            option(value='Soyabeans' selected=sales.produceName === 'Soyabeans') Soyabeans
+            option(value='Cowpeas' selected=sales.produceName === 'Cowpeas') Cowpeas
+            option(value='Gnuts' selected=sales.produceName === 'Gnuts') G-nuts
+
+        .form-group
+          label(for='tonnage') Tonnage (kgs):
+          input#tonnage(type='number' name='tonnage' value=sales.tonnage)
+
+        .form-group
+          label(for='amountPaid') Amount Paid (UGX per kg):
+          input#amountPaid(type='text' name='amountPaid' value=sales.amountPaid)
+
+        .form-group 
+          label(for='buyerName') Buyer's Name:
+          input#buyerName(type='text' name='buyerName' value=sales.buyername)
+
+        .form-group
+          label(for='salesAgentName') Sales Agent's Name:
+          input#salesAgentName(type='text' name='salesagent' value=sales.salesagent)
+
+        .form-group
+          label(for='branch') Branch Name:
+          select#branch(name='branch' value=sales.branch)
+            option(value='Maganjo' selected=sales.branch === 'Maganjo') Maganjo
+            option(value='Matugga' selected=sales.branch === 'Matugga') Matugga
+
+        .form-group
+          label(for='dateTime') Date and Time:
+          input#dateTime(type='datetime-local' name='dateTime' value=sales.dateTime)
+
+        .form-group
+          label(for='totalpayment') Total Payment:
+          input#totalpayment(type='number' name='totalpayment' value=sales.totalpayment)
+
+        br
+        br
+        button(type='submit') Submit
+
+    script(src='/js/ddd.js')
+
+
+
+//- doctype html
+//- html(lang="en")
+//-   head
+//-     meta(charset="UTF-8")
+//-     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+//-     title Sales Records Management
+//-     link(rel="stylesheet" href="/css/editSale.css")
+//-   body
+//-     .container.d-flex.justify-content-center.align-items-center.min-vh-100
+//-       .row.justify-content-center
+//-         .col-md-6
+//-           .edit-sale-form.p-4
+//-             h2.text-center.mb-4 EDIT SALE
+//-             //- Check if sale exists before rendering the form
+//-             if sale
+//-               form#edit-sale-form(action='/updateSales?id=' + sales._id method='POST')
+//-                 .mb-3
+//-                   label.form-label(for='nproduce') Produce Name:
+//-                   select#nproduce.form-control(name='produceName')
+//-                     option(value=sale.produceName.produceName selected) #{sale.produceName.produceName}
+//-                   small#pnameErr.text-danger
+//-                 .mb-3
+//-                   label.form-label(for='tonnage') Tonnage (Kgs):
+//-                   input#tonnage.form-control(type='number' name='saleTonnage' value=sale.saleTonnage )
+//-                   small#tonnageErr.text-danger
+//-                 .mb-3
+//-                   label.form-label(for='amount') Amount Paid (UGX):
+//-                   input#amount.form-control(type='number' name='amount' value=sale.amount )
+//-                   small#amountErr.text-danger
+//-                 .mb-3
+//-                   label.form-label(for='buyername') Buyer's Name:
+//-                   input#buyername.form-control(type='text' name='buyerName' value=sale.buyerName )
+//-                   small#buyernameErr.text-danger
+//-                 .mb-3
+//-                   label.form-label(for='dateofpurchase') Date of Sale:
+//-                   input#dateofpurchase.form-control(type='date' name='saledate' value=sale.saledate.toISOString().split('T')[0] )
+//-                   small#dateofpurchaseErr.text-danger
+//-                 .text-center
+//-                   button.btn.btn-primary(type='submit') Update Sale
+//-             else
+//-               p.text-danger.text-center Sale data is not available.

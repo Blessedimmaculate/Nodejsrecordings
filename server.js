@@ -18,15 +18,18 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // Import models
-const Register = require("./models/register");
+const Signup = require("./models/signup");
 
 // Import routes
-const registerRoutes = require("./routes/registerRoutes");
-const studyRoutes = require("./routes/studyRoutes");
-const stockListRoutes = require("./routes/stockListRoutes");
-const saleRoutes = require("./routes/saleRoutes");
-const agentRoutes = require('./routes/agentRoutes');
-const creditRoutes = require("./routes/creditRoutes");
+const studyRoutes = require('./routes/studyRoutes')
+const startRoutes = require('./routes/startRoutes')
+const mngdashRoutes = require('./routes/mngdashRoutes')
+const signupRoutes = require('./routes/loginRoutes')
+const procureRoutes = require('./routes/procureRoutes')
+const creditRoutes = require('./routes/creditRoutes')
+const agentdashRoutes = require('./routes/agentdashRoutes')
+const salesRoutes = require('./routes/salesRoutes')
+
 
 // Database connection
 mongoose.connect(process.env.DATABASE_LOCAL, {
@@ -57,18 +60,27 @@ app.use(expressSession); // Use express session
 app.use(passport.initialize()); // Initialize passport
 app.use(passport.session()); // Helps to use passport session in routes
 
+// // Passport configuration for Register model
+// passport.use(Register.createStrategy()); // Use the local strategy in routes
+// passport.serializeUser(Register.serializeUser()); // Serializes the user for the session
+// passport.deserializeUser(Register.deserializeUser()); // Deserializes the user from the session
+
 // Passport configuration for Register model
-passport.use(Register.createStrategy()); // Use the local strategy in routes
-passport.serializeUser(Register.serializeUser()); // Serializes the user for the session
-passport.deserializeUser(Register.deserializeUser()); // Deserializes the user from the session
+passport.use(Signup.createStrategy()); // Use the local strategy in routes
+passport.serializeUser(Signup.serializeUser()); // Serializes the user for the session
+passport.deserializeUser(Signup.deserializeUser()); // Deserializes the user from the session
+
 
 // ROUTES
-app.use("/", registerRoutes);
-app.use("/", studyRoutes);
-app.use("/", stockListRoutes);
-app.use("/", saleRoutes);
-app.use('/', agentRoutes);
-app.use("/", creditRoutes);
+app.use('/', studyRoutes)
+app.use('/', startRoutes)
+app.use('/', mngdashRoutes)
+app.use('/', signupRoutes)
+app.use('/', procureRoutes)
+app.use('/', creditRoutes)
+app.use('/', agentdashRoutes)
+app.use('/', salesRoutes)
+
 
 // Handle non-existing pages
 app.get("*", (req, res) => {

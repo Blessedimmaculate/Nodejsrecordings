@@ -9,6 +9,7 @@ let mobileNumber= document.getElementById("mobileNumber")
 let branch = document.getElementById("branch")
 let role = document.getElementById("role")
 let password = document.getElementById("password")
+let registrationDate = document.getElementById|("registrationDate")
 
 
 let usernameErr= document.getElementById("usernameErr")
@@ -55,3 +56,18 @@ if (error > 0) {
     event.preventDefault()
 }
 };
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Get the 'registrationDate' input element
+    const registrationDateInput = document.querySelector('input[name="registrationDate"]');
+    
+    // Get the current date
+    const now = new Date();
+
+    // Format the date as 'YYYY-MM-DD' for the date input
+    const formattedDate = now.toISOString().slice(0, 10); // This will give you the correct date format
+
+    // Set the value of the 'registrationDate' input to the formatted date
+    registrationDateInput.value = formattedDate;
+});

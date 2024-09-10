@@ -1,74 +1,156 @@
 const express = require('express');
 const router = express.Router();
-const path = require("path");
+const passport = require ('passport');
+const connectEnsureLogin = require('connect-ensure-login');
 
 
-// THE ROUTE NAME SHD NOT ALWAYS BE THE NAME OF THE FILE
-// THE NAME OF YO PUG IS D ONE AFTER __dirname+
-router.get("/first", (req, res) => {
-    res.sendFile (__dirname + "/index.html");
-})
+router.use(passport.initialize());
+router.use(passport.session());
 
-router.get("/quotes", (req, res) =>{
-    res.sendFile (__dirname + "../views/quotes.html");
-})
-
-router.post("/quotes", (req, res) =>{
-   console.log(req.body);
-})
+//import model
+ const Signup = require('../models/signup');
+ const Procure = require('../models/procure');
+ const Sales = require('../models/sales');
+ const Credit = require('../models/credit');
 
 
-
-// AFTER USING PUG
-// the name after/ is not necessarily the file's name
-// and its the one written in d browser
-router.get("/learning", (req, res) => {
-    res.render ("example");
-})
-
-router.post("/learning", (req, res) => {
-    console.log(req.body);
-})
-
-router.get("/index", (req, res) => {
-    res.render ("index");
-})
-
-router.post("/index", (req, res) => {
-    console.log(req.body);
-})
-
-router.get("/", (req, res) => {
-    res.render ("welcome");
-})
-
-router.get("/stock", (req, res) => {
-    res.render ("status");
-})
-
-// router.get("/start", (req, res) => {
-//     res.render ("login");
-// })
-
-// router.post("/start", (req, res) => {
-//     console.log(req.body);
-//     res.json(req.body)
-// })
+// Register admin
+router.get("/addWorker", (req, res) => {
+  res.render("signup", { title: "Signup" });
+});
+router.post("/addWorker", async (req, res) => {
+  try {
+  const existingUser = await Signup.findOne({ email: req.body.email });
+  if (existingUser) {
+  return res
+  .status(400)
+  .send("Not registered, a user with a similar email already exists!");
+  }
+  const user = new Signup(req.body);
+  await Signup.register(user, req.body.password, (err) => {
+  if (err) {
+  throw err;
+  }
+  res.redirect("/login");
+  });
+  } catch (err) {
+  res.status(400).render("signup", { tittle: "Signup" });
+  console.log("Signup user error", err);
+  }
+  });
 
 
+// // Login admin page
+// router.post("/login", passport.authenticate("local", { failureRedirect: "/login" }),
+// (req, res) => {
+// req.session.user = req.user; 
+// if(req.user.role === "manager"){
+//  res.redirect("/mngdash");
+// } else if(req.user.role === "salesagent"){
+//  res.redirect("/agentdash");
+// } else {
+// res.send("user with that role does not exist in the system")
+// }
 
-router.get("/fname", (req, res) => {
-    res.render ("quotes");
-})
+// }
+// );
 
-router.post("/fname", (req, res) => {
-    console.log(req.body);
-    res.json(req.body);
+router.get('/Mlist', 
+  // connectEnsureLogin.ensureLoggedIn(), 
+  async (req, res) => {
+  try {
+      const signupItems = await Signup.find().sort({ $natural: -1 }); //this is for sorting the new produce up
+      res.render('signuplist', {
+          title: "Signup List",
+          signups: signupItems,
+          user: req.user 
+      });
+
+  } catch (error) {
+      res.status(404).send("Unable to find items in the db");
+  }
 });
 
 
 
 
-// We are exporting and must be there
-// This helps to access data in d terminal
+router.get("/updateSignup/:id",
+  //  connectEnsureLogin.ensureLoggedIn(), 
+   async (req, res) => {
+    try {
+        const item = await Signup.findOne({ _id: req.params.id })
+        res.render("updateSignup", {
+            signup: item,
+            title: "Update Produce",
+            user: req.user
+        })
+    } catch(error) {
+        res.status(400).send("Unable to find item in the database");
+    }
+    
+    
+});
+
+
+// post updated signup
+router.post("/updateSignup", async (req, res) => {
+    try {
+        await Signup.findOneAndUpdate({ _id: req.query.id }, req.body);
+        res.redirect("/Mlist");
+    } catch (err) {
+        res.status(404).send("Unable to update item in the database");
+    }
+});
+
+// delete signup
+router.post("/deleteSignup", async (req, res) => {
+    try {
+    await Signup.deleteOne({ _id: req.body.id });
+    res.redirect("back");
+    } catch (err) {
+    res.status(400).send("Unable to delete item in the database");
+    }
+    });
+
+
+ //reports route
+
+    
+    router.get('/reports',  
+      // connectEnsureLogin.ensureLoggedIn(), 
+      async (req, res) => {
+        try {
+          
+          const procure = await Procure.aggregate([
+            { $group: { _id: null, totalcost: { $sum: '$totalcost' }, stock: { $sum: '$stock' } } }
+          ]);
+      
+          
+          const sales = await Sales.aggregate([
+            { $group: { _id: null, totalpayment: { $sum: '$totalpayment' }, tonnage: { $sum: '$tonnage' } } }
+          ]);
+      
+          
+          const credit = await Credit.aggregate([
+            { $group: { _id: null, totalamountDue: { $sum: '$totalamountDue' }, tonnage: { $sum: '$tonnage' } } }
+          ]);
+      
+         
+          res.render('report', {
+            procure: procure[0] || {},
+            sales: sales[0] || {},
+            credit: credit[0] || {},
+            user: req.user
+          });
+        } catch (err) {
+          console.error(err);
+          res.status(500).send('Internal Server Error');
+        }
+      });
+      
+    
+    
+
+
+
 module.exports = router;

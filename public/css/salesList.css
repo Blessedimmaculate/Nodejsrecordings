@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita:wght@400;700&display=swap');
+
+body {
+  font-family: 'Sansita', sans-serif;
+  background-image: url('/images/we.avif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+h2 {
+  text-align: center;
+  color: white;
+  font-size: 35px;
+}
+
+table {
+  width: 100%;
+  margin: auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  background: transparent;
+  backdrop-filter: blur(30px);
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: white;
+  font-size: 20px;
+}
+
+th {
+  background-color: #fff5c5;
+  color: black;
+}
+
+tr:hover {
+  background-color: #bb5502;
+}
+
+/* General button styling */
+.button-container {
+  display: inline-flex;
+  gap: 10px; /* Add space between buttons */
+}
+
+.btn {
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0; /* Remove margin so flexbox can space the buttons evenly */
+}
+
+/* Specific button styles */
+.btn-success {
+  background-color: #ffa500;
+  color: white;
+  border: 1px solid #ffeb85;
+}
+
+.btn-success:hover {
+  background-color: #bb5502;
+  border-color:#ffeb85;
+}
+
+.btn-primary {
+  background-color: #e27c00;
+  color: white;
+  border: 1px solid  #ffa500;
+}
+
+.btn-primary:hover {
+  background-color: #bb5502;
+  border-color: #ffeb85;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: 1px solid #e27c00;
+}
+
+.btn-danger:hover {
+  background-color: #bb5502;
+  border-color: #ffeb85;
+}

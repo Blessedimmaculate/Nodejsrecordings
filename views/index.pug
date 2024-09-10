@@ -1,16 +1,111 @@
-meta(charset="UTF-8")
-meta(name="viewport", content="width=device-width,initial-scale=1")
-title Document
-link(rel="stylesheet", href="login.css")
-.bg-img
-  .container
-    h1#ag LOGIN FORM
-    form#form.form(action="#" method = "post")
-      label(for="email") E-mail:
-      input#email(type="email", name="email")
-      br
-      label(for="password") Password
-      input#password(type="password", name="password")
-      br
-      button.button#submit(type="submit") LOGIN
-script(src="login.js")
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  style.
+    * {
+    margin: 0;
+    padding: 0;
+    }
+    html, body {
+    height: 100%;
+    }
+    body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    }
+    .content {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    }
+    .video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 80%;
+    width: auto%;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    }
+    #Myp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    }
+    #Mybutton {
+    position: absolute;
+    bottom: 40px;
+    right: 50px;
+    font-size: 20px;
+    background-color: orange;
+    color: white;
+    border: 2px solid white;
+    padding: 14px 20px;
+    border-radius: 16px;
+    width: 200px;
+    opacity: 0.8;
+    }
+    #Mybutton:hover {
+    background-color: brown;
+    border: 2px solid white;
+    }
+    .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    width: 100%;
+    bottom: 0;
+    }
+    .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(183, 101, 101);
+    padding: 10px 15px;
+    color: white;
+    }
+    .logo img {
+    height: 50px;
+    width: 100px;
+    }
+    .brand-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    }
+    .nav-items span {
+    margin: 0 10px;
+    cursor: pointer;
+    }
+    .nav-items span:hover {
+    text-decoration: underline;
+    }
+nav.navbar
+  .logo
+    img(src='/img/logo1.png' alt='Logo')
+  .brand-name
+    h1 Happy Hoe Grocery Store
+.content
+  .overlay
+    video.video-background(autoplay='' muted='' loop='')
+      source(src='/img/videcs.mp4' type='video/mp4')
+    p#Myp
+      | Welcome to Happy Hoe Grocery Store's data management system. Mainly having two branches Matugga and Maganjo dealing in both cereals and legumes.
+    button#Mybutton View Stock
+footer.footer
+  p &copy; 2024 My Website. All rights reserved.
+script.
+  document.getElementById('Mybutton').onclick = function() {
+  window.location.href = '/viewstock';
+  };

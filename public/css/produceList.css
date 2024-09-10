@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sansita:wght@400;700&display=swap');
+
 body {
   font-family: 'Sansita', sans-serif;
   display: flex;
@@ -7,7 +8,6 @@ body {
   height: 100vh;
   overflow: hidden; 
   margin: 0;
-
 }
 
 /* Navbar */
@@ -22,6 +22,12 @@ nav.navbar {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+h2 {
+  color: white;
+  font-size: 32px;
+  text-align: center;
+}
+
 .brand-name h1 {
     margin: 0;
     color: white;
@@ -31,15 +37,16 @@ nav.navbar {
 
 /* Sidebar */
 .sidebar {
-    width: 140px;
+    width: 160px;
     padding: 20px;
     background-color: rgb(35, 31, 31); 
     border-right: 2px solid #e6d7a2;
-    height: 100vh;
+    height: calc(100vh - 60px); /* Adjust based on navbar height */
     position: fixed;
     top: 60px; /* Adjust based on navbar height */
     left: 0;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Adds vertical scrollbar if content exceeds height */
 }
 
 .sidebar ul {
@@ -50,7 +57,7 @@ nav.navbar {
 
 .sidebar li {
     margin: 30px 0;
-    font-size: 20px;
+    font-size: 25px;
     color: white;
     cursor: pointer;
 }
@@ -62,9 +69,8 @@ nav.navbar {
     color: black;
 }
 
-
 .main-container {
-  margin-left: 140px; /* Width of sidebar + some padding */
+  margin-left: 180px; /* Width of sidebar + some padding */
   margin-top: 60px; /* Height of navbar */
   flex: 1;
   min-height: 100vh; /* Ensure the container spans the full viewport height */
@@ -78,23 +84,19 @@ nav.navbar {
   padding: 1px; /* Adjust padding as needed */
 }
 
-
-
 h1 {
   text-align: center;
   color: white;
   font-size: 35px;
 }
 
-
-
 table {
-  width: 0%;
+  width: 90%; /* Set to 100% to use the available space */
   margin: auto;
   border-collapse: collapse;
   border-radius: 15px; /* Add border-radius here */
   overflow: hidden;
-  background:transparent;
+  background: transparent;
   backdrop-filter: blur(30px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transform: translateX(1.5%);
@@ -102,7 +104,7 @@ table {
 
 th,
 td {
-  padding: 4px;
+  padding: 7px;
   text-align: center;
   border-bottom: 1px solid #ddd;
   color: white;
@@ -117,6 +119,7 @@ th {
 tr:hover {
   background-color: #bb5502;
 }
+
 /* General button styling */
 /* Add this to ensure that buttons are aligned in a straight line */
 
@@ -126,51 +129,50 @@ tr:hover {
     align-items: center;
     gap: 10px; /* Add space between buttons */
     margin-top: 10px; /* Add some space above the buttons */
-  }
-  
-  .btn {
-    border-radius: 4px;
-    padding: 6px 10px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    margin: 0; /* Remove margin so flexbox can space the buttons evenly */
-  }
-  
-  /* Specific button styles */
-  .btn-secondary {
-    background-color: #ffa500;
-    color: white;
-    border: 1px solid #ffeb85;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #bb5502;
-    border-color:#ffeb85;
-  }
-  
-  .btn-primary {
-    background-color: #e27c00;
-    color: white;
-    border: 1px solid  #ffa500;
-  }
-  
-  .btn-primary:hover {
-    background-color: #bb5502;
-    border-color: #ffeb85;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-    color: white;
-    border: 1px solid #e27c00;
-  }
-  
-  .btn-danger:hover {
-    background-color: #bb5502;
-    border-color: #ffeb85;
-  }
-  
+}
+
+.btn {
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0; /* Remove margin so flexbox can space the buttons evenly */
+}
+
+/* Specific button styles */
+.btn-secondary {
+  background-color: #ffa500;
+  color: white;
+  border: 1px solid #ffeb85;
+}
+
+.btn-secondary:hover {
+  background-color: #bb5502;
+  border-color: #ffeb85;
+}
+
+.btn-primary {
+  background-color: #e27c00;
+  color: white;
+  border: 1px solid #ffa500;
+}
+
+.btn-primary:hover {
+  background-color: #bb5502;
+  border-color: #ffeb85;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: 1px solid #e27c00;
+}
+
+.btn-danger:hover {
+  background-color: #bb5502;
+  border-color: #ffeb85;
+}
