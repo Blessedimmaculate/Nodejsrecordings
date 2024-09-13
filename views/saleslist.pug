@@ -2,42 +2,42 @@ doctype html
 html
   head
     title Sales List
-    link(rel='stylesheet', href='/css/list.css')
+    link(rel='stylesheet', href='/css/salesList.css')
   body
     nav.navbar
-      .logo
-        img(src='/img/logo1.png' alt='Logo')
-      .nav-center
-        span SALES LIST 
       .brand-name
-        h1 Happy Hoe Grocery Store
-    br
-    br
-    br
-    br
-    br
-    .container
-      br
+        h1 HAPPY HOE GROCERY STORE
+    .sidebar
+      ul
+        li CREDIT SALE
+        li BACK
+        li STOCK STATUS 
+        li PRODUCE LIST
+        li LOG OUT
+    .main-container
+      .container
       table.table.table-striped
         thead
           tr
             th(scope='col') Produce Name
-            th(scope='col') Date and Time
+            th(scope='col') Date
+            th(scope='col') Time
             th(scope='col') Tonnage
             th(scope='col') Amount Paid
-            th(scope='col') Sales-agent's name
+            th(scope='col') Sales Agent
             th(scope='col') Branch
-            th(scope='col') buyer's Name
+            th(scope='col') Buyer's Name
             th(scope='col') Total Payment
-            th(scope='col') Action
-            th(scope='col') 
-            th(scope='col') View Receipt
+            th(scope='col') Update
+            th(scope='col') Delete
+            th(scope='col') Receipt
         tbody
           if saless.length
             each sales in saless
               tr
                 td #{sales.produceName}
-                td #{sales.dateTime}
+                td= moment(sales.date || new Date()).format('MM/DD/YYYY')
+                td= moment(sales.time, 'HH:mm').format('hh:mm A') 
                 td #{sales.tonnage}
                 td #{sales.amountPaid}
                 td #{sales.salesagent}
@@ -63,43 +63,3 @@ html
     //-     a.button(href='/dash2') Back
 
 
-
-//- doctype html
-//- html(lang="en")
-//-   head
-//-     meta(charset="UTF-8")
-//-     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-//-     title Sales Records Management
-//-     link(rel="stylesheet" href="/css/salesList.css")
-//-   .container
-//-     h2.text-center.mt-5.mb-4 SALES LIST
-//-     h4.text-center.mt-5.mb-4 
-//-     table.table.table-striped
-//-       thead
-//-         tr
-//-           th(scope='col') Produce Name
-//-           th(scope='col') Tonnage (Kgs)
-//-           th(scope='col') Amount Paid (UGX)
-//-           th(scope='col') Buyer's Name
-//-           th(scope='col') Sales Agent
-//-           th(scope='col') Date of Sale
-//-           th(scope='col') Action
-//-       tbody
-//-         if saless.length
-//-           each sales in saless
-//-             tr
-//-               td #{sales.produceName}
-//-               td #{sales.salesTonnage}
-//-               td #{sales.amount}
-//-               td #{sales.buyerName}
-//-               td #{sales.salessAgent}
-//-               td #{moment(sales.salesdate, "YYYY-MM-DD").format('DD-MM-YYYY')}
-//-               td   
-//-                 .button-container
-//-                   a.btn.btn-primary.btn-sm(href='/updateSales/' +sales._id) Update
-//-                   form(method="POST" action='/deleteSales')
-//-                     input(type="hidden", placeholder="", name="id", value=sales.id)
-//-                     button.btn.btn-danger.btn-sm(type='submit') Delete
-//-                   a.btn.btn-success.btn-sm(href='/receipt/'+sales._id) Receipt
-//-         else
-//-           p No sales records yet :(

@@ -6,8 +6,4 @@ document.querySelector('form').addEventListener('submit', function(event) {
     let password = document.querySelector('#password').value;
 
     
-    if (fullname === '' || phoneNumber === '' || username === '' || email === '' || password === '') {
-        alert('Please fill in all fields.');
-        event.preventDefault();
-    }
 });

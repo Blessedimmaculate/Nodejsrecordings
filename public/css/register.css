@@ -64,13 +64,14 @@ body {
 
 .register-form input,
 .register-form select {
-    padding: 10px;
+    padding: 8px;
     margin-bottom: 1px;
     border: 1px solid #ccc;
     border-radius: 10px; /* Curved borders */
     width: 100%; /* Make inputs and select elements equal width */
     box-sizing: border-box; /* Include padding and border in the element's width */
     transform: translateX(-15%);
+    font-size: 18px;
 }
 
 h1, h2 {
@@ -86,10 +87,11 @@ table {
 }
 
 th, td {
-    padding: 15px;
+    padding: 10px;
     text-align: left;
     border: none; /* No borders around cells */
     color: white;
+    font-size: 25px;
 }
 
 thead {
@@ -101,6 +103,12 @@ input, button {
     padding: 10px;
     width: 100%; /* Fit container width */
     box-sizing: border-box;
+}
+
+/* Error messages */
+.text-error {
+    color: red; /* Red color for validation errors */
+    font-size: 15px;
 }
 
 .button {
@@ -115,11 +123,11 @@ input, button {
     font-size: 20px;
     margin: 5px;
     border-radius: 35px;
-    width: 200%; /* Increased width to make the button longer */
-    height: 35px;
+    width: 220%; /* Increased width to make the button longer */
+    height: 40px;
     justify-content: center;
     align-items: center;
-    transform: translateX(5%);
+    transform: translateX(10%);
 }
 
 .button:hover {

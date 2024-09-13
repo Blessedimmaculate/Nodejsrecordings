@@ -64,7 +64,7 @@ nav.navbar {
 /* Form and content layout */
 .main-container {
     display: flex;
-    margin-top: 80px; /* To avoid overlapping with navbar */
+    margin-top: 60px; /* To avoid overlapping with navbar */
     padding-left: 220px; /* To make space for the sidebar */
     width: 100%;
     justify-content: center;
@@ -80,14 +80,14 @@ nav.navbar {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 110%; /* Ensure it takes the full available height */
+    height: 101%; /* Ensure it takes the full available height */
     position: relative;
     z-index: 1; /* Keep form section above background */
 }
 
 .form-container {
-    padding: 2px;
-    background:transparent;
+    padding: 20px;
+    background: transparent;
     backdrop-filter: blur(30px);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
@@ -113,17 +113,17 @@ nav.navbar {
     min-width: 240px;
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 2px;
 }
 
 label {
     font-size: 18px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     color: white;
 }
 
 input, select {
-    padding: 6px;
+    padding: 4px;
     font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -162,3 +162,7 @@ input, select {
     color: #000;
 }
 
+/* Error messages */
+.text-error {
+    color: red; /* Red color for validation errors */
+}

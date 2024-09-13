@@ -33,29 +33,38 @@ html
                   option(value='Cowpeas') Cowpeas
                   option(value='Soyabeans') Soyabeans
                   option(value='Gnuts') G-nuts
+                span#errorProduceName.text-error
                 label(for='date') Date:
                 input#date(type='date' name='date')
+                span#errorDate.text-error
                 label(for='time') Time:
                 input#time(type='time' name='time')
+                span#errorTime.text-error
                 label(for='stock') Tonnage (kg):
                 input#stock(type='number' name='stock')
+                span#errorStock.text-error
                 label(for='cost') Cost Per Kg (UGX):
                 input#cost(type='number' name='cost')
+                span#errorCost.text-error
                 label(for='totalcost') Total Cost (UGX):
                 input#totalcost(type='number' name='totalcost')
+                span#errorTotalCost.text-error
                 label(for='price') Selling Price (UGX):
                 input#price(type='number' name='price')
+                span#errorPrice.text-error
               .form-column
                 label(for='produceType') Type of Produce:
                 select#produceType(name='produceType')
                   option(value='') Select Produce Type
                   option(value='cereals') Cereals
                   option(value='legumes') Legumes
+                span#errorProduceType.text-error
                 label(for='branch') Store Branch:
                 select#branch(name='branch')
                   option(value='') Select Branch
                   option(value='Maganjo') Maganjo
                   option(value='Matugga') Matuga 
+                span#errorBranch.text-error
                 label(for='produceSource') Source of Produce:
                 select#produceSource(name='produceSource')
                   option(value='') Select Produce Source
@@ -65,10 +74,13 @@ html
                   option(value='othercompany') Other Company
                 label(for='dealerName') If Dealer, Dealer Name:
                 input#dealerName(type='text' name='dealerName')
+                span#errorDealerName.text-error
                 label(for='companyName') If Company, Company Name:
                 input#companyName(type='text' name='companyName')
+                span#errorCompanyName.text-error
                 label(for='contact') Source Contact:
                 input#contact(type='tel' name='contact')
+                span#errorContact.text-error
                 label(for='location') Source Location:
                 input#location(type='text' name='location')
             .submit

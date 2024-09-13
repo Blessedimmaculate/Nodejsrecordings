@@ -3,45 +3,49 @@ html
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title Receipt
+    title Credit Receipt
     link(rel='stylesheet' href='/css/receipt.css')
   body
-    nav.navbar
-      .logo
-        img(src='/img/logo1.png' alt='Logo')
-      .brand-name
-        h1 Happy Hoe Grocery Store
-    br
-    br
-    br   
-    .receipt-container 
-      h1 Sales Receipt
+    .receipt-container
+      h2.text-center Happy Hoe Grocery Ltd.
+      p.text-center
+        | Phone: 0704196610 / 0704187140
+        br
+        | Email: kglhappyhoe@gmail.com | Website: www.kglstore.com
+        br
+        | Branches: Maganjo and Matuga, Uganda
+        br
+        | Leading Groceries Supplier At Affordable Prices
+      h2.text-center SALES RECEIPT
       table.receipt-table
         tr
           th Produce Name
           td #{sales.produceName}
         tr
-          th Date and Time
-          td #{sales.dateTime}
+          th Date
+          td= moment(sales.date).format('MM/DD/YYYY')
         tr
-          th Tonnage
+          th Tonnage(Kg)
           td #{sales.tonnage}
         tr
-          th Amount Paid
+          th Cost Per Kg(UGX)
           td #{sales.amountPaid}
+        tr
+          th Amount Paid(UGX)
+          td #{sales.totalpayment} 
         tr
           th Agent's Name
           td #{sales.salesagent}
         tr
           th Branch
           td #{sales.branch}
-        tr
-          th Buyer's Name
-          td #{sales.buyername} 
-      p.para  Thank you for your purchase! 
-    br   
-    .submit3
-      a.button(href='/salesList') BACK
-    br
-    footer.footer
+      p.Thank THANK YOU   
+    // Print and Back Buttons outside of the receipt-container
+    .buttons-container
+      p.text-right
+        a.btn-print(href='#' onclick='window.print(); return false;') PRINT RECEIPT
+      p.text-left
+        a.btn-print(href='javascript:history.back();') BACK
+    // Footer below
+    footer
       p &copy; 2024 Immaculate Abakwase. All rights reserved.

@@ -1,78 +1,154 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     const tonnageInput = document.getElementById('tonnage');
-//     const costInput = document.getElementById('cost');
-//     const totalCostInput = document.getElementById('totalcost');
+function validateForm() {
+  // Select form elements
+  const produceName = document.getElementById('produceName');
+  const produceType = document.getElementById('produceType');
+  const date = document.getElementById('date');
+  const time = document.getElementById('time');
+  const stock = document.getElementById('stock');
+  const cost = document.getElementById('cost');
+  const totalcost = document.getElementById('totalcost');
+  const price = document.getElementById('price');
+  const dealerName = document.getElementById('dealerName');
+  const branch = document.getElementById('branch');
+  const contact = document.getElementById('contact');
 
-//     function calculateTotalCost() {
-//         const tonnage = parseFloat(tonnageInput.value) || 0;
-//         const cost = parseFloat(costInput.value) || 0;
-//         const totalCost = tonnage * cost;
-//         totalCostInput.value = totalCost;
-//     }
+  // Select error elements
+  const errorProduceName = document.getElementById('errorProduceName');
+  const errorProduceType = document.getElementById('errorProduceType');
+  const errorDate = document.getElementById('errorDate');
+  const errorTime = document.getElementById('errorTime');
+  const errorStock = document.getElementById('errorStock');
+  const errorCost = document.getElementById('errorCost');
+  const errorTotalCost = document.getElementById('errorTotalCost');
+  const errorPrice = document.getElementById('errorPrice');
+  const errorDealerName = document.getElementById('errorDealerName');
+  const errorBranch = document.getElementById('errorBranch');
+  const errorContact = document.getElementById('errorContact');
 
-    
-//     tonnageInput.addEventListener('input', calculateTotalCost);
-//     costInput.addEventListener('input', calculateTotalCost);
-// });
+  let errorCount = 0;
 
-// function validateForm() {
-//     const produceName = document.getElementById("produceName").value;
-//     const produceType = document.getElementById("produceType").value;
-//     const dateTime = document.getElementById("dateTime").value;
-//     const tonnage = document.getElementById("tonnage").value;
-//     const cost = document.getElementById("cost").value;
-//     const dealerName = document.getElementById("dealerName").value;
-//     const branch = document.getElementById("branch").value;
-//     const contact = document.getElementById("contact").value;
-//     const price = document.getElementById("price").value;
+  // Validate produceName
+  if (produceName.value === "") {
+      produceName.style.border = "1px solid red";
+      errorProduceName.textContent = "Enter produce name";
+      errorCount++;
+  } else if (!/^[a-zA-Z0-9\s]+$/.test(produceName.value)) {
+      produceName.style.border = "1px solid red";
+      errorProduceName.textContent = "Produce name must be alpha-numeric";
+      errorCount++;
+  } else {
+      produceName.style.border = "1px solid green";
+      errorProduceName.textContent = "";
+  }
 
-//     if (produceName === '' || !/^[a-zA-Z0-9\s]+$/.test(produceName)) {
-//         alert("Name of produce should be alphanumeric and not empty.");
-//         return false;
-//     }
+  // Validate produceType
+  if (produceType.value === "") {
+      produceType.style.border = "1px solid red";
+      errorProduceType.textContent = "Enter produce type";
+      errorCount++;
+  } else if (produceType.value.length < 2) {
+      produceType.style.border = "1px solid red";
+      errorProduceType.textContent = "Produce type must be 2 letters";
+      errorCount++;
+  } else {
+      produceType.style.border = "1px solid green";
+      errorProduceType.textContent = "";
+  }
 
-//     if (produceType === '' || !/^[A-Za-z]{2,}$/.test(produceType)) {
-//         alert("Type of produce should contain alphabets only, be at least 2 characters long, and not empty.");
-//         return false;
-//     }
+  // // Validate date
+  // if (date.value === "") {
+  //     date.style.border = "1px solid red";
+  //     errorDate.textContent = "Date cannot be empty";
+  //     errorCount++;
+  // } else {
+  //     date.style.border = "1px solid green";
+  //     errorDate.textContent = "";
+  // }
 
-//     if (!dateTime) {
-//         alert("Date and Time cannot be empty.");
-//         return false;
-//     }
+  // // Validate time
+  // if (time.value === "") {
+  //     time.style.border = "1px solid red";
+  //     errorTime.textContent = "Time cannot be empty";
+  //     errorCount++;
+  // } else {
+  //     time.style.border = "1px solid green";
+  //     errorTime.textContent = "";
+  // }
 
-//     if (!tonnage || isNaN(tonnage) || tonnage < 100) {
-//         alert("Tonnage should be numeric, not empty, and at least 100 kg.");
-//         return false;
-//     }
+  // Validate stock (tonnage)
+  if (stock.value === "" || isNaN(stock.value) || stock.value.length < 3) {
+      stock.style.border = "1px solid red";
+      errorStock.textContent = "Tonnage must 3 figures";
+      errorCount++;
+  } else {
+      stock.style.border = "1px solid green";
+      errorStock.textContent = "";
+  }
 
-//     if (!cost || isNaN(cost) || cost < 100) {
-//         alert("Cost should be numeric, not empty, and at least 10,000 UgX.");
-//         return false;
-//     }
+  // Validate cost
+  if (cost.value === "" || isNaN(cost.value) || cost.value.length < 5) {
+      cost.style.border = "1px solid red";
+      errorCost.textContent = "Cost must be 5 figures";
+      errorCount++;
+  } else {
+      cost.style.border = "1px solid green";
+      errorCost.textContent = "";
+  }
 
-//     if (dealerName === '' || !/^[a-zA-Z0-9\s]{2,}$/.test(dealerName)) {
-//         alert("Name of dealer should be alphanumeric, not empty, and at least 2 characters long.");
-//         return false;
-//     }
+  // // Validate totalcost
+  // if (totalcost.value === "" || isNaN(totalcost.value)) {
+  //     totalcost.style.border = "1px solid red";
+  //     errorTotalCost.textContent = "Total cost must be numeric and not empty";
+  //     errorCount++;
+  // } else {
+  //     totalcost.style.border = "1px solid green";
+  //     errorTotalCost.textContent = "";
+  // }
 
-//     if (branch === '') {
-//         alert("Please select a branch.");
-//         return false;
-//     }
+  // Validate price
+  if (price.value === "" || isNaN(price.value)) {
+      price.style.border = "1px solid red";
+      errorPrice.textContent = "Enter Selling price";
+      errorCount++;
+  } else {
+      price.style.border = "1px solid green";
+      errorPrice.textContent = "";
+  }
 
-//     if (!contact.match(/^07\d{8}$/)) {
-//         alert("Contact should be a valid 10-digit phone number starting with 07.");
-//         return false;
-//     }
+  // Validate dealerName
+  if (dealerName.value === "" || !/^[a-zA-Z0-9\s]+$/.test(dealerName.value) || dealerName.value.length < 2) {
+      dealerName.style.border = "1px solid red";
+      errorDealerName.textContent = "Dealer name must be 2 letters";
+      errorCount++;
+  } else {
+      dealerName.style.border = "1px solid green";
+      errorDealerName.textContent = "";
+  }
 
-//     if (!price || isNaN(price) || price < 100) {
-//         alert("Price to be sold at should be numeric, not empty, and at least 10,000 UgX.");
-//         return false;
-//     }
+  // Validate branch
+  if (branch.value === "") {
+      branch.style.border = "1px solid red";
+      errorBranch.textContent = "Enter store branch";
+      errorCount++;
+  } else {
+      branch.style.border = "1px solid green";
+      errorBranch.textContent = "";
+  }
 
-//     return true;
-// }
+  // Validate contact
+  if (contact.value === "" || !/^\d{10}$/.test(contact.value)) {
+      contact.style.border = "1px solid red";
+      errorContact.textContent = "Contact must be 10 digits";
+      errorCount++;
+  } else {
+      contact.style.border = "1px solid green";
+      errorContact.textContent = "";
+  }
+
+  // Prevent form submission if there are errors
+  return errorCount === 0;
+}
+
 
 
 // Function to set the current date and time
@@ -94,14 +170,14 @@ function setCurrentDateTime() {
   document.addEventListener('DOMContentLoaded', function () {
     // Function to update total cost
     function updateTotalCost() {
-        let tonnage = parseFloat(document.getElementById("tonnage").value) || 0;
+        let stock = parseFloat(document.getElementById("stock").value) || 0;
         let cost = parseFloat(document.getElementById("cost").value) || 0;
         let totalcostInput = document.getElementById("totalcost");
-        totalcostInput.value = tonnage * cost;
+        totalcostInput.value = stock * cost;
     }
 
-    // Add event listeners to both tonnage and cost inputs for real-time updates
-    document.getElementById('tonnage').addEventListener("input", updateTotalCost);
+    // Add event listeners to both stock and cost inputs
+    document.getElementById('stock').addEventListener("input", updateTotalCost);
     document.getElementById('cost').addEventListener("input", updateTotalCost);
     
     // Initial calculation in case the fields have pre-filled values
@@ -110,5 +186,3 @@ function setCurrentDateTime() {
     // Set total cost input to read-only
     document.getElementById('totalcost').setAttribute('readonly', true);
 });
-
-

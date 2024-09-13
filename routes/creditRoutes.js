@@ -48,7 +48,7 @@ router.get('/creditList',
     //  connectEnsureLogin.ensureLoggedIn(), 
      async (req, res) => {
     try{
-       const creditItems = await Credit.find();
+       const creditItems = await Credit.find().sort({ $natural: -1 });
        res.render('creditlist', {
        title: "Credit List",
        credits: creditItems,

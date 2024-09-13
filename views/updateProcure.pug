@@ -37,12 +37,12 @@ html
                 input#date(type='date' name='date', value=procure.date ? procure.date.toISOString().split('T')[0] : '')
                 label(for='time') Time:
                 input#time(type='time' name='time', value=procure.time)
-                label(for='tonnage') Tonnage (kg):
-                input#tonnage(type='number' name='tonnage', value=procure.tonnage)
+                label(for='stock') Tonnage (kg):
+                input#stock(type='number' name='stock', value=procure.stock)
                 label(for='cost') Cost Per Kg (UGX):
                 input#cost(type='number' name='cost', value=procure.cost)
                 label(for='totalcost') Total Cost (UGX):
-                input#totalcost(type='number' name='totalcost', value=procure.totalcost readonly)
+                input#totalcost(type='number' name='totalcost', value=procure.totalcost)
                 label(for='price') Selling Price (UGX):
                 input#price(type='number' name='price', value=procure.price)
               .form-column

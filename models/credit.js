@@ -46,7 +46,7 @@ const creditSchema = new mongoose.Schema({
         trim: true,
     },
     dueDate:{
-        type: String,
+        type: Date,
         trim: true,
     },
     branch:{
@@ -62,7 +62,7 @@ const creditSchema = new mongoose.Schema({
         trim: true,
     },
     dispatchDate:{
-        type: String,
+        type: Date,
         trim: true,
     }
 })

@@ -4,7 +4,7 @@ html
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title Credit Sales Form
-    link(rel='stylesheet' type='text/css' href='/css/credit.css')
+    link(rel='stylesheet' type='text/css' href='/css/sales.css')
   body
     nav.navbar
       .brand-name
@@ -20,58 +20,66 @@ html
       .form-section
         .form-container
           .form-header
-            h1 CREDIT SALES FORM
-          form(name='salesForm', onsubmit='return validateForm()', action=`/debit/${produce ? procure._id : ''}` method='POST')
+            h1 MAKE SALES
+          form(action='/makeSale' method='POST' name='sales' onsubmit='return validateForm()')
             .form-row
               .form-column
-                .form-group
-                  label(for='produceName') Produce Name:
-                  select#produceName.form-control(name='produceName')
-                    option(value='') Select Produce
-                    option(value='Rice') Rice
-                    option(value='Beans') Beans
-                    option(value='Maize') Maize
-                    option(value='Cowpeas') Cowpeas
-                    option(value='Soyabeans') Soyabeans
-                    option(value='Gnuts') G-nuts
-                .form-group
-                  label(for='produceType') Type of Produce:
-                  select#produceType.form-control(name='produceType')
-                    option(value='') Select Produce Type
-                    option(value='Cereals') Cereals
-                    option(value='Legumes') Legumes
-                .form-group
-                  label(for='buyerName') Buyer Name:
-                  input#buyerName.form-control(type='text' name='buyerName')
-                .form-group
-                  label(for='tonnage') Tonnage:
-                  input#tonnage.form-control(type='number' name='tonnage')
-                .form-group
-                  label(for='produceCost') Cost Per Kg (UGX):
-                  input#produceCost.form-control(type='text' name='produceCost')
-              .form-group
-                label(for='totalpayment') Total Payment:
-                input#totalpayment(type='number' name='totalpayment')  
+                label(for='produceName') Produce Name:
+                select#produceName(name='produceName')
+                  option(value='') Select Produce
+                  option(value='Beans') Beans
+                  option(value='Maize') Maize
+                  option(value='Rice') Rice
+                  option(value='Soyabeans') Soyabeans
+                  option(value='Cowpeas') Cowpeas
+                  option(value='Gnuts') G-nuts
+                span#errorProduceName.text-error
               .form-column
-                .form-group
-                  label(for='contacts') Buyer's Contact:
-                  input#contacts.form-control(type='text' name='contact')
-                .form-group
-                  label(for='date') Date of Sale:
-                  input#date.form-control(type='date' name='date')
-                .form-group
-                  label(for='time') Time:
-                  input#time.form-control(type='time' name='time')
-                .form-group
-                  label(for='branch') Branch Name:
-                  select#branch.form-control(name='branch')
-                    option(value='') Select Branch
-                    option(value='Maganjo') Maganjo
-                    option(value='Matugga') Matugga
-                .form-group
-                  label(for='salesAgent') Sales Agent Name:
-                  input#salesAgent.form-control(type='text' name='salesagent')
-            .submit
-              button(type='submit') Submit
-          #result
-    script(src='/js/credit.js')
+                label(for='produceType') Produce Type:
+                select#produceType(name='produceType')
+                  option(value='') Select Produce Type
+                  option(value='Cereals') Cereals
+                  option(value='Legumes') Legumes
+                span#errorProduceType.text-error
+            .form-row
+              .form-column
+                label(for='tonnage') Tonnage (kgs):
+                input#tonnage(type='number' name='tonnage')
+                span#errorTonnage.text-error
+              .form-column
+                label(for='amountPaid') Cost Per Kg (UGX):
+                input#amountPaid(type='number' name='amountPaid')
+                span#errorAmountPaid.text-error
+            .form-row
+              .form-column
+                label(for='buyerName') Buyer's Name:
+                input#buyerName(type='text' name='buyername')
+                span#errorBuyerName.text-error
+              .form-column
+                label(for='salesAgentName') Sales Agent's Name:
+                input#salesAgentName(type='text' name='salesagent')
+                span#errorSalesAgent.text-error
+            .form-row
+              .form-column
+                label(for='branch') Branch Name:
+                select#branch(name='branch')
+                  option(value='') Select Branch
+                  option(value='Maganjo') Maganjo
+                  option(value='Matugga') Matugga
+                span#errorBranch.text-error
+              .form-column
+                label(for='date') Date:
+                input#date(type='date' name='date')
+                span#errorDate.text-error
+            .form-row
+              .form-column
+                label(for='time') Time:
+                input#time(type='time' name='time')
+                span#errorTime.text-error
+              .form-column
+                label(for='totalpayment') Total Payment:
+                input#totalpayment(type='number' name='totalpayment')
+                span#errorTotalPayment.text-error
+            .submit 
+              button(type='submit') Make Sale
+    script(src='/js/make_sale.js')

@@ -3,47 +3,21 @@ html
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title Manager Dashboard
+    title Credit Sales Form
     link(rel='stylesheet' href='/css/dash.css')
   body
-    .side-menu
+    nav.navbar
       .brand-name
-        h1 Happy Hoe
-      ul
-        li
-          a(href='/dashboard/mngdash.html')
-            img(src='/images/adm.png' alt='')
-            span Dashboard
-        li
-          a(href='/procurement/procurement.html')
-            img(src='/images/man.png' alt='')
-            span Procurement
-        li
-          a(href='/status/status.html')
-            img(src='/images/agent.png' alt='')
-            span Stock Status
-        li
-          a(href='/index/index.html')
-            img(src='/images/logout.png' alt='')
-            span Log Out
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+        ul
+          li CREDIT SALE
+          li CREDIT LIST
+          li STOCK STATUS 
+          li PRODUCE LIST
+          li LOG OUT
     .container
-      .header
-        .nav
-          //- .search
-          //-   input(type='text' placeholder='search..')
-          //-   button(type='submit')
-          //-     img(src='/images/sach.png' alt='Search Icon')
-          .user
-            a.btn(href='/addProduce') Add Produce           
-          .user
-            a.btn(href='/viewProduce') Produce List
-          .user
-            a.btn(href='/viewProduce') Update Produce
-          .user
-            a.btn(href='/stock') Stock Status
-          .img-case
-              a(href='/')
-                img(src='/images/logout.png' alt='Go to Index Page')
       .content
         .cards
           a.card-link(href='/procreport/procreport.html')
@@ -124,7 +98,7 @@ html
 //-       .card
 //-         h3 Staff Members
 //-         p  Branch A | Branch B
-//-         a(href='/Mlist') Staff Members
+//-         a(href='/workersList') Staff Members
 //-       .card
 //-         h3 Reports
 //-         p Daily reports | Weekly reports

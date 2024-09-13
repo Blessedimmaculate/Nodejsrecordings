@@ -6,12 +6,16 @@ const salesSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    produceType:{
+        type: String,
+        trim: true,
+    },
     tonnage:{
         type: Number,
         trim: true,
     },
     amountPaid:{
-        type: String,
+        type: Number,
         trim: true,
     },
     buyername:{
@@ -26,7 +30,11 @@ const salesSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
-    dateTime:{
+    date: {
+        type: Date, 
+        trim: true,
+      },
+    time:{
         type: String,
         trim: true,
     },
@@ -37,3 +45,4 @@ const salesSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('sales', salesSchema);
+

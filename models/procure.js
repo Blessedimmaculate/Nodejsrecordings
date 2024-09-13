@@ -10,11 +10,11 @@ const procureSchema = new mongoose.Schema({
     trim: true,
   },
   date: {
-    type: Date, // Corrected from 'date' to 'Date'
+    type: Date, 
     trim: true,
   },
   time: {
-    type: String, // Corrected from 'string' to 'String'
+    type: String, 
     trim: true,
   },
   stock: {

@@ -50,7 +50,7 @@ nav.navbar {
 
 .sidebar li {
     margin: 30px 0;
-    font-size: 20px;
+    font-size: 21px;
     color: white;
     cursor: pointer;
 }
@@ -75,7 +75,7 @@ nav.navbar {
   background-size: cover; /* Ensures the image covers the whole container */
   background-position: center; /* Centers the background image */
   background-repeat: no-repeat;
-  padding: 1px; /* Adjust padding as needed */
+  padding: 25px; /* Adjust padding as needed */
 }
 
 
@@ -89,7 +89,6 @@ h1 {
 
 
 table {
-  width: 0%;
   margin: auto;
   border-collapse: collapse;
   border-radius: 15px; /* Add border-radius here */
@@ -102,12 +101,13 @@ table {
 
 th,
 td {
-  padding: 4px;
+  padding: 2px;
   text-align: center;
   border-bottom: 1px solid #ddd;
   color: white;
   font-size: 18px;
 }
+
 
 th {
   background-color: #fff5c5;
@@ -173,4 +173,5 @@ tr:hover {
     background-color: #bb5502;
     border-color: #ffeb85;
   }
+  
   

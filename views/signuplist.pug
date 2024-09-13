@@ -1,35 +1,44 @@
 doctype html
 html
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1")
-        title Registered Users List
-        link(rel="stylesheet", href="/css/signlist.css")
-    body
-        .container
-            h1#title Registered Users List
-            table
-                thead
-                    tr
-                        th Username
-                        th Email
-                        th Phone Number
-                        th Role
-                        th Branch
-                        th Registration Date
-                        th Actions
-                tbody
-                    each signup in signups
-                        tr
-                            td= signup.username
-                            td= signup.email
-                            td= signup.phonenumber
-                            td= signup.role
-                            td= signup.branch
-                            //- Conditionally render registrationDate if it's valid
-                            td= signup.registrationDate ? signup.registrationDate.toDateString() : 'N/A'
-                            td
-                                a.btn.btn-primary.btn-sm(href='/updateSignup/' + signup._id) Update
-                                form(method="POST" action='/deleteSignup')
-                                    input(type="hidden" name="id" value=signup._id)
-                                    button.btn.btn-danger.btn-sm(type="submit") Delete
+  head
+    title Workers List
+    link(rel='stylesheet', href='/css/signlist.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .sidebar
+      ul
+        li CREDIT SALE
+        li BACK
+        li STOCK STATUS 
+        li PRODUCE LIST
+        li LOG OUT
+    .main-container
+      .container
+        h1#title Registered Users List
+        table
+          thead
+            tr
+              th Username
+              th Email
+              th Phone Number
+              th Role
+              th Branch
+              th Registration Date
+              th Actions
+          tbody
+            each signup in signups
+              tr
+                td= signup.username
+                td= signup.email
+                td= signup.phonenumber
+                td= signup.role
+                td= signup.branch
+                td= signup.registrationDate ? signup.registrationDate.toDateString() : 'N/A'
+                td
+                  .button-container
+                    a.btn.btn-primary.btn-sm(href='/updateSignup/' + signup._id) Update
+                    form(method="POST" action='/deleteSignup')
+                      input(type="hidden" name="id" value=signup._id)
+                      button.btn.btn-danger.btn-sm(type="submit") Delete

@@ -31,7 +31,7 @@ router.post("/addWorker", async (req, res) => {
   if (err) {
   throw err;
   }
-  res.redirect("/login");
+  res.redirect("/workersList");
   });
   } catch (err) {
   res.status(400).render("signup", { tittle: "Signup" });
@@ -55,7 +55,7 @@ router.post("/addWorker", async (req, res) => {
 // }
 // );
 
-router.get('/Mlist', 
+router.get('/workersList', 
   // connectEnsureLogin.ensureLoggedIn(), 
   async (req, res) => {
   try {
@@ -96,7 +96,7 @@ router.get("/updateSignup/:id",
 router.post("/updateSignup", async (req, res) => {
     try {
         await Signup.findOneAndUpdate({ _id: req.query.id }, req.body);
-        res.redirect("/Mlist");
+        res.redirect("/workersList");
     } catch (err) {
         res.status(404).send("Unable to update item in the database");
     }
