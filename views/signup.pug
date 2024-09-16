@@ -1,0 +1,71 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Registration Form
+    link(rel="stylesheet", href="/css/register.css")
+  body
+    .bg-img
+      .container
+        h1#my REGISTER
+        form#register-form.register-form(action="/addWorker", method="POST", onsubmit="return Validate(event);", name="registerForm")
+          table
+            tbody
+              tr
+                td
+                  label(for="username") Username:
+                td
+                  input#username(type="text", name="username")
+                  span#usernameErr.text-error
+              tr
+                td
+                  label(for="email") Email:
+                td
+                  input#email(type="email", name="email")
+                  span#emailErr.text-error
+              tr
+                td
+                  label(for="phonenumber") Mobile Number:
+                td
+                  input#phonenumber(type="text", name="phonenumber")
+                  span#phonenumberErr.text-error
+              tr
+                td
+                  label(for="role") Role:
+                td
+                  select#role(name="role", style="width: 100%; padding: 10px;")
+                    option(value="") Select your Role
+                    option(value="administrator") Administrator
+                    option(value="manager") Manager
+                    option(value="salesagent") Sales Agent
+              tr
+                td
+                  label(for="branch") Branch:
+                td
+                  select#branch(name="branch")
+                    option(value="") Branch
+                    option(value="allBranches") Entire Business
+                    option(value="maganjo") Maganjo
+                    option(value="matuga") Matuga
+              tr
+                td
+                  label(for="password") Password:
+                td
+                  input#password(type="password", name="password")
+                  span#passwordErr.text-error
+              tr
+                td
+                  label(for="confirmPassword") Confirm Password:
+                td
+                  input#confirmPassword(type="password", name="confirmPassword")
+                  span#confirmPasswordErr.text-error
+              tr
+                td
+                  label(for="registrationDate") Registration Date:
+                td
+                  input#registrationDate(type="date", name="registrationDate")
+              tr
+                td
+                  button.button(type="submit") Register
+    script(src="/js/valid_copy.js")

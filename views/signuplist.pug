@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title Workers List
+    link(rel='stylesheet', href='/css/signlist.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .sidebar
+        ul
+          li
+            a(href="/salesList") CASH LIST
+          li
+            a(href="/creditList") CREDIT LIST
+          li
+            a(href="/viewstock") STOCK STATUS
+          li
+            a(href="/produceList") PRODUCE LIST
+          li
+            a(href="/") LOG OUT
+    .main-container
+      .container
+        h1#title Registered Users List
+        table
+          thead
+            tr
+              th Username
+              th Email
+              th Phone Number
+              th Role
+              th Branch
+              th Registration Date
+              th Actions
+          tbody
+            each signup in signups
+              tr
+                td= signup.username
+                td= signup.email
+                td= signup.phonenumber
+                td= signup.role
+                td= signup.branch
+                td= signup.registrationDate ? signup.registrationDate.toDateString() : 'N/A'
+                td
+                  .button-container
+                    a.btn.btn-primary.btn-sm(href='/updateSignup/' + signup._id) Update
+                    form(method="POST" action='/deleteSignup')
+                      input(type="hidden" name="id" value=signup._id)
+                      button.btn.btn-danger.btn-sm(type="submit") Delete

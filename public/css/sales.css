@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita:wght@400;700&display=swap');
+
+body {
+    font-family: Sansita, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Navbar */
+nav.navbar {
+    background-color: rgb(35, 31, 31);
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul li a {
+    color: #fffcea;        /* Text color */
+    text-decoration: none; /* Remove underline */
+    margin: 30px 0;
+    font-size: 25px;
+  }
+  
+  .sidebar ul li a:hover {
+    text-decoration: none; /* Optional: Add underline on hover if you want */
+    color: black;
+    background-color: #ffeb85;
+  }
+
+.brand-name h1 {
+    margin: 0;
+    color: white;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 180px;
+    padding: 20px;
+    background-color: rgb(35, 31, 31);
+    border-right: 2px solid #e6d7a2;
+    height: 100vh;
+    position: fixed;
+    top: 60px; /* Adjust based on navbar height */
+    left: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.sidebar li {
+    color: #fffcea;
+    margin: 30px 0;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    background-color: #ffeb85;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Form and content layout */
+.main-container {
+    display: flex;
+    margin-top: 80px; /* To avoid overlapping with navbar */
+    padding-left: 220px; /* To make space for the sidebar */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background-image: url('/images/we.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 120%; /* Ensure it takes the full available height */
+    position: relative;
+    z-index: 1; /* Keep form section above background */
+}
+
+.form-container {
+    padding: 10px;
+    background:transparent;
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    width: 600px; /* Adjusted width */
+    z-index: 2; /* Ensure the form container is above background */
+}
+
+.form-header h1 {
+    font-size: 28px;
+    text-align: center;
+    color: white;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between form fields */
+}
+
+.form-column {
+    flex: 1;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+input, select {
+    padding: 6px;
+    font-size: 18px;
+    border-radius: 8px;
+    width: 100%; /* Ensure equal width */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.submit {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.submit button {
+    font-family: 'Sansita', sans-serif;
+    background-color: #fff5c5;
+    border: none;
+    color: black;
+    padding: 8px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 35px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transform: translateY(-45%);
+}
+
+.submit button:hover {
+    background-color: #ffeb85;
+    opacity: 0.8;
+}
+
+#result {
+    margin-top: 20px;
+    text-align: center;
+    color: #000;
+}
+
+/* Error messages */
+.text-error {
+    color: red; /* Red color for validation errors */
+}

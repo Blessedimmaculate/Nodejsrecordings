@@ -1,0 +1,67 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title PROCUREMENT LIST
+    link(rel='stylesheet', href='/css/produceList.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .sidebar
+      ul
+        li
+          a(href="/salesList") CASH LIST
+        li
+          a(href="/creditList") CREDIT LIST
+        li
+          a(href="/viewstock") STOCK STATUS
+        li
+          a(href="/produce") ADD PRODUCE
+        li
+          a(href="/") LOG OUT
+    .main-container
+      .container
+        h2.text-center.mt-5.mb-4 PROCUREMENT LIST
+        .total-payment 
+          p EXPENDITURE: UGX #{totalCost}  <!-- Correct reference to totalCost -->
+        table.table.table-striped
+          thead
+            tr
+              th(scope='col') Produce Name
+              th(scope='col') Date
+              th(scope='col') Time
+              th(scope='col') Tonnage (Kg)
+              th(scope='col') Cost Per Kg (UGX)
+              th(scope='col') Total Cost (UGX)
+              th(scope='col') Selling Price (UGX)
+              th(scope='col') Produce Source
+              th(scope='col') Store Branch
+              th(scope='col') Buyer's Contact
+              th(scope='col') Update
+              th(scope='col') Delete
+          tbody
+            if procures.length
+              each procure in procures
+                tr
+                  td #{procure.produceName}
+                  td= moment(procure.date || new Date()).format('MM/DD/YYYY')
+                  td= moment(procure.time, 'HH:mm').format('hh:mm A') 
+                  td #{procure.stock}
+                  td #{procure.cost}
+                  td #{procure.totalcost}
+                  td #{procure.price}
+                  td #{procure.produceSource}
+                  td #{procure.branch}
+                  td #{procure.contact}
+                  td
+                    a.btn.btn-primary.btn-sm(href='/updateProcure/' + procure._id) Update
+                  td
+                    form(method="POST" action='/deleteProcure')
+                      input(type="hidden" name="id" value=procure._id)
+                      button.btn.btn-danger.btn-sm(type="submit") Delete
+            else
+              tr
+                td(colspan="12" class="text-center") No produce yet :(

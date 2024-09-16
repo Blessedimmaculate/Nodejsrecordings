@@ -1,0 +1,90 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Make Sales Form
+    link(rel='stylesheet' type='text/css' href='/css/sales.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+        ul
+          li
+            a(href="/makeSale") MAKE SALE
+          li
+            a(href="/salesList") CASH LIST
+          li
+            a(href="/viewstock") STOCK STATUS
+          li
+            a(href="/produceList") PRODUCE LIST
+          li
+            a(href="/") LOG OUT
+      .form-section
+        .form-container
+          .form-header
+            h1 CASH SALES
+          form(action='/makeSale' method='POST' name='sales' onsubmit='return validateForm()')
+            .form-row
+              .form-column
+                label(for='produceName') Produce Name:
+                select#produceName(name='produceName')
+                  option(value='') Select Produce
+                  option(value='Beans') Beans
+                  option(value='Maize') Maize
+                  option(value='Rice') Rice
+                  option(value='Soyabeans') Soyabeans
+                  option(value='Cowpeas') Cowpeas
+                  option(value='Gnuts') G-nuts
+                span#errorProduceName.text-error
+              .form-column
+                label(for='produceType') Produce Type:
+                select#produceType(name='produceType')
+                  option(value='') Select Produce Type
+                  option(value='Cereals') Cereals
+                  option(value='Legumes') Legumes
+                span#errorProduceType.text-error
+            .form-row
+              .form-column
+                label(for='tonnage') Tonnage (kgs):
+                input#tonnage(type='number' name='tonnage')
+                span#errorTonnage.text-error
+              .form-column
+                label(for='amountPaid') Cost Per Kg (UGX):
+                input#amountPaid(type='number' name='amountPaid')
+                span#errorAmountPaid.text-error
+            .form-row
+              .form-column
+                label(for='buyerName') Buyer's Name:
+                input#buyerName(type='text' name='buyername')
+                span#errorBuyerName.text-error
+              .form-column
+                label(for='salesAgentName') Sales Agent's Name:
+                input#salesAgentName(type='text' name='salesagent')
+                span#errorSalesAgent.text-error
+            .form-row
+              .form-column
+                label(for='branch') Branch Name:
+                select#branch(name='branch')
+                  option(value='') Select Branch
+                  option(value='Maganjo') Maganjo
+                  option(value='Matugga') Matugga
+                span#errorBranch.text-error
+              .form-column
+                label(for='date') Date:
+                input#date(type='date' name='date')
+                span#errorDate.text-error
+            .form-row
+              .form-column
+                label(for='time') Time:
+                input#time(type='time' name='time')
+                span#errorTime.text-error
+              .form-column
+                label(for='totalpayment') Total Payment:
+                input#totalpayment(type='number' name='totalpayment')
+                span#errorTotalPayment.text-error
+            .submit 
+              button(type='submit') Make Sale
+    script(src='/js/make_sale.js')

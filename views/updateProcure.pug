@@ -1,0 +1,82 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Procurement Form
+    link(rel='stylesheet' href='/css/updateProcure.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+        ul
+          li
+            a(href="/produceList") PRODUCE LIST
+          li
+            a(href="/produce") ADD PRODUCE
+          li
+            a(href="/viewstock") STOCK STATUS
+          li
+            a(href="/produceList") BACK
+          li
+            a(href="/") LOG OUT
+      .form-section
+        .form-container
+          .form-header
+            h1 PROCUREMENT FORM
+          form(onsubmit='return validateForm()' action='/updateProcure?id=' + procure._id method='POST')
+            .form-row
+              .form-column
+                label(for='produceName') Name of Produce:
+                select#produceName(name='produceName')
+                  option(value='') Select Produce
+                  option(value='Rice', selected=procure.produceName === 'Rice') Rice
+                  option(value='Beans', selected=procure.produceName === 'Beans') Beans
+                  option(value='Maize', selected=procure.produceName === 'Maize') Maize
+                  option(value='Cowpeas', selected=procure.produceName === 'Cowpeas') Cowpeas
+                  option(value='Soyabeans', selected=procure.produceName === 'Soyabeans') Soyabeans
+                  option(value='Gnuts', selected=procure.produceName === 'Gnuts') G-nuts
+                label(for='date') Date:
+                input#date(type='date' name='date', value=procure.date ? procure.date.toISOString().split('T')[0] : '')
+                label(for='time') Time:
+                input#time(type='time' name='time', value=procure.time)
+                label(for='stock') Tonnage (kg):
+                input#stock(type='number' name='stock', value=procure.stock)
+                label(for='cost') Cost Per Kg (UGX):
+                input#cost(type='number' name='cost', value=procure.cost)
+                label(for='totalcost') Total Cost (UGX):
+                input#totalcost(type='number' name='totalcost', value=procure.totalcost)
+                label(for='price') Selling Price (UGX):
+                input#price(type='number' name='price', value=procure.price)
+              .form-column
+                label(for='produceType') Type of Produce:
+                select#produceType(name='produceType')
+                  option(value='') Select Produce Type
+                  option(value='cereals', selected=procure.produceType === 'cereals') Cereals
+                  option(value='legumes', selected=procure.produceType === 'legumes') Legumes
+                label(for='branch') Store Branch:
+                select#branch(name='branch')
+                  option(value='') Select Branch
+                  option(value='Maganjo', selected=procure.branch === 'Maganjo') Maganjo
+                  option(value='Matugga', selected=procure.branch === 'Matugga') Matuga 
+                label(for='produceSource') Source of Produce:
+                select#produceSource(name='produceSource')
+                  option(value='') Select Produce Source
+                  option(value='maganjo', selected=procure.produceSource === 'maganjo') Maganjo Farm
+                  option(value='matuga', selected=procure.produceSource === 'matuga') Matuga Farm
+                  option(value='dealer', selected=procure.produceSource === 'dealer') Dealer
+                  option(value='othercompany', selected=procure.produceSource === 'othercompany') Other Company
+                label(for='dealerName') If Dealer, Dealer Name:
+                input#dealerName(type='text' name='dealerName', value=procure.dealerName)
+                label(for='companyName') If Company, Company Name:
+                input#companyName(type='text' name='companyName', value=procure.companyName)
+                label(for='contact') Source Contact:
+                input#contact(type='tel' name='contact', value=procure.contact)
+                label(for='location') Source Location:
+                input#location(type='text' name='location', value=procure.location)
+            .submit
+              button(type='submit') Submit
+    #result
+    script(src='/js/procure.js')

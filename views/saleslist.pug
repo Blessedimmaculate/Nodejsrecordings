@@ -1,0 +1,74 @@
+doctype html
+html
+  head
+    title Sales List
+    link(rel='stylesheet', href='/css/salesList.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .sidebar
+      ul
+        li
+          a(href="/produceList") PRODUCE LIST
+        li
+          a(href="/creditList") CREDITS LIST
+        li
+          a(href="/viewstock") STOCK STATUS
+        li
+          a(href="/makeSale") MAKE SALE
+        li
+          a(href="/") LOG OUT
+    .main-container
+      .container
+        h2.text-center.mt-5.mb-4 SALES LIST
+        .total-payment
+           p TOTAL SALES: UGX #{totalAmount}  <!-- Correct reference to totalAmount -->
+        table.table.table-striped
+          thead
+            tr
+              th(scope='col') Produce Name
+              th(scope='col') Date
+              th(scope='col') Time
+              th(scope='col') Tonnage
+              th(scope='col') Cost Per Kg
+              th(scope='col') Sales Agent
+              th(scope='col') Branch
+              th(scope='col') Buyer's Name
+              th(scope='col') Total Payment
+              th(scope='col') Update
+              th(scope='col') Delete
+              th(scope='col') Receipt
+          tbody
+            if saless.length
+              each sales in saless
+                tr
+                  td #{sales.produceName}
+                  td= moment(sales.date || new Date()).format('MM/DD/YYYY')
+                  td= moment(sales.time, 'HH:mm').format('hh:mm A') 
+                  td #{sales.tonnage}
+                  td #{sales.amountPaid}
+                  td #{sales.salesagent}
+                  td #{sales.branch}
+                  td #{sales.buyername}
+                  td #{sales.totalpayment}
+                  td
+                    a.btn.btn-primary.btn-sm(href='/updateSales/' +sales._id) Update
+                  td
+                    form(method="POST" action='/deleteSales')
+                      input(type="hidden", name="id", value=sales.id)
+                      button.btn.btn-danger.btn-sm(type="submit") Delete
+                  td 
+                    a.btn.btn-secondary.btn-sm(href='/receipt/'+sales._id) Receipt
+            else
+              tr
+                td(colspan="11", class="text-center") No sales made yet
+
+    //- .submit
+    //-   if user.role === 'manager'
+    //-     a.button(href='/dash') Back
+    //- .submit2
+    //-   if user.role === 'salesagent'
+    //-     a.button(href='/dash2') Back
+
+

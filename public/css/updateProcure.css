@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita:wght@400;700&display=swap');
+
+body {
+    font-family: Sansita, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Navbar */
+nav.navbar {
+    background-color: rgb(35, 31, 31);
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul li a {
+    color: #fffcea;        /* Text color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .sidebar ul li a:hover {
+    text-decoration: none; /* Optional: Add underline on hover if you want */
+    color: black;
+  }
+
+.brand-name h1 {
+    margin: 0;
+    color: white;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 180px;
+    padding: 20px;
+    background-color: rgb(35, 31, 31);
+    border-right: 2px solid #e6d7a2;
+    height: calc(100vh - 60px); /* Adjust for navbar height */
+    position: fixed;
+    top: 60px;
+    left: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.sidebar li {
+    margin: 30px 0;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    background-color: #fffcea;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Main Content Layout */
+.main-container {
+    display: flex;
+    margin-top: 60px; /* To avoid overlapping with navbar */
+    padding-left: 180px; /* To make space for the sidebar */
+    width: calc(100% - 180px); /* Adjust for sidebar width */
+    height: calc(100vh - 60px); /* Full height minus navbar */
+    background-image: url('/images/we.avif'); /* Background starts from here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the start */
+}
+
+/* Form Section */
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center items vertically */
+    flex-grow: 1;
+    z-index: 1;
+    padding: 20px; /* Add padding to avoid content touching edges */
+    box-sizing: border-box; /* Include padding in the element’s total width and height */
+}
+
+/* Form Container */
+.form-container {
+    padding: 20px; /* Increased padding for better spacing */
+    background:transparent;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 100%; /* Adjust to full width of parent container */
+    max-width: 600px; /* Set a maximum width for larger screens */
+    box-sizing: border-box; /* Include padding and border in element’s total width and height */
+}
+
+/* Form Header */
+.form-header h1 {
+    font-size: 28px;
+    text-align: center;
+    color: white;
+}
+
+/* Form Layout */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between form fields */
+}
+
+/* Form Column */
+.form-column {
+    flex: 1;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+/* Form Elements */
+label {
+    font-size: 18px;
+    margin-bottom: 3px;
+    color: white;
+}
+
+input, select {
+    padding: 8px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%; /* Ensure equal width */
+    box-sizing: border-box; /* Include padding and border in element’s total width and height */
+}
+
+/* Submit Button */
+.submit {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.submit button {
+    font-family: 'Sansita', sans-serif;
+    background-color: #fff5c5;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 35px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit button:hover {
+    background-color: #ffeb85;
+    opacity: 0.8;
+}
+
+#result {
+    margin-top: 20px;
+    text-align: center;
+    color: #000;
+}

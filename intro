@@ -1,0 +1,48 @@
+<!-- // Non-blocking / asynchoronous
+// Single thread is used to handle multiple requests
+// Nde apps are asynchoronous by defaulttensive 
+// Node buildes data intensive / real time apps
+
+// Blocking / Synchronous
+
+// pug indentation matters alot write the code propery
+// After we render in studyRoutes
+// Then we go to index.js with app.set
+// we set view engine
+
+// Go to index.js and put the two lines that specify
+// Go to yo views and create a pug file
+
+// After usig post in d studyRoutes make sure dat u use console.log
+// then make sure dat u hv post mthd in yo pug files
+// 
+
+Wn U add another route 
+go to server.js import it and also app.use in the routes
+
+
+After creating a schema, go to the routes file n import that model
+after const must be a capital letter
+we are not sending a json so we remove it
+
+Pushing data to the db
+We created a .env file we put in the url for connecting to the database
+We went to th server sever file n put in d configurations to d mongodb
+We imported the dot env config
+We created a schema in d models folder
+we created a file stock.js wea we put a schema
+
+ctrl f, then press upside arrow
+
+AUTHORIZATION
+ We add const passport in the server.js as dependences with dotenv below
+
+The action must match with yo route
+
+navbar  dashboard credit sales  cashsales   
+a manager can do everything but the salesagentisrestricted
+
+for radio buttons, selected =  checked
+
+form#add-sale-form(action=`/addSale/${produce._id}` method='POST' name='addSale')
+-->

@@ -1,0 +1,97 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Credit Sales Form
+    link(rel='stylesheet' href='/css/credit.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+        ul
+          li
+            a(href="/creditList") CREDIT LIST
+          li
+            a(href="/salesList") CASH LIST
+          li
+            a(href="/viewstock") STOCK STATUS
+          li
+            a(href="/produceList") PRODUCE LIST
+          li
+            a(href="/") LOG OUT
+      .form-section
+        .form-container
+          .form-header
+            h1 CREDIT SALES FORM
+          form(onsubmit='return validateForm()', action=`/debit/${produce ? procure._id : ''}` method='POST')
+            .form-row
+              .form-column
+                label(for='produceName') Produce Name:
+                select#produceName(name='produceName')
+                  option(value='') Select Produce
+                  option(value='Rice') Rice
+                  option(value='Beans') Beans
+                  option(value='Maize') Maize
+                  option(value='Cowpeas') Cowpeas
+                  option(value='Soyabeans') Soyabeans
+                  option(value='Gnuts') G-nuts
+                span#errorProduceName.text-error
+                label(for='produceType') Type of Produce:
+                select#produceType(name='produceType')
+                  option(value='') Select Produce Type
+                  option(value='Cereals') Cereals
+                  option(value='Legumes') Legumes
+                span#errorProduceType.text-error
+                label(for='buyerName') Buyer Name:
+                input#buyerName(type='text' name='buyerName')
+                span#errorBuyerName.text-error
+                label(for='tonnage') Tonnage(Kgs)
+                input#tonnage(type='number' name='tonnage') 
+                span#errorTonnage.text-error
+                label(for='produceCost') Cost Per Kg (UGX):
+                input#produceCost(type='text' name='produceCost')
+                span#errorProduceCost.text-error
+                label(for='totalCost') Total Amount (UGX):
+                input#totalCost(type='number' name='totalCost' readonly)
+                span#errorTotalCost.text-error
+                label(for='amountPaid') Amount Paid (UGX):
+                input#amountPaid(type='text' name='amountPaid')
+                span#errorAmountPaid.text-error
+                label(for='amountDue') Amount Due (UGX):
+                input#amountDue(type='text' name='amountDue' readonly)
+                span#errorAmountDue.text-error
+              .form-column
+                label(for='nationalId') National ID (NIN):
+                input#nationalId(type='text' name='nationalid')
+                span#errorNationalId.text-error
+                label(for='location') Location:
+                input#location(type='text' name='location')
+                span#errorLocation.text-error
+                label(for='contacts') Buyer's Contact:
+                input#contacts(type='text' name='contact')
+                span#errorContacts.text-error
+                label(for='dispatchDate') Date of Dispatch:
+                input#dispatchDate(type='date' name='dispatchDate')
+                span#errorDispatchDate.text-error
+                label(for='time') Time:
+                input#time(type='time' name='time')
+                span#errorTime.text-error
+                label(for='dueDate') Due Date:
+                input#dueDate(type='date' name='dueDate')
+                span#errorDueDate.text-error
+                label(for='branch') Branch Name:
+                select#branch(name='branch')
+                  option(value='') Select Branch
+                  option(value='Maganjo') Maganjo
+                  option(value='Matugga') Matugga
+                span#errorBranch.text-error
+                label(for='salesAgent') Sales Agent Name:
+                input#salesAgent(type='text' name='salesagent')
+                span#errorSalesAgent.text-error
+            .submit
+              button(type='submit') Submit
+    #result
+  script(src='/js/credit.js')

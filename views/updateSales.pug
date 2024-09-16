@@ -1,0 +1,80 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Credit Sales Form
+    link(rel='stylesheet' type='text/css' href='/css/sales.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+        ul
+          li
+            a(href="/salesList") SALES LIST
+          li
+            a(href="/makeSale") MAKE SALE
+          li
+            a(href="/viewstock") STOCK STATUS
+          li
+            a(href="/salesList") BACK
+          li
+            a(href="/") LOG OUT
+      .form-section
+        .form-container
+          .form-header
+            h1 MAKE SALES
+          form(action='/updateSales?id=' + sales._id method='POST')
+            .form-row
+              .form-column
+                label(for='produceName') Produce Name:
+                select#produceName(name='produceName')
+                  option(value='') Select Produce
+                  option(value='Beans', selected=sales.produceName === 'Beans') Beans
+                  option(value='Maize', selected=sales.produceName === 'Maize') Maize
+                  option(value='Rice', selected=sales.produceName === 'Rice') Rice
+                  option(value='Soyabeans', selected=sales.produceName === 'Soyabeans') Soyabeans
+                  option(value='Cowpeas', selected=sales.produceName === 'Cowpeas') Cowpeas
+                  option(value='Gnuts', selected=sales.produceName === 'Gnuts') G-nuts
+              .form-column
+                label(for='produceType') Produce Type:
+                select#produceType(name='produceType')
+                  option(value='') Select Produce Type
+                  option(value='Cereals', selected=sales.produceType === 'Cereals') Cereals
+                  option(value='Legumes', selected=sales.produceType === 'Legumes') Legumes
+            .form-row
+              .form-column
+                label(for='tonnage') Tonnage (kgs):
+                input#tonnage(type='number' name='tonnage' value=sales.tonnage)
+              .form-column
+                label(for='amountPaid') Cost Per Kg (UGX):
+                input#amountPaid(type='number' name='amountPaid' value=sales.amountPaid)
+            .form-row
+              .form-column
+                label(for='buyerName') Buyer's Name:
+                input#buyerName(type='text' name='buyername' value=sales.buyername)
+              .form-column
+                label(for='salesAgentName') Sales Agent's Name:
+                input#salesAgentName(type='text' name='salesagent' value=sales.salesagent)
+            .form-row
+              .form-column
+                label(for='branch') Branch Name:
+                select#branch(name='branch')
+                  option(value='') Select Branch
+                  option(value='Maganjo', selected=sales.branch === 'Maganjo') Maganjo
+                  option(value='Matugga', selected=sales.branch === 'Matugga') Matugga
+              .form-column
+                label(for='date') Date:
+                input#date(type='date' name='date' value=sales.date)
+            .form-row
+              .form-column
+                label(for='time') Time:
+                input#time(type='time' name='time' value=sales.time)
+              .form-column
+                label(for='totalpayment') Total Payment:
+                input#totalpayment(type='number' name='totalpayment' value=sales.totalpayment readonly)
+            .submit
+              button(type='submit') Make Sale
+    script(src='/js/make_sale.js')

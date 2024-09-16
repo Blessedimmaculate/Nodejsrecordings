@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita:wght@300;400&display=swap');
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Sansita', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.bg-image.visible {
+  opacity: 1;
+}
+
+/* Images used */
+.img1 { background-image: url("/images/wel.jpg"); }
+.img2 { background-image: url("/images/wel1.jpg"); }
+.img3 { background-image: url("/images/wel2.jpg"); }
+.img4 { background-image: url("/images/wel3.jpg"); }
+.img5 { background-image: url("/images/wel4.jpg"); }
+.img6 { background-image: url("/images/wel5.jpg"); }
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  color: white;
+  font-weight: lighter;
+  font-size: 80px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#ab {
+  color: white;
+  font-weight: lighter;
+  font-size: 40px;
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn {
+  font-family: 'Sansita', sans-serif;
+  background-color: #f4511e;
+  border: none;
+  border-radius: 35px;
+  color: white;
+  padding: 16px 32px;
+  font-size: 20px;
+   transition: 0.3s;
+  position: fixed;
+  bottom: 20px;
+  right: 150px;
+  z-index: 3;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #fffcea;;
+  color: black;
+  opacity: 0.6;
+}
+
+/* Removed the commented-out code */

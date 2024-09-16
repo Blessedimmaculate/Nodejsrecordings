@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Credit Sales Form
+    link(rel='stylesheet' href='/css/updateSignup.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+        ul
+          li
+            a(href="/salesList") CASH LIST
+          li
+            a(href="/creditList") CREDIT LIST
+          li
+            a(href="/viewstock") STOCK STATUS
+          li
+            a(href="/produceList") PRODUCE LIST
+          li
+            a(href="/workersList") BACK
+          li
+            a(href="/") LOG OUT
+      .form-section
+        .form-container
+          .form-header
+            h1 SIGN UP
+          form.signup-form(action='/updateSignup?id=' + signup._id method='POST')
+            label(for='username') Username:
+            input#username.form-input(type='text' name='username' value=signup.username)
+            
+            label(for='role') Role:
+            select#role.form-input(name='role')
+              option(value='salesagent', selected=signup.role === 'salesagent') Sales Agent
+              option(value='manager', selected=signup.role === 'manager') Manager
+
+            label(for='phone') Phone Number:
+            input#phone.form-input(type='text' name='phoneNumber' value=signup.phoneNumber)
+            
+            label(for='email') Email:
+            input#email.form-input(type='email' name='email' value=signup.email)
+            
+            label(for='branch') Branch:
+            select#branch.form-input(name='branch')
+              option(value='Matugga', selected=signup.branch === 'Matugga') Matugga
+              option(value='Maganjo', selected=signup.branch === 'Maganjo') Maganjo
+
+            label(for='password') Password:
+            input#password.form-input(type='password' name='password')
+
+            .submit
+              button(type='submit') Submit
+    script(src='/js/valid_copy.js')

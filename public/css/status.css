@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita:wght@400;700&display=swap');
+body{
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 200px;
+    /* Set the desired height */
+    object-fit: cover;
+    /* This will ensure the image covers the area without distortion */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    width: 100%;
+    /* Ensure the image width is 100% of the card width */
+
+}
+
+
+
+.card-body{
+    background-color: #fffcea;
+    border-radius: 7px;
+}
+
+.card-text {
+    text-align: center;
+    font-family: Sansita, sans-serif;
+    font-size: 25px;
+    
+}
+
+.card-title {
+    text-align: center;
+    font-family: Sansita, sans-serif;
+    font-size: 30px;
+
+
+}
+
+.container {
+    margin-top: 12px;
+
+
+}
+
+#myVideo {
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.btn {
+    font-family: 'Sansita', sans-serif;
+    background-color: #ffeb85;
+    border: none;
+    border-radius: 25px;
+    color: black;
+    padding: 5px;
+    font-size: 25px;
+     transition: 0.3s;
+    position: fixed;
+    bottom: 8px;
+    right: 90px;
+    z-index: 3;
+    text-decoration: none;
+    width: 220px;
+    transform: translateX(-20%);
+  }
+  
+  .btn:hover {
+    opacity: 0.6;
+    background-color: #fffcea;
+  }

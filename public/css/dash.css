@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita:wght@400;700&display=swap');
+
+body {
+    font-family: Sansita, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Navbar */
+nav.navbar {
+    background-color: rgb(35, 31, 31);
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul li a {
+    color: #fffcea;        /* Text color */
+    text-decoration: none; /* Remove underline */
+  
+  }
+  
+  .sidebar ul li a:hover {
+    text-decoration: none; /* Optional: Add underline on hover if you want */
+    color: black;
+  }
+
+
+/* Form and content layout */
+.main-container {
+    display: flex;
+    margin-top: 60px; /* To avoid overlapping with navbar */
+    padding-left: 220px; /* To make space for the sidebar */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.brand-name h1 {
+    margin: 0;
+    color: white;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    padding: 2px;
+    background-color: rgb(35, 31, 31);
+    border-right: 2px solid #e6d7a2;
+    height: 100vh;
+    position: fixed;
+    top: 60px; /* Adjust based on navbar height */
+    left: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.sidebar li {
+    margin: 30px 0;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    background-color: #fffcea;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.card-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Keep the text color */
+    display: block; /* Ensure the link takes up the entire card */
+}
+
+.card-link:hover .card {
+    cursor: pointer; /* Change cursor to pointer on hover */
+    /* Optionally, add more styles for hover effect */
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* Brings the search bar and icon undesigned */
+/* This background appears down call it d body */
+.container{
+    position: absolute;
+    right: 0;
+    width: 85vw;
+    height: 100vh;
+    background: #fde58a;
+    margin-bottom: 15vh; 
+}
+
+
+
+.container .content{
+    position: relative;
+    margin-top: 10vh;
+    min-height: 90vh;
+    background-image: url("/images/we.avif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.container .content .cards{
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+.container .content .cards .card{
+    width: 250px;
+    height: 150px;
+    background:#fff5c5;
+    margin: 68px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+
+@media screen and (max-width: 1050px){
+    .side-menu li{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 940px){
+    .side-menu li span {
+        display: none;
+    }
+    .side-menu{
+        align-items: center;
+    }
+    .side-menu li img{
+        width: 40px;
+        height: 40px;
+    }
+    .side-menu li:hover {
+        background: #ffa500;
+        padding: 8px 38px;
+        border: 2px solid #bb5502
+    }
+}
+
+@media screen and (max-width: 536px){
+    .brand-name h1{
+        font-size: 16px;
+    }
+    .container .content .cards{
+        justify-content: center;
+    }
+    .side-menu li img{
+        width: 30px;
+        height: 30px;
+    }
+    .container .content .recent-payments table th:nth-child(2),
+    .container .content .recent-payments table th:nth-child(2){
+        display: flex;
+    }
+}

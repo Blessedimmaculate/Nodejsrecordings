@@ -1,0 +1,72 @@
+doctype html
+html
+  head
+    title Credit List
+    link(rel='stylesheet', href='/css/creditList.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .sidebar
+      ul
+        li
+          a(href="/produceList") PRODUCE LIST
+        li
+          a(href="/salesList") CASH LIST
+        li
+          a(href="/viewstock") STOCK STATUS
+        li
+          a(href="/debit") MAKE SALE
+        li
+          a(href="/") LOG OUT
+    .main-container
+      .container
+        h2.text-center.mt-5.mb-4 CREDIT LIST
+        .total-payment 
+            p Total Amount Paid: UGX #{totalAmountPaid} <!-- Display total amount paid -->
+            p Total Amount Due: UGX #{totalAmountDue}   <!-- Display total amount due -->
+        table.table.table-striped
+          thead
+            tr
+              th(scope='col') Produce Name
+              th(scope='col') Buyer's Name
+              th(scope='col') NIN
+              th(scope='col') Location
+              th(scope='col') Tonnage
+              th(scope='col') Cost Per Kg (UGX)
+              th(scope='col') Total Amount (UGX)
+              th(scope='col') Amount Paid (UGX)
+              th(scope='col') Amount Due (UGX)
+              th(scope='col') Date of Dispatch
+              th(scope='col') Due Date 
+              th(scope='col') Buyer's Contact
+              th(scope='col') Edit
+              th(scope='col') Delete
+              th(scope='col') Receipt
+          tbody
+            if credits.length
+              each credit in credits
+                tr
+                  td #{credit.produceName}
+                  td #{credit.buyerName}
+                  td #{credit.nationalid}
+                  td #{credit.location}
+                  td #{credit.tonnage}
+                  td #{credit.produceCost}
+                  td #{credit.totalCost}
+                  td #{credit.amountPaid}
+                  td #{credit.amountDue}
+                  td= moment(credit.dispatchDate).format('MM/DD/YYYY')
+                  td= moment(credit.dueDate).format('MM/DD/YYYY')
+                  td #{credit.contact}
+                  td
+                    a.btn.btn-primary.btn-sm(href='/updateCredit/' + credit._id) Update
+                  td
+                    form(method="POST" action='/deleteCredit')
+                      input(type="hidden", name="id", value=credit._id)
+                      button.btn.btn-danger.btn-sm(type="submit") Delete
+                  td 
+                    a.btn.btn-secondary.btn-sm(href='/creditReceipt/' + credit._id) Receipt    
+            else
+              tr
+                td(colspan="13", class="text-center") No debts yet :()

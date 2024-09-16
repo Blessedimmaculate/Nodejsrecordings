@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Credit Receipt
+    link(rel='stylesheet' href='/css/receipt.css')
+  body
+    .receipt-container
+      h2.text-center Happy Hoe Grocery Ltd.
+      p.text-center
+        | Phone: 0704196610 / 0704187140
+        br
+        | Email: kglhappyhoe@gmail.com | Website: www.kglstore.com
+        br
+        | Branches: Maganjo and Matuga, Uganda
+        br
+        | Leading Groceries Supplier At Affordable Prices
+      h2.text-center CREDIT RECEIPT
+      table.receipt-table
+        tr
+          th Produce Name
+          td #{credit.produceName}
+        tr
+          th Buyer's Name
+          td #{credit.buyerName}
+        tr
+          th Tonnage
+          td #{credit.tonnage}
+        tr
+          th Cost Per Kg(UGX)
+          td #{credit.produceCost}
+        tr
+          th Total Amount(UGX)
+          td #{credit.totalCost}
+        tr
+          th Amount Paid(UGX)
+          td #{credit.amountPaid}
+        tr
+          th Amount Due(UGX)
+          td #{credit.amountDue}
+        tr
+          th Due Date
+          td= moment(credit.dueDate).format('MM/DD/YYYY')
+      p.Thank THANK YOU   
+    // Print and Back Buttons outside of the receipt-container
+    .buttons-container
+      p.text-right
+        a.btn-print(href='#' onclick='window.print(); return false;') PRINT RECEIPT
+      p.text-left
+        a.btn-print(href='javascript:history.back();') BACK
+    // Footer below
+    footer
+      p &copy; Abakwase Immaculate @2024. All rights reserved.

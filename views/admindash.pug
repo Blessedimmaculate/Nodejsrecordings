@@ -1,0 +1,139 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title ADMIN Dashboard
+    link(rel='stylesheet' href='/css/dash.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+          ul
+            li
+              a(href='/produceList')
+                img(src='/images/adm.png' alt='')
+                span PRODUCE LIST
+            li
+              a(href='/salesList')
+                img(src='/images/man.png' alt='')
+                span CASH LIST
+            li
+              a(href='/viewstock')
+                img(src='/images/agent.png' alt='')
+                span STOCK STATUS
+            li
+              a(href='/')
+                img(src='/images/logout.png' alt='')
+                span LOG OUT
+    .container
+      .content
+        .cards
+          a.card-link(href='/addWorker')
+            .card
+              .box
+                h2 ADD WORKER
+          a.card-link(href='/workersList')
+            .card
+              .box
+                h2 WORKERS LIST
+          a.card-link(href='workersList')
+            .card
+              .box
+                h2 UPDATE WORKERS DATA
+        .cards
+          a.card-link(href='produceList')
+            .card
+              .box
+                h2 PRODUCE LIST
+          a.card-link(href='/salesList')
+            .card
+              .box
+                h2 CASH SALES LIST
+          a.card-link(href='/creditList')
+            .card
+              .box
+                h2 CREDIT SALES LIST
+
+
+
+
+
+
+
+
+
+
+//- doctype html
+//- html 
+//-   head
+//-     meta(charset='UTF-8')
+//-     meta(name='viewport' content='width=device-width, initial-scale=1.0')
+//-     title Dashboard
+//-     link(rel='stylesheet' href='/css/dash.css')   
+//-   body
+//-     nav.navbar(action='/mngdash' method='POST')
+//-       .brand
+//-         img(src='/img/logo1.png' alt='Logo')
+//-         .name Happy Hoe Grocery
+//-       .nav-center
+//-         span MANAGER'S DASHBOARD  
+//-       .nav-items
+//-         .dropdown
+//-           button Produce
+//-           .dropdown-content
+//-             a(href='/produceList') Transactions
+//-             a(href='/produce') Add Produce
+//-         .dropdown
+//-           button Make a Sale
+//-           .dropdown-content
+//-             a(href='/debit') OnCredit
+//-             a(href='/makeSale') OnCash
+//-         a(href='/') Logout
+//-     br
+//-     br
+//-     br
+//-     br
+
+//-     .card-container
+//-       .card
+//-         h3 Sales
+//-         p View  
+//-         a(href='/salesList') Saleslist
+//-         a(href='/creditList') DebitsList
+//-       .card
+//-         h3 Available Stock
+//-         p View  |  Edit
+//-         a(href='/viewstoc') View Stock
+//-       .card
+//-         h3 Staff Members
+//-         p  Branch A | Branch B
+//-         a(href='/workersList') Staff Members
+//-       .card
+//-         h3 Reports
+//-         p Daily reports | Weekly reports
+//-         a(href='/reports') View Reports
+
+//-     br
+//-     br
+//-     br
+//-     br
+
+//-     footer.footer
+//-       p &copy; 2024 My Website. All rights reserved.
+
+//-     script(src='/js/dash.js')
+
+
+
+
+
+
+
+
+
+
+
+//-     //- line 3 if user.role === 'manager'

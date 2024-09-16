@@ -1,0 +1,94 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title PROCUREMENT FORM
+    link(rel='stylesheet' href='/css/procure.css')
+  body
+    nav.navbar
+      .brand-name
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+        ul
+          li
+            a(href="/produceList") PRODUCE LIST
+          li
+            a(href="/salesList") CASH LIST
+          li
+             a(href="/crditList") CREDIT LIST
+          li
+            a(href="/viewstock") STOCK STATUS
+          li
+            a(href="/") LOG OUT
+      .form-section
+        .form-container
+          .form-header
+            h1 PROCUREMENT FORM
+          form(onsubmit='return validateForm()' action='/produce' method='POST')
+            .form-row
+              .form-column
+                label(for='produceName') Name of Produce:
+                select#produceName(name='produceName')
+                  option(value='') Select Produce
+                  option(value='Rice') Rice
+                  option(value='Beans') Beans
+                  option(value='Maize') Maize
+                  option(value='Cowpeas') Cowpeas
+                  option(value='Soyabeans') Soyabeans
+                  option(value='Gnuts') G-nuts
+                span#errorProduceName.text-error
+                label(for='date') Date:
+                input#date(type='date' name='date')
+                span#errorDate.text-error
+                label(for='time') Time:
+                input#time(type='time' name='time')
+                span#errorTime.text-error
+                label(for='stock') Tonnage (kg):
+                input#stock(type='number' name='stock')
+                span#errorStock.text-error
+                label(for='cost') Cost Per Kg (UGX):
+                input#cost(type='number' name='cost')
+                span#errorCost.text-error
+                label(for='totalcost') Total Cost (UGX):
+                input#totalcost(type='number' name='totalcost')
+                span#errorTotalCost.text-error
+                label(for='price') Selling Price (UGX):
+                input#price(type='number' name='price')
+                span#errorPrice.text-error
+              .form-column
+                label(for='produceType') Type of Produce:
+                select#produceType(name='produceType')
+                  option(value='') Select Produce Type
+                  option(value='cereals') Cereals
+                  option(value='legumes') Legumes
+                span#errorProduceType.text-error
+                label(for='branch') Store Branch:
+                select#branch(name='branch')
+                  option(value='') Select Branch
+                  option(value='Maganjo') Maganjo
+                  option(value='Matugga') Matuga 
+                span#errorBranch.text-error
+                label(for='produceSource') Source of Produce:
+                select#produceSource(name='produceSource')
+                  option(value='') Select Produce Source
+                  option(value='maganjo') Maganjo Farm
+                  option(value='matuga') Matuga Farm
+                  option(value='dealer') Dealer
+                  option(value='othercompany') Other Company
+                label(for='dealerName') If Dealer, Dealer Name:
+                input#dealerName(type='text' name='dealerName')
+                span#errorDealerName.text-error
+                label(for='companyName') If Company, Company Name:
+                input#companyName(type='text' name='companyName')
+                span#errorCompanyName.text-error
+                label(for='contact') Source Contact:
+                input#contact(type='tel' name='contact')
+                span#errorContact.text-error
+                label(for='location') Source Location:
+                input#location(type='text' name='location')
+            .submit
+              button(type='submit') Submit
+    #result
+    script(src='/js/procure.js')
