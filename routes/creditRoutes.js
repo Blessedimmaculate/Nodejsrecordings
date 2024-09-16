@@ -77,10 +77,6 @@ router.get('/creditList',
       const totalAmountPaid = totals.length > 0 ? totals[0].totalAmountPaid : 0;
       const totalAmountDue = totals.length > 0 ? totals[0].totalAmountDue : 0;
   
-      // Debugging: Log the calculated totals
-      console.log("Total Amount Paid:", totalAmountPaid);
-      console.log("Total Amount Due:", totalAmountDue);
-  
       // Render the template and pass the data
       res.render('creditlist', {
         title: "Credit List",

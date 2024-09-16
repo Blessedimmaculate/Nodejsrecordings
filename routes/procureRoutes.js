@@ -105,34 +105,41 @@ router.post("/deleteProcure",
     });
 
 
+
 router.get('/viewstock', async (req, res) => {
-        try {
-          const procure = await Procure.aggregate([
+    try {
+        // Uses aggregation to process data in the 'Procure' collection
+        const procure = await Procure.aggregate([
             { 
-              $match: { produceName: { $in: ['Beans', 'Maize', 'Soyabeans', 'Cowpeas', 'Gnuts', 'Rice'] } }  
+                // Filters documents to include only specified produce names
+                $match: { produceName: { $in: ['Beans', 'Maize', 'Soyabeans', 'Cowpeas', 'Gnuts', 'Rice'] } }
             },
             { 
-              $group: { 
-                _id: '$produceName', 
-                totalStock: { $sum: '$stock' }  
-              } 
+                // Group the documents by 'produceName' and calculate the total stock for each type
+                $group: { 
+                    _id: '$produceName',  // Group by 'produceName'
+                    totalStock: { $sum: '$stock' }  // Calculate total stock for each produce name
+                }
             }
-          ]);
-      
-          
-          const procureData = procure.map(item => ({
-            produceName: item._id,  
-            stock: item.totalStock || 0 
-          }));
-      
-          res.render('viewstock', {
-            procure: procureData,  
-          });
-        } catch (err) {
-          console.error(err);
-          res.status(500).send('Internal Server Error');
-        }
-      });
+        ]);
+
+        // Transform the results to a simpler format
+        const procureData = procure.map(item => ({
+            produceName: item._id,  // Set the produce name
+            stock: item.totalStock || 0  // Set the total stock or 0 if not available
+        }));
+
+        // Render the 'viewstock' template and pass the procure data to it
+        res.render('viewstock', {
+            procure: procureData,  // Provide the stock data to the view
+        });
+    } catch (err) {
+        // If there is an error, log it and send a 500 Internal Server Error response
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
       
     
 module.exports = router;

@@ -61,10 +61,6 @@ app.use(expressSession); // Use express session
 app.use(passport.initialize()); // Initialize passport
 app.use(passport.session()); // Helps to use passport session in routes
 
-// // Passport configuration for Register model
-// passport.use(Register.createStrategy()); // Use the local strategy in routes
-// passport.serializeUser(Register.serializeUser()); // Serializes the user for the session
-// passport.deserializeUser(Register.deserializeUser()); // Deserializes the user from the session
 
 // Passport configuration for Register model
 passport.use(Signup.createStrategy()); // Use the local strategy in routes
