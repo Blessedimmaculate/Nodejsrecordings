@@ -4,7 +4,7 @@ const connectEnsureLogin = require('connect-ensure-login');
 
 
  router.get('/agentdash', 
-  // connectEnsureLogin.ensureLoggedIn(),
+    connectEnsureLogin.ensureLoggedIn(),
    (req, res) => {
  res.render('agentdash', {
   user: req.user
