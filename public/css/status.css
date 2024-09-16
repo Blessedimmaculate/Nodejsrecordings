@@ -14,7 +14,11 @@ body{
 
 }
 
-
+p{
+    text-align: center;
+    font-size: 20px;
+    font-family: Sansita, sans-serif;
+}
 
 .card-body{
     background-color: #fffcea;
@@ -37,7 +41,7 @@ body{
 }
 
 .container {
-    margin-top: 12px;
+    margin-top: 5px;
 
 
 }
