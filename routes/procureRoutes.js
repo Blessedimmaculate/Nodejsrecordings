@@ -7,11 +7,7 @@ const connectEnsureLogin = require('connect-ensure-login');
 const Procure = require('../models/procure');
 
 router.get('/produce', 
-<<<<<<< HEAD
    connectEnsureLogin.ensureLoggedIn(), 
-=======
-  // connectEnsureLogin.ensureLoggedIn(), 
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
   (req, res) => {
     res.render('procure', { title: "Produce" });
 })
@@ -23,7 +19,6 @@ router.post('/produce', async (req, res) => {
         res.redirect('/produceList');
     } catch (error) {
         res.status(404).send("unable to save produce to db");
-<<<<<<< HEAD
     }
 })
 
@@ -62,13 +57,6 @@ router.get('/produceList',
 
 
 
-router.get("/updateProcure/:id", 
-  connectEnsureLogin.ensureLoggedIn(),
-=======
-        console.log("Error saving produce", error);
-    }
-
-})
 router.get('/produceList',  
   // connectEnsureLogin.ensureLoggedIn(), 
   async (req, res) => {
@@ -89,8 +77,7 @@ router.get('/produceList',
 
 
 router.get("/updateProcure/:id", 
-  // connectEnsureLogin.ensureLoggedIn(), 
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
+   connectEnsureLogin.ensureLoggedIn(), 
   async (req, res) => {
     try {
         const item = await Procure.findOne({ _id: req.params.id })
@@ -108,13 +95,7 @@ router.get("/updateProcure/:id",
 
 
 // post updated produce
-<<<<<<< HEAD
-router.post("/updateProcure", 
-  connectEnsureLogin.ensureLoggedIn(),
-  async (req, res) => {
-=======
 router.post("/updateProcure", async (req, res) => {
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     try {
         await Procure.findOneAndUpdate({ _id: req.query.id }, req.body);
         res.redirect("/produceList");
@@ -128,13 +109,7 @@ router.post("/updateProcure", async (req, res) => {
 
 //delete user
 // delete Produce
-<<<<<<< HEAD
-router.post("/deleteProcure", 
-  connectEnsureLogin.ensureLoggedIn(),
-  async (req, res) => {
-=======
 router.post("/deleteProcure", async (req, res) => {
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     try {
     await Procure.findByIdAndDelete(req.body.id);
     res.redirect("back");
@@ -144,7 +119,6 @@ router.post("/deleteProcure", async (req, res) => {
     });
 
 
-<<<<<<< HEAD
 
 router.get('/viewstock', async (req, res) => {
     try {
@@ -180,36 +154,7 @@ router.get('/viewstock', async (req, res) => {
     }
 });
 
-=======
-router.get('/viewstock', async (req, res) => {
-        try {
-          const procure = await Procure.aggregate([
-            { 
-              $match: { produceName: { $in: ['Beans', 'Maize', 'Soyabeans', 'Cowpeas', 'Gnuts', 'Rice'] } }  
-            },
-            { 
-              $group: { 
-                _id: '$produceName', 
-                totalStock: { $sum: '$stock' }  
-              } 
-            }
-          ]);
-      
-          
-          const procureData = procure.map(item => ({
-            produceName: item._id,  
-            stock: item.totalStock || 0 
-          }));
-      
-          res.render('viewstock', {
-            procure: procureData,  
-          });
-        } catch (err) {
-          console.error(err);
-          res.status(500).send('Internal Server Error');
-        }
-      });
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
+
       
     
 module.exports = router;

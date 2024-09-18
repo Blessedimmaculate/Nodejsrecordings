@@ -12,11 +12,7 @@ const signupSchema = new mongoose.Schema({
         unique: true,
     },
     phonenumber: {
-<<<<<<< HEAD
-        type: String,
-=======
-        type: Number,
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
+        type: String, // Use String to accommodate phone number formatting
         trim: true,
     },
     registrationDate: {
@@ -31,11 +27,13 @@ const signupSchema = new mongoose.Schema({
         type: String,
         trim: true,
     }
-})
+});
+
 // By default, mongodb uses username field for authentication
-// The username field shows dat the user won't be using a username but instead will use the email
+// The username field shows that the user won't be using a username but instead will use the email
 // Field must be a capital letter n mind the sp of email be it capital letter
 signupSchema.plugin(passportLocalMongoose, {
     usernameField: "email",
 });
+
 module.exports = mongoose.model("Signup", signupSchema);

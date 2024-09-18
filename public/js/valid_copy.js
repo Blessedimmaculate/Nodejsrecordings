@@ -4,11 +4,7 @@ const Validate = (event) => {
     // Get form elements
     let username = document.getElementById("username");
     let email = document.getElementById("email");
-<<<<<<< HEAD
-    let phonenumber = document.getElementById("phonenumber");
-=======
-    let mobileNumber = document.getElementById("mobileNumber");
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
+    let mobileNumber = document.getElementById("mobileNumber"); // Fixed id
     let branch = document.getElementById("branch");
     let role = document.getElementById("role");
     let password = document.getElementById("password");
@@ -18,11 +14,7 @@ const Validate = (event) => {
     // Get error elements
     let usernameErr = document.getElementById("usernameErr");
     let emailErr = document.getElementById("emailErr");
-<<<<<<< HEAD
-    let phonenumberErr = document.getElementById("phonenumberErr");
-=======
-    let mobileNumberErr = document.getElementById("mobileNumberErr");
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
+    let mobileNumberErr = document.getElementById("mobileNumberErr"); // Fixed id
     let branchErr = document.getElementById("branchErr");
     let roleErr = document.getElementById("roleErr");
     let passwordErr = document.getElementById("passwordErr");
@@ -68,21 +60,6 @@ const Validate = (event) => {
 
     // Mobile Number validation
     const mobilePattern = /^[0-9]{10}$/; // Adjust as needed for your format
-<<<<<<< HEAD
-    if (phonenumber.value == "") {
-        phonenumber.style.border = "1px solid red";
-        phonenumberErr.textContent = "Mobile number cannot be empty";
-        phonenumberErr.style = "";
-        error++;
-    } else if (!mobilePattern.test(phonenumber.value)) {
-        phonenumber.style.border = "1px solid red";
-        phonenumberErr.textContent = "Please enter a valid mobile number (10 digits)";
-        phonenumberErr.style = "";
-        error++;
-    } else {
-        phonenumber.style.border = "1px solid green";
-        phonenumberErr.textContent = "";
-=======
     if (mobileNumber.value == "") {
         mobileNumber.style.border = "1px solid red";
         mobileNumberErr.textContent = "Mobile number cannot be empty";
@@ -96,7 +73,6 @@ const Validate = (event) => {
     } else {
         mobileNumber.style.border = "1px solid green";
         mobileNumberErr.textContent = "";
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     }
 
     // Branch validation
@@ -159,12 +135,7 @@ const Validate = (event) => {
     }
 };
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
+// Set the current date in 'registrationDate' input field
 document.addEventListener('DOMContentLoaded', () => {
     // Get the 'registrationDate' input element
     const registrationDateInput = document.querySelector('input[name="registrationDate"]');
@@ -179,12 +150,5 @@ document.addEventListener('DOMContentLoaded', () => {
     registrationDateInput.value = formattedDate;
 });
 
-<<<<<<< HEAD
 // Attach the validation function to the form's submit event
 document.getElementById('register-form').addEventListener('submit', Validate); // Fixed selector
-=======
-
-// Attach the validation function to the form's submit event
-document.getElementById('#register-form.register-form').addEventListener('submit', Validate);
-
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
