@@ -12,7 +12,6 @@ html
     .main-container
       .sidebar
         ul
-<<<<<<< HEAD
           li
             a(href="/creditList") CREDIT LIST
           li
@@ -23,13 +22,6 @@ html
             a(href="/produceList") PRODUCE LIST
           li
             a(href="/") LOG OUT
-=======
-          li CREDIT SALE
-          li CREDIT LIST
-          li STOCK STATUS 
-          li PRODUCE LIST
-          li LOG OUT
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
       .form-section
         .form-container
           .form-header
@@ -56,25 +48,20 @@ html
                 label(for='buyerName') Buyer Name:
                 input#buyerName(type='text' name='buyerName')
                 span#errorBuyerName.text-error
-<<<<<<< HEAD
-                label(for='tonnage') Tonnage(Kgs)
-                input#tonnage(type='number' name='tonnage') 
-=======
-                label(for='tonnage') Tonnage:
+                label(for='tonnage') Tonnage (Kg):
                 input#tonnage(type='number' name='tonnage')
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
                 span#errorTonnage.text-error
                 label(for='produceCost') Cost Per Kg (UGX):
-                input#produceCost(type='text' name='produceCost')
+                input#produceCost(type='number' name='produceCost')
                 span#errorProduceCost.text-error
                 label(for='totalCost') Total Amount (UGX):
                 input#totalCost(type='number' name='totalCost' readonly)
                 span#errorTotalCost.text-error
                 label(for='amountPaid') Amount Paid (UGX):
-                input#amountPaid(type='text' name='amountPaid')
+                input#amountPaid(type='number' name='amountPaid')
                 span#errorAmountPaid.text-error
                 label(for='amountDue') Amount Due (UGX):
-                input#amountDue(type='text' name='amountDue' readonly)
+                input#amountDue(type='number' name='amountDue' readonly)
                 span#errorAmountDue.text-error
               .form-column
                 label(for='nationalId') National ID (NIN):
@@ -84,7 +71,7 @@ html
                 input#location(type='text' name='location')
                 span#errorLocation.text-error
                 label(for='contacts') Buyer's Contact:
-                input#contacts(type='text' name='contact')
+                input#contacts(type='text' name='contacts')
                 span#errorContacts.text-error
                 label(for='dispatchDate') Date of Dispatch:
                 input#dispatchDate(type='date' name='dispatchDate')
@@ -102,9 +89,9 @@ html
                   option(value='Matugga') Matugga
                 span#errorBranch.text-error
                 label(for='salesAgent') Sales Agent Name:
-                input#salesAgent(type='text' name='salesagent')
+                input#salesAgent(type='text' name='salesAgent')
                 span#errorSalesAgent.text-error
             .submit
               button(type='submit') Submit
     #result
-  script(src='/js/credit.js')
+    script(src='/js/credit.js')

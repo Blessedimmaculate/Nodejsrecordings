@@ -2,8 +2,6 @@
 const express = require("express");
 const path = require("path"); // Path is inbuilt, not installed
 const moment = require("moment");
-const RedisStore = require('connect-redis')(session);
-const redisClient = require('redis').createClient();
 const mongoose = require("mongoose");
 const passport = require("passport");
 const expressSession = require("express-session")({
@@ -61,13 +59,6 @@ app.use(express.json()); // Helps to capture data in JSON format
 app.use(expressSession); // Use express session
 app.use(passport.initialize()); // Initialize passport
 app.use(passport.session()); // Helps to use passport session in routes
-
-app.use(session({
-  store: new RedisStore({ client: redisClient }),
-  secret: 'your-secret-key',
-  resave: false,
-  saveUninitialized: false
-}));
 
 // Passport configuration for Register model
 passport.use(Signup.createStrategy()); // Use the local strategy in routes

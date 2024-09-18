@@ -1,110 +1,32 @@
-meta(charset="UTF-8")
-<<<<<<< HEAD
-meta(name="viewport", content="width=device-width, initial-scale=1")
-title Document
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Document
 
-// Add Bootstrap CSS link
-=======
-meta(name="viewport", content="width=device-width,initial-scale=1")
-title Document
-//  Add Bootstrap CSS link 
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
-link(href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css", rel="stylesheet")
-link(rel="stylesheet", href="/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.css")
-link(rel="stylesheet", href="/css/status.css")
-video#myVideo(autoplay, muted, loop)
-  source(src="/images/logo.mp4", type="video/mp4")
-<<<<<<< HEAD
-.container
-  .row.row-cols-1.row-cols-md-3.g-4
-    each item in procure
-      .col
-        .card.h-100
-          img.card-img-top(src=`/images/${item.produceName.toLowerCase()}.jpg`, alt=item.produceName)
-          .card-body
-            h5.card-title #{item.produceName.toUpperCase()}
-            p TOTAL STOCK: #{item.stock || 0} kg
+    // Add Bootstrap CSS link
+    link(href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css", rel="stylesheet")
+    link(rel="stylesheet", href="/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.css")
+    link(rel="stylesheet", href="/css/status.css")
 
-a.btn(href="/login") LOGIN
+  body
+    video#myVideo(autoplay, muted, loop)
+      source(src="/images/logo.mp4", type="video/mp4")
+      // Your browser does not support HTML5 video.
 
-// Add Bootstrap JS and Popper.js
-script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js")
-script(src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js")
-=======
-  //  Your browser does not support HTML5 video. 
-.container
-  .row.row-cols-1.row-cols-md-3.g-4
-    .col
-      .card.h-100
-        img.card-img-top(src="/images/beans.jpg", alt="Beans")
-        .card-body
-          h5.card-title BEANS
-          p.card-text 114 TONNES
-    .col
-      .card.h-100
-        img.card-img-top(src="/images/maize.webp", alt="Maize")
-        .card-body
-          h5.card-title MAIZE
-          p.card-text 101 TONNES
-    .col
-      .card.h-100
-        img.card-img-top(src="/images/soya.jpg", alt="Soya")
-        .card-body
-          h5.card-title SOYABEANS
-          p.card-text 80 TONNES
-    .col
-      .card.h-100
-        img.card-img-top(src="/images/rice.jpg", alt="Rice")
-        .card-body
-          h5.card-title RICE
-          p.card-text 60 TONNE
-    .col
-      .card.h-100
-        img.card-img-top(src="/images/g-nuts.jpeg", alt="Groundnuts")
-        .card-body
-          h5.card-title GROUNDNUTS
-          p.card-text 90 TONNES
-    .col
-      .card.h-100
-        img.card-img-top(src="/images/cowpeas.jpg", alt="Cowpeas")
-        .card-body
-          h5.card-title COWPEAS
-          p.card-text 50 TONNES
-a.btn(href="/login") LOGIN
-//  Add Bootstrap JS and Popper.js 
-script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js")
-script(src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js")
+    .container
+      .row.row-cols-1.row-cols-md-3.g-4
+        each item in procure
+          .col
+            .card.h-100
+              img.card-img-top(src=`/images/${item.produceName.toLowerCase()}.jpg`, alt=item.produceName)
+              .card-body
+                h5.card-title #{item.produceName.toUpperCase()}
+                p TOTAL STOCK: #{item.stock || 0} kg
 
+    a.btn(href="/login") LOGIN
 
-//- doctype html
-//- html
-//-   head
-//-     title Report Page
-//-     link(rel="stylesheet", href='/css/report.css') 
-//-   body
-//-     nav.navbar
-//-       .logo
-//-         img(src='/img/logo1.png' alt='Logo')
-//-       .nav-center
-//-         span AVAILABLE STOCK
-//-       .brand-name
-//-         h1 Happy Hoe Grocery Store
-
-//-     br
-//-     br
-//-     br
-//-     br 
-
-//-     .container
-//-       each item in procure
-//-         .card
-//-           h2 #{item.produceName}
-//-           p Total Stock: #{item.stock || 0}
-
-//-     br
-//-     br
-//-     br
-
-//-     .submit3
-//-       a.button(href='/addUser') SIGNUP
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
+    // Add Bootstrap JS and Popper.js
+    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js")

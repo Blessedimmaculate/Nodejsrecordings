@@ -3,66 +3,6 @@ html
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-<<<<<<< HEAD
-    title Credit Sales Form
-    link(rel='stylesheet' href='/css/dash.css')
-  body
-    nav.navbar
-      .brand-name
-        h1 HAPPY HOE GROCERY STORE
-    .main-container
-      .sidebar
-          ul
-            li
-              a(href='/produceList')
-                img(src='/images/adm.png' alt='')
-                span PRODUCE LIST
-            li
-              a(href='/salesList')
-                img(src='/images/man.png' alt='')
-                span CASH LIST
-            li
-              a(href='/viewstock')
-                img(src='/images/agent.png' alt='')
-                span STOCK STATUS
-            li
-              a(href='/')
-                img(src='/images/logout.png' alt='')
-                span LOG OUT
-    .container
-      .content
-        .cards
-          a.card-link(href='makeSale')
-            .card
-              .box
-                h2 MAKE CASH SALE
-          a.card-link(href='/debit')
-            .card
-              .box
-                h2 MAKE CREDIT SALE
-          a.card-link(href='/creditList')
-            .card
-              .box
-                h2 CREDIT SALES LIST
-        .cards
-          a.card-link(href='/salesList')
-            .card
-              .box
-                h2 CASH SALES LIST
-          a.card-link(href='/viewstock')
-            .card
-              .box
-                h2 STOCK STATUS
-          a.card-link(href='/logout')
-            .card
-              .box
-                h2 LOG OUT
-
-
-
-
-
-=======
     title Manager Dashboard
     link(rel='stylesheet' href='/css/dash.css')
   body
@@ -72,29 +12,25 @@ html
       ul
         li
           a(href='/dashboard/mngdash.html')
-            img(src='/images/adm.png' alt='')
+            img(src='/images/adm.png' alt='Dashboard Icon')
             span Dashboard
         li
           a(href='/procurement/procurement.html')
-            img(src='/images/man.png' alt='')
+            img(src='/images/man.png' alt='Procurement Icon')
             span Procurement
         li
           a(href='/status/status.html')
-            img(src='/images/agent.png' alt='')
+            img(src='/images/agent.png' alt='Stock Status Icon')
             span Stock Status
         li
           a(href='/index/index.html')
-            img(src='/images/logout.png' alt='')
+            img(src='/images/logout.png' alt='Log Out Icon')
             span Log Out
     .container
       .header
         .nav
-          //- .search
-          //-   input(type='text' placeholder='search..')
-          //-   button(type='submit')
-          //-     img(src='/images/sach.png' alt='Search Icon')
           .user
-            a.btn(href='/addProduce') Add Produce           
+            a.btn(href='/addProduce') Add Produce
           .user
             a.btn(href='/viewProduce') Produce List
           .user
@@ -102,8 +38,8 @@ html
           .user
             a.btn(href='/stock') Stock Status
           .img-case
-              a(href='/')
-                img(src='/images/logout.png' alt='Go to Index Page')
+            a(href='/')
+              img(src='/images/logout.png' alt='Go to Index Page')
       .content
         .cards
           a.card-link(href='/procreport/procreport.html')
@@ -131,121 +67,4 @@ html
             .card
               .box
                 h2 Credit Sales Report
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
-
-
-
-
-//- doctype html
-<<<<<<< HEAD
-//- html 
-=======
-//- html
-//- if user.role === 'salesagent'
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
-//-   head
-//-     meta(charset='UTF-8')
-//-     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-//-     title Dashboard
-<<<<<<< HEAD
-//-     link(rel='stylesheet' href='/css/dash.css')   
-//-   body
-//-     nav.navbar(action='/mngdash' method='POST')
-=======
-//-     link(rel='stylesheet' href='/css/dash.css')    
-//-   body
-//-     nav.navbar(action='/agentdash' method='POST')
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
-//-       .brand
-//-         img(src='/img/logo1.png' alt='Logo')
-//-         .name Happy Hoe Grocery
-//-       .nav-center
-<<<<<<< HEAD
-//-         span MANAGER'S DASHBOARD  
-//-       .nav-items
-//-         .dropdown
-//-           button Produce
-//-           .dropdown-content
-//-             a(href='/produceList') Transactions
-//-             a(href='/produce') Add Produce
-//-         .dropdown
-//-           button Make a Sale
-//-           .dropdown-content
-//-             a(href='/debit') OnCredit
-//-             a(href='/makeSale') OnCash
-//-         a(href='/') Logout
-=======
-//-         span SALES-AGENT'S DASHBOARD  
-//-       .nav-items
-//-         .dropdown
-//-           button Sales
-//-           .dropdown-content
-//-             a(href='/salesList') View Sales
-//-             a(href='/makeSale') Add Sales
-//-         .dropdown
-//-           button Credit Sales
-//-           .dropdown-content
-//-             a(href='/creditList') View Debits
-//-             a(href='/debit') Add Credit
-//-         a(href='/') Logout
-
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
-//-     br
-//-     br
-//-     br
-//-     br
-
-//-     .card-container
-//-       .card
-<<<<<<< HEAD
-//-         h3 Sales
-//-         p View  
-//-         a(href='/salesList') Saleslist
-//-         a(href='/creditList') DebitsList
-=======
-//-         h3 Procurement
-//-         p view  
-//-         a(href='/produceList') Transactions
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
-//-       .card
-//-         h3 Available Stock
-//-         p View  |  Edit
-//-         a(href='/viewstoc') View Stock
-//-       .card
-//-         h3 Staff Members
-<<<<<<< HEAD
-//-         p  Branch A | Branch B
-=======
-//-         p  Branch A | Branch B 
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
-//-         a(href='/workersList') Staff Members
-//-       .card
-//-         h3 Reports
-//-         p Daily reports | Weekly reports
-//-         a(href='/reports') View Reports
-
-//-     br
-//-     br
-//-     br
-//-     br
-
-//-     footer.footer
-//-       p &copy; 2024 My Website. All rights reserved.
-
-<<<<<<< HEAD
-//-     script(src='/js/dash.js')
-
-
-
-
-
-
-
-
-
-
-
-//-     //- line 3 if user.role === 'manager'
-=======
-//-     script(src='/js/dash.js')
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
+    script(src='/js/dash.js')

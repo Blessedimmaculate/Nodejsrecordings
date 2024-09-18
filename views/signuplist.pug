@@ -2,32 +2,23 @@ doctype html
 html
   head
     title Workers List
-    link(rel='stylesheet', href='/css/signlist.css')
+    link(rel='stylesheet' href='/css/signlist.css')
   body
     nav.navbar
       .brand-name
         h1 HAPPY HOE GROCERY STORE
     .sidebar
-<<<<<<< HEAD
-        ul
-          li
-            a(href="/salesList") CASH LIST
-          li
-            a(href="/creditList") CREDIT LIST
-          li
-            a(href="/viewstock") STOCK STATUS
-          li
-            a(href="/produceList") PRODUCE LIST
-          li
-            a(href="/") LOG OUT
-=======
       ul
-        li CREDIT SALE
-        li BACK
-        li STOCK STATUS 
-        li PRODUCE LIST
-        li LOG OUT
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
+        li
+          a(href="/salesList") CASH LIST
+        li
+          a(href="/creditList") CREDIT LIST
+        li
+          a(href="/viewstock") STOCK STATUS
+        li
+          a(href="/produceList") PRODUCE LIST
+        li
+          a(href="/") LOG OUT
     .main-container
       .container
         h1#title Registered Users List
@@ -53,6 +44,6 @@ html
                 td
                   .button-container
                     a.btn.btn-primary.btn-sm(href='/updateSignup/' + signup._id) Update
-                    form(method="POST" action='/deleteSignup')
+                    form(method="POST" action='/deleteSignup' style='display:inline;')
                       input(type="hidden" name="id" value=signup._id)
                       button.btn.btn-danger.btn-sm(type="submit") Delete

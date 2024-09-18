@@ -12,7 +12,6 @@ html
     .main-container
       .sidebar
         ul
-<<<<<<< HEAD
           li
             a(href="/makeSale") MAKE SALE
           li
@@ -23,13 +22,6 @@ html
             a(href="/produceList") PRODUCE LIST
           li
             a(href="/") LOG OUT
-=======
-          li CREDIT SALE
-          li CREDIT LIST
-          li STOCK STATUS 
-          li PRODUCE LIST
-          li LOG OUT
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
       .form-section
         .form-container
           .form-header
@@ -73,13 +65,13 @@ html
               
               .form-column
                 label(for='nationalId') National ID (NIN):
-                input#nationalId(type='text' name='nationalid' value=credit.nationalId)
+                input#nationalId(type='text' name='nationalId' value=credit.nationalId)
 
                 label(for='location') Location:
                 input#location(type='text' name='location' value=credit.location)
 
                 label(for='contacts') Buyer's Contact:
-                input#contacts(type='text' name='contact' value=credit.contacts)
+                input#contacts(type='text' name='contacts' value=credit.contacts)
 
                 label(for='dispatchDate') Date of Dispatch:
                 input#dispatchDate(type='date' name='dispatchDate' value=credit.dispatchDate)
@@ -96,8 +88,8 @@ html
                   option(value='Maganjo', selected=credit.branch === 'Maganjo') Maganjo
                   option(value='Matugga', selected=credit.branch === 'Matugga') Matugga
 
-                label(for='salesagent') Sales Agent Name:
-                input#salesAgent(type='text' name='salesagent' value=credit.salesAgent)
+                label(for='salesAgent') Sales Agent Name:
+                input#salesAgent(type='text' name='salesAgent' value=credit.salesAgent)
 
             .submit
               button(type='submit') Submit
