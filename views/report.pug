@@ -1,0 +1,81 @@
+doctype html
+html
+  head
+    title Report Page
+    link(rel="stylesheet", href='/css/report.css') 
+    script(src="https://cdn.jsdelivr.net/npm/chart.js")
+
+  body
+    nav.navbar
+      .logo
+        img(src='/img/logo1.png' alt='Logo')
+      .nav-center
+        span REPORT
+      .brand-name
+        h1 Happy Hoe Grocery Store
+    br
+    br
+    br
+    br 
+    .container
+      .card
+        h2 Procurement
+        p Total Procures: #{procure.totalcost || 0}
+        p Total tonnage: #{procure.stock || 0}
+
+      .card
+        h2 Sales
+        p Total Sales: #{sales.totalpayment || 0}
+        p Total tonnage: #{sales.tonnage || 0}
+
+      .card
+        h2 Credit Sales
+        p Total Credit: #{credit.amountDue || 0}
+        p Total tonnage: #{credit.tonnage || 0}
+
+    
+    br
+
+    .chart-container
+      canvas#barChart(width="300" height="150")
+    br
+    br  
+    br
+
+    //- .submit3
+    //-   //- if user.role === 'manager'
+    //-     a.button(href='/mngdash') Back
+    //- .submit3
+    //-   if user.role === 'salesagent'
+    //-     a.button(href='/agentdash') Back
+
+    footer.footer
+      p &copy; 2024 My Website. All rights reserved.
+
+    script.
+      const procure = { stock: #{procure.stock || 0} }; 
+      const sales = { tonnage:  #{sales.tonnage || 0} };  
+      const credit = { tonnage: #{credit.tonnage || 0} }; 
+
+      const ctx = document.getElementById('barChart').getContext('2d');
+
+      new Chart(ctx, {
+        type: 'bar', 
+        data: {
+          labels: ['Procurement', 'Sales', 'Credit Sales'],
+          datasets: [{
+            label: 'Total Tonnage',
+            data: [procure.stock || 0, sales.tonnage || 0, credit.tonnage || 0],
+            backgroundColor: 'rgb(183, 101, 101, 0.8)',
+            borderColor: 'white',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });

@@ -9,6 +9,7 @@ html
         h1 HAPPY HOE GROCERY STORE
     .sidebar
       ul
+<<<<<<< HEAD
         li
           a(href="/produceList") PRODUCE LIST
         li
@@ -64,6 +65,54 @@ html
               tr
                 td(colspan="11", class="text-center") No sales made yet
 
+=======
+        li CREDIT SALE
+        li BACK
+        li STOCK STATUS 
+        li PRODUCE LIST
+        li LOG OUT
+    .main-container
+      .container
+      table.table.table-striped
+        thead
+          tr
+            th(scope='col') Produce Name
+            th(scope='col') Date
+            th(scope='col') Time
+            th(scope='col') Tonnage
+            th(scope='col') Amount Paid
+            th(scope='col') Sales Agent
+            th(scope='col') Branch
+            th(scope='col') Buyer's Name
+            th(scope='col') Total Payment
+            th(scope='col') Update
+            th(scope='col') Delete
+            th(scope='col') Receipt
+        tbody
+          if saless.length
+            each sales in saless
+              tr
+                td #{sales.produceName}
+                td= moment(sales.date || new Date()).format('MM/DD/YYYY')
+                td= moment(sales.time, 'HH:mm').format('hh:mm A') 
+                td #{sales.tonnage}
+                td #{sales.amountPaid}
+                td #{sales.salesagent}
+                td #{sales.branch}
+                td #{sales.buyername}
+                td #{sales.totalpayment}
+                td
+                    a.btn.btn-primary.btn-sm(href='/updateSales/' +sales._id) Update
+                td
+                    form(method="POST" action='/deleteSales')
+                      input(type="hidden", placeholder="", name="id", value=sales.id)
+                      button.btn.btn-danger.btn-sm(type="submit") Delete
+                td 
+                  a.btn.btn-secondary.btn-sm(href='/receipt/'+sales._id) Receipt 
+          else
+            tr
+              td(colspan="8", class="text-center") No produce yet :()
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     //- .submit
     //-   if user.role === 'manager'
     //-     a.button(href='/dash') Back

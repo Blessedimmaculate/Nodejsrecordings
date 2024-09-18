@@ -21,6 +21,7 @@ nav.navbar {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+<<<<<<< HEAD
 .sidebar ul li a {
     color: #fffcea;        /* Text color */
     text-decoration: none; /* Remove underline */
@@ -34,6 +35,8 @@ nav.navbar {
     background-color: #ffeb85;
   }
 
+=======
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 .brand-name h1 {
     margin: 0;
     color: white;
@@ -61,14 +64,24 @@ nav.navbar {
 }
 
 .sidebar li {
+<<<<<<< HEAD
     color: #fffcea;
     margin: 30px 0;
     font-size: 25px;
+=======
+    margin: 30px 0;
+    font-size: 25px;
+    color: white;
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     cursor: pointer;
 }
 
 .sidebar li:hover {
+<<<<<<< HEAD
     background-color: #ffeb85;
+=======
+    background-color: #fffcea;
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     color: black;
     padding: 10px;
     border-radius: 10px;
@@ -99,7 +112,11 @@ nav.navbar {
 }
 
 .form-container {
+<<<<<<< HEAD
     padding: 10px;
+=======
+    padding: 2px;
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     background:transparent;
     backdrop-filter: blur(30px);
     border-radius: 20px;

@@ -12,7 +12,11 @@ const signupSchema = new mongoose.Schema({
         unique: true,
     },
     phonenumber: {
+<<<<<<< HEAD
         type: String,
+=======
+        type: Number,
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
         trim: true,
     },
     registrationDate: {

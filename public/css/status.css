@@ -14,12 +14,15 @@ body{
 
 }
 
+<<<<<<< HEAD
 p{
     text-align: center;
     font-size: 20px;
     font-family: Sansita, sans-serif;
 }
 
+=======
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 .card-body{
     background-color: #fffcea;
     border-radius: 7px;
@@ -41,7 +44,11 @@ p{
 }
 
 .container {
+<<<<<<< HEAD
     margin-top: 5px;
+=======
+    margin-top: 12px;
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 
 
 }
@@ -58,6 +65,7 @@ p{
     border: none;
     border-radius: 25px;
     color: black;
+<<<<<<< HEAD
     padding: 5px;
     font-size: 25px;
      transition: 0.3s;
@@ -68,6 +76,18 @@ p{
     text-decoration: none;
     width: 220px;
     transform: translateX(-20%);
+=======
+    padding: 10px;
+    font-size: 20px;
+     transition: 0.3s;
+    position: fixed;
+    bottom: 20px;
+    right: 90px;
+    z-index: 3;
+    text-decoration: none;
+    width: 100px;
+    
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
   }
   
   .btn:hover {

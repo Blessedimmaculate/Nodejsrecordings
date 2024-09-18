@@ -3,6 +3,7 @@ html
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
+<<<<<<< HEAD
     title Credit Sales Form
     link(rel='stylesheet' href='/css/dash.css')
   body
@@ -61,23 +62,105 @@ html
 
 
 
+=======
+    title Manager Dashboard
+    link(rel='stylesheet' href='/css/dash.css')
+  body
+    .side-menu
+      .brand-name
+        h1 Happy Hoe
+      ul
+        li
+          a(href='/dashboard/mngdash.html')
+            img(src='/images/adm.png' alt='')
+            span Dashboard
+        li
+          a(href='/procurement/procurement.html')
+            img(src='/images/man.png' alt='')
+            span Procurement
+        li
+          a(href='/status/status.html')
+            img(src='/images/agent.png' alt='')
+            span Stock Status
+        li
+          a(href='/index/index.html')
+            img(src='/images/logout.png' alt='')
+            span Log Out
+    .container
+      .header
+        .nav
+          //- .search
+          //-   input(type='text' placeholder='search..')
+          //-   button(type='submit')
+          //-     img(src='/images/sach.png' alt='Search Icon')
+          .user
+            a.btn(href='/addProduce') Add Produce           
+          .user
+            a.btn(href='/viewProduce') Produce List
+          .user
+            a.btn(href='/viewProduce') Update Produce
+          .user
+            a.btn(href='/stock') Stock Status
+          .img-case
+              a(href='/')
+                img(src='/images/logout.png' alt='Go to Index Page')
+      .content
+        .cards
+          a.card-link(href='/procreport/procreport.html')
+            .card
+              .box
+                h2 Procurement Report
+          a.card-link(href='/report/report.html')
+            .card
+              .box
+                h2 Cash Sales Report
+          a.card-link(href='/creditreport/credit.html')
+            .card
+              .box
+                h2 Credit Sales Report
+        .cards
+          a.card-link(href='/procreport/procreport.html')
+            .card
+              .box
+                h2 Procurement Report
+          a.card-link(href='/report/report.html')
+            .card
+              .box
+                h2 Cash Sales Report
+          a.card-link(href='/creditreport/credit.html')
+            .card
+              .box
+                h2 Credit Sales Report
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 
 
 
 
 //- doctype html
+<<<<<<< HEAD
 //- html 
+=======
+//- html
+//- if user.role === 'salesagent'
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 //-   head
 //-     meta(charset='UTF-8')
 //-     meta(name='viewport' content='width=device-width, initial-scale=1.0')
 //-     title Dashboard
+<<<<<<< HEAD
 //-     link(rel='stylesheet' href='/css/dash.css')   
 //-   body
 //-     nav.navbar(action='/mngdash' method='POST')
+=======
+//-     link(rel='stylesheet' href='/css/dash.css')    
+//-   body
+//-     nav.navbar(action='/agentdash' method='POST')
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 //-       .brand
 //-         img(src='/img/logo1.png' alt='Logo')
 //-         .name Happy Hoe Grocery
 //-       .nav-center
+<<<<<<< HEAD
 //-         span MANAGER'S DASHBOARD  
 //-       .nav-items
 //-         .dropdown
@@ -91,6 +174,22 @@ html
 //-             a(href='/debit') OnCredit
 //-             a(href='/makeSale') OnCash
 //-         a(href='/') Logout
+=======
+//-         span SALES-AGENT'S DASHBOARD  
+//-       .nav-items
+//-         .dropdown
+//-           button Sales
+//-           .dropdown-content
+//-             a(href='/salesList') View Sales
+//-             a(href='/makeSale') Add Sales
+//-         .dropdown
+//-           button Credit Sales
+//-           .dropdown-content
+//-             a(href='/creditList') View Debits
+//-             a(href='/debit') Add Credit
+//-         a(href='/') Logout
+
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 //-     br
 //-     br
 //-     br
@@ -98,17 +197,27 @@ html
 
 //-     .card-container
 //-       .card
+<<<<<<< HEAD
 //-         h3 Sales
 //-         p View  
 //-         a(href='/salesList') Saleslist
 //-         a(href='/creditList') DebitsList
+=======
+//-         h3 Procurement
+//-         p view  
+//-         a(href='/produceList') Transactions
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 //-       .card
 //-         h3 Available Stock
 //-         p View  |  Edit
 //-         a(href='/viewstoc') View Stock
 //-       .card
 //-         h3 Staff Members
+<<<<<<< HEAD
 //-         p  Branch A | Branch B
+=======
+//-         p  Branch A | Branch B 
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 //-         a(href='/workersList') Staff Members
 //-       .card
 //-         h3 Reports
@@ -123,6 +232,7 @@ html
 //-     footer.footer
 //-       p &copy; 2024 My Website. All rights reserved.
 
+<<<<<<< HEAD
 //-     script(src='/js/dash.js')
 
 
@@ -136,3 +246,6 @@ html
 
 
 //-     //- line 3 if user.role === 'manager'
+=======
+//-     script(src='/js/dash.js')
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d

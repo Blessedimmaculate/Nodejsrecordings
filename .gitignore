@@ -1,4 +1,13 @@
 node_modules/
 .vscode/
 bootstrap/
+<<<<<<< HEAD
 
+=======
+welcome.pug/
+stock.pug/
+updateStock.pug/
+login2.pug/
+login2.css/
+registerRoutes.js/
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d

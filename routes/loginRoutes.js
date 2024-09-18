@@ -7,6 +7,16 @@ const passport = require("passport");
  res.render('login2');
   });
   
+<<<<<<< HEAD
+=======
+//   router.post('/login', (req, res) => {
+//    console.log(req.body);
+//     //  res.json(req.body); 
+//    const newdash = new dash(req.body)
+//   newdash.save()
+//   res.redirect('/dash')
+//    });
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 
 
    // Login admin   local stands for a local strategy
@@ -19,6 +29,7 @@ router.post( "/login",passport.authenticate("local", { failureRedirect: "/login"
     res.redirect("/mngdash");
     res.send("Manager dashboard");
   } else if (req.user.role === "salesagent") {
+<<<<<<< HEAD
     res.redirect("/agentdash");
     res.send("Saleagent dashboard");
   } 
@@ -26,6 +37,11 @@ router.post( "/login",passport.authenticate("local", { failureRedirect: "/login"
     res.redirect("/admindash");
     res.send("Admin dashboard");
   }else {
+=======
+    res.redirect("/dash");
+    res.send("Saleagent dashboard");
+  } else {
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     res.send("user with that role does not exist in the system");
   }
 }

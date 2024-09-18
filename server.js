@@ -29,7 +29,10 @@ const procureRoutes = require('./routes/procureRoutes')
 const creditRoutes = require('./routes/creditRoutes')
 const agentdashRoutes = require('./routes/agentdashRoutes')
 const salesRoutes = require('./routes/salesRoutes')
+<<<<<<< HEAD
 const admindashRoutes = require('./routes/admindashRoutes')
+=======
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 
 
 // Database connection
@@ -61,6 +64,13 @@ app.use(expressSession); // Use express session
 app.use(passport.initialize()); // Initialize passport
 app.use(passport.session()); // Helps to use passport session in routes
 
+<<<<<<< HEAD
+=======
+// // Passport configuration for Register model
+// passport.use(Register.createStrategy()); // Use the local strategy in routes
+// passport.serializeUser(Register.serializeUser()); // Serializes the user for the session
+// passport.deserializeUser(Register.deserializeUser()); // Deserializes the user from the session
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 
 // Passport configuration for Register model
 passport.use(Signup.createStrategy()); // Use the local strategy in routes
@@ -77,12 +87,15 @@ app.use('/', procureRoutes)
 app.use('/', creditRoutes)
 app.use('/', agentdashRoutes)
 app.use('/', salesRoutes)
+<<<<<<< HEAD
 app.use('/', admindashRoutes)
 
 
 app.use((req, res) => {
   res.status(404).render('errorpage'); // Use the new file name
 });
+=======
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 
 
 // Handle non-existing pages

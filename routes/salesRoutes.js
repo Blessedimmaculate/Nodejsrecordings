@@ -7,9 +7,13 @@ const Sales = require('../models/sales');
 const Procure = require('../models/procure');
 
 
+<<<<<<< HEAD
 router.get('/makeSale', 
     connectEnsureLogin.ensureLoggedIn(),
     (req, res) => {
+=======
+router.get('/makeSale', (req, res) => {
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     res.render('sales', { title: "Sales" });
 });
 
@@ -47,6 +51,7 @@ router.post('/makeSale', async (req, res) => {
 
 // Route to display the list of sales
 router.get('/salesList', 
+<<<<<<< HEAD
     async (req, res) => {
     try {
       // Find all sales items, sorted by the most recent
@@ -78,6 +83,24 @@ router.get('/salesList',
 router.get('/updateSales/:id', 
     connectEnsureLogin.ensureLoggedIn(),
     async (req, res) => {
+=======
+    // connectEnsureLogin.ensureLoggedIn(), 
+    async (req, res) => {
+    try {
+        const salesItems = await Sales.find().sort({ $natural: -1 });
+        res.render('saleslist', {
+            title: "Sales List",
+            saless: salesItems,
+            user: req.user
+        });
+    } catch (error) {
+        res.status(404).send("Unable to find items in the db");
+    }
+});
+
+// Route to get the update form for sales
+router.get('/updateSales/:id', async (req, res) => {
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     try {
         const item = await Sales.findOne({ _id: req.params.id });
         res.render('updateSales', {
@@ -90,9 +113,13 @@ router.get('/updateSales/:id',
 });
 
 // Route to post updated sales
+<<<<<<< HEAD
 router.post('/updateSales', 
     connectEnsureLogin.ensureLoggedIn(),
     async (req, res) => {
+=======
+router.post('/updateSales', async (req, res) => {
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     try {
         await Sales.findOneAndUpdate({ _id: req.query.id }, req.body);
         res.redirect('/salesList');
@@ -102,9 +129,13 @@ router.post('/updateSales',
 });
 
 // Route to delete a sales item
+<<<<<<< HEAD
 router.post('/deleteSales', 
     connectEnsureLogin.ensureLoggedIn(),
     async (req, res) => {
+=======
+router.post('/deleteSales', async (req, res) => {
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     try {
         await Sales.deleteOne({ _id: req.body.id });
         res.redirect('back');
@@ -114,9 +145,13 @@ router.post('/deleteSales',
 });
 
 // Route to view receipt
+<<<<<<< HEAD
 router.get('/receipt/:id', 
     connectEnsureLogin.ensureLoggedIn(),
     async (req, res) => {
+=======
+router.get('/receipt/:id', async (req, res) => {
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     try {
         const sales = await Sales.findOne({ _id: req.params.id })
             .populate('produceName', 'produceName')

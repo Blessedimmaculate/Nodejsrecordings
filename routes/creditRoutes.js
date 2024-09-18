@@ -8,7 +8,11 @@ const Procure = require('../models/procure');
 
 
 router.get('/debit',
+<<<<<<< HEAD
       connectEnsureLogin.ensureLoggedIn(), 
+=======
+    //  connectEnsureLogin.ensureLoggedIn(), 
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 (req, res) => {
     res.render('credit',{title: "Sales"});
 })
@@ -26,6 +30,7 @@ router.post('/debit', async (req, res) => {
         
         // Check stock availability
         if (procure.stock < tonnage) {
+<<<<<<< HEAD
             return res.status(400).send(`Not enough tonnage in stock. Only ${procure.stock} Kgs available`);
         }
         
@@ -34,6 +39,11 @@ router.post('/debit', async (req, res) => {
             procureStock: procure.stock // Passing stock to the Pug template
         });
         
+=======
+            return res.status(400).send('Not enough stock available');
+        }
+        
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
         // Update stock and save procure item
         procure.stock -= tonnage;
         await procure.save();
@@ -49,6 +59,7 @@ router.post('/debit', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 
 router.get('/creditList', 
     async (req, res) => {
@@ -97,6 +108,29 @@ router.get('/creditList',
 
 router.get("/updateCredit/:id", 
      connectEnsureLogin.ensureLoggedIn(), 
+=======
+router.get('/creditList',
+    //  connectEnsureLogin.ensureLoggedIn(), 
+     async (req, res) => {
+    try{
+       const creditItems = await Credit.find().sort({ $natural: -1 });
+       res.render('creditlist', {
+       title: "Credit List",
+       credits: creditItems,
+       user: req.user
+
+    });
+
+    } catch (error) {
+        res.status(404).send("Unable to find items in the db");
+}
+});
+
+
+
+router.get("/updateCredit/:id", 
+    // connectEnsureLogin.ensureLoggedIn(), 
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     async (req, res) => {
     try {
         const item = await Credit.findOne({ _id: req.params.id })
@@ -114,9 +148,13 @@ router.get("/updateCredit/:id",
 
 
 // post updated produce
+<<<<<<< HEAD
 router.post("/updateCredit", 
     connectEnsureLogin.ensureLoggedIn(),
     async (req, res) => {
+=======
+router.post("/updateCredit", async (req, res) => {
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     try {
         await Credit.findOneAndUpdate({ _id: req.query.id }, req.body);
         res.redirect("/creditList");
@@ -127,9 +165,13 @@ router.post("/updateCredit",
 
 
 // delete Produce
+<<<<<<< HEAD
 router.post("/deleteCredit", 
     connectEnsureLogin.ensureLoggedIn(),
     async (req, res) => {
+=======
+router.post("/deleteCredit", async (req, res) => {
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     try {
     await Credit.deleteOne({ _id: req.body.id });
     res.redirect("back");
@@ -138,12 +180,19 @@ router.post("/deleteCredit",
     }
     });
    
+<<<<<<< HEAD
 
     
    
 
     router.get("/creditReceipt/:id",
         connectEnsureLogin.ensureLoggedIn(), 
+=======
+   
+
+    router.get("/creditReceipt/:id", 
+        // connectEnsureLogin.ensureLoggedIn(), 
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
         async (req, res) => {
         try{
             const credit = await Credit.findOne({_id: req.params.id})

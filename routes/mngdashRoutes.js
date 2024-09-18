@@ -4,7 +4,11 @@ const connectEnsureLogin = require('connect-ensure-login');
 
 
  router.get('/mngdash', 
+<<<<<<< HEAD
    connectEnsureLogin.ensureLoggedIn(), 
+=======
+  // connectEnsureLogin.ensureLoggedIn(), 
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
   (req, res) => {
  res.render('mngdash', {
    user: req.user,

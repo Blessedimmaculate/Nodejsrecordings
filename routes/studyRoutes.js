@@ -40,9 +40,29 @@ router.post("/addWorker", async (req, res) => {
   });
 
 
+<<<<<<< HEAD
 
 router.get('/workersList', 
    connectEnsureLogin.ensureLoggedIn(), 
+=======
+// // Login admin page
+// router.post("/login", passport.authenticate("local", { failureRedirect: "/login" }),
+// (req, res) => {
+// req.session.user = req.user; 
+// if(req.user.role === "manager"){
+//  res.redirect("/mngdash");
+// } else if(req.user.role === "salesagent"){
+//  res.redirect("/agentdash");
+// } else {
+// res.send("user with that role does not exist in the system")
+// }
+
+// }
+// );
+
+router.get('/workersList', 
+  // connectEnsureLogin.ensureLoggedIn(), 
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
   async (req, res) => {
   try {
       const signupItems = await Signup.find().sort({ $natural: -1 }); //this is for sorting the new produce up
@@ -61,7 +81,11 @@ router.get('/workersList',
 
 
 router.get("/updateSignup/:id",
+<<<<<<< HEAD
     connectEnsureLogin.ensureLoggedIn(), 
+=======
+  //  connectEnsureLogin.ensureLoggedIn(), 
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
    async (req, res) => {
     try {
         const item = await Signup.findOne({ _id: req.params.id })
@@ -99,4 +123,47 @@ router.post("/deleteSignup", async (req, res) => {
     });
 
 
+<<<<<<< HEAD
+=======
+ //reports route
+
+    
+    router.get('/reports',  
+      // connectEnsureLogin.ensureLoggedIn(), 
+      async (req, res) => {
+        try {
+          
+          const procure = await Procure.aggregate([
+            { $group: { _id: null, totalcost: { $sum: '$totalcost' }, stock: { $sum: '$stock' } } }
+          ]);
+      
+          
+          const sales = await Sales.aggregate([
+            { $group: { _id: null, totalpayment: { $sum: '$totalpayment' }, tonnage: { $sum: '$tonnage' } } }
+          ]);
+      
+          
+          const credit = await Credit.aggregate([
+            { $group: { _id: null, totalamountDue: { $sum: '$totalamountDue' }, tonnage: { $sum: '$tonnage' } } }
+          ]);
+      
+         
+          res.render('report', {
+            procure: procure[0] || {},
+            sales: sales[0] || {},
+            credit: credit[0] || {},
+            user: req.user
+          });
+        } catch (err) {
+          console.error(err);
+          res.status(500).send('Internal Server Error');
+        }
+      });
+      
+    
+    
+
+
+
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 module.exports = router;

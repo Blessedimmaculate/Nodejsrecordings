@@ -4,7 +4,11 @@ const Validate = (event) => {
     // Get form elements
     let username = document.getElementById("username");
     let email = document.getElementById("email");
+<<<<<<< HEAD
     let phonenumber = document.getElementById("phonenumber");
+=======
+    let mobileNumber = document.getElementById("mobileNumber");
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     let branch = document.getElementById("branch");
     let role = document.getElementById("role");
     let password = document.getElementById("password");
@@ -14,7 +18,11 @@ const Validate = (event) => {
     // Get error elements
     let usernameErr = document.getElementById("usernameErr");
     let emailErr = document.getElementById("emailErr");
+<<<<<<< HEAD
     let phonenumberErr = document.getElementById("phonenumberErr");
+=======
+    let mobileNumberErr = document.getElementById("mobileNumberErr");
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     let branchErr = document.getElementById("branchErr");
     let roleErr = document.getElementById("roleErr");
     let passwordErr = document.getElementById("passwordErr");
@@ -60,6 +68,7 @@ const Validate = (event) => {
 
     // Mobile Number validation
     const mobilePattern = /^[0-9]{10}$/; // Adjust as needed for your format
+<<<<<<< HEAD
     if (phonenumber.value == "") {
         phonenumber.style.border = "1px solid red";
         phonenumberErr.textContent = "Mobile number cannot be empty";
@@ -73,6 +82,21 @@ const Validate = (event) => {
     } else {
         phonenumber.style.border = "1px solid green";
         phonenumberErr.textContent = "";
+=======
+    if (mobileNumber.value == "") {
+        mobileNumber.style.border = "1px solid red";
+        mobileNumberErr.textContent = "Mobile number cannot be empty";
+        mobileNumberErr.style = "";
+        error++;
+    } else if (!mobilePattern.test(mobileNumber.value)) {
+        mobileNumber.style.border = "1px solid red";
+        mobileNumberErr.textContent = "Please enter a valid mobile number (10 digits)";
+        mobileNumberErr.style = "";
+        error++;
+    } else {
+        mobileNumber.style.border = "1px solid green";
+        mobileNumberErr.textContent = "";
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
     }
 
     // Branch validation
@@ -135,6 +159,12 @@ const Validate = (event) => {
     }
 };
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 document.addEventListener('DOMContentLoaded', () => {
     // Get the 'registrationDate' input element
     const registrationDateInput = document.querySelector('input[name="registrationDate"]');
@@ -149,5 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
     registrationDateInput.value = formattedDate;
 });
 
+<<<<<<< HEAD
 // Attach the validation function to the form's submit event
 document.getElementById('register-form').addEventListener('submit', Validate); // Fixed selector
+=======
+
+// Attach the validation function to the form's submit event
+document.getElementById('#register-form.register-form').addEventListener('submit', Validate);
+
+>>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
