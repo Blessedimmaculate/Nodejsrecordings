@@ -80,6 +80,11 @@ app.use('/', salesRoutes)
 app.use('/', admindashRoutes)
 
 
+app.use((req, res) => {
+  res.status(404).render('errorpage'); // Use the new file name
+});
+
+
 // Handle non-existing pages
 app.get("*", (req, res) => {
   res.send("Error! Page does not exist.");

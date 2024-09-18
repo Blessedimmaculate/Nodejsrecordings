@@ -19,7 +19,6 @@ router.post('/produce', async (req, res) => {
         res.redirect('/produceList');
     } catch (error) {
         res.status(404).send("unable to save produce to db");
-        console.log("Error saving produce", error);
     }
 })
 
