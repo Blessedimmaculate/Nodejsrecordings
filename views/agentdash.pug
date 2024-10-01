@@ -3,68 +3,56 @@ html
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title Manager Dashboard
+    title ADMIN Dashboard
     link(rel='stylesheet' href='/css/dash.css')
   body
-    .side-menu
+    nav.navbar
       .brand-name
-        h1 Happy Hoe
-      ul
-        li
-          a(href='/dashboard/mngdash.html')
-            img(src='/images/adm.png' alt='Dashboard Icon')
-            span Dashboard
-        li
-          a(href='/procurement/procurement.html')
-            img(src='/images/man.png' alt='Procurement Icon')
-            span Procurement
-        li
-          a(href='/status/status.html')
-            img(src='/images/agent.png' alt='Stock Status Icon')
-            span Stock Status
-        li
-          a(href='/index/index.html')
-            img(src='/images/logout.png' alt='Log Out Icon')
-            span Log Out
+        h1 HAPPY HOE GROCERY STORE
+    .main-container
+      .sidebar
+          ul
+            li
+              a(href='/produceList')
+                img(src='/images/adm.png' alt='')
+                span PRODUCE LIST
+            li
+              a(href='/salesList')
+                img(src='/images/man.png' alt='')
+                span CASH LIST
+            li
+              a(href='/viewstock')
+                img(src='/images/agent.png' alt='')
+                span STOCK STATUS
+            li
+              a(href='/')
+                img(src='/images/logout.png' alt='')
+                span LOG OUT
     .container
-      .header
-        .nav
-          .user
-            a.btn(href='/addProduce') Add Produce
-          .user
-            a.btn(href='/viewProduce') Produce List
-          .user
-            a.btn(href='/viewProduce') Update Produce
-          .user
-            a.btn(href='/stock') Stock Status
-          .img-case
-            a(href='/')
-              img(src='/images/logout.png' alt='Go to Index Page')
       .content
         .cards
-          a.card-link(href='/procreport/procreport.html')
+          a.card-link(href='/makeSale')
             .card
               .box
-                h2 Procurement Report
-          a.card-link(href='/report/report.html')
+                h2 MAKE CASH SALE
+          a.card-link(href='/debit')
             .card
               .box
-                h2 Cash Sales Report
-          a.card-link(href='/creditreport/credit.html')
+                h2 MAKE CREDIT SALE
+          a.card-link(href='/produceList')
             .card
               .box
-                h2 Credit Sales Report
+                h2 PRODUCE LIST
         .cards
-          a.card-link(href='/procreport/procreport.html')
+          a.card-link(href='/salesList')
             .card
               .box
-                h2 Procurement Report
-          a.card-link(href='/report/report.html')
+                h2 CASH SALES LIST
+          a.card-link(href='/creditList')
             .card
               .box
-                h2 Cash Sales Report
-          a.card-link(href='/creditreport/credit.html')
+                h2 CREDIT SALES LIST
+          a.card-link(href='/')
             .card
               .box
-                h2 Credit Sales Report
-    script(src='/js/dash.js')
+                h2 LOG OUT

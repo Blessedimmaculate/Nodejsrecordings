@@ -9,13 +9,22 @@ html
         h1 HAPPY HOE GROCERY STORE
     .sidebar
       ul
-        li CREDIT SALE
-        li BACK
-        li STOCK STATUS 
-        li PRODUCE LIST
-        li LOG OUT
+        li 
+          a(href="/debit") CREDIT SALE
+        li 
+          a(href="/viewstock") STOCK STATUS 
+        li 
+          a(href="/produceList") PRODUCE LIST
+        li 
+          a(href="/debit") BACK
+        li 
+          a(href="/") LOG OUT
     .main-container
       .container
+        h2.text-center.mt-5.mb-4 CREDIT SALES LIST
+        .total-payment
+          p AMOUNT PAID: UGX #{totalAmountPaid}  <!-- Correct reference to totalAmount -->
+          p AMOUNT DUE: UGX #{totalAmountDue}
         table.table.table-striped
           thead
             tr

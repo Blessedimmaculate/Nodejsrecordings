@@ -86,15 +86,12 @@ function validateForm() {
   }
 
   // Validate cost
-<<<<<<< HEAD
   if (cost.value === "" || isNaN(cost.value) || cost.value.length < 3) {
       cost.style.border = "1px solid red";
       errorCost.textContent = "Cost must be above 2 figures";
-=======
   if (cost.value === "" || isNaN(cost.value) || cost.value.length < 5) {
       cost.style.border = "1px solid red";
       errorCost.textContent = "Cost must be 5 figures";
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
       errorCount++;
   } else {
       cost.style.border = "1px solid green";
@@ -122,16 +119,6 @@ function validateForm() {
   }
 
   // Validate dealerName
-<<<<<<< HEAD
-//   if (dealerName.value === "" || !/^[a-zA-Z0-9\s]+$/.test(dealerName.value) || dealerName.value.length < 2) {
-//       dealerName.style.border = "1px solid red";
-//       errorDealerName.textContent = "Dealer name must be 2 letters";
-//       errorCount++;
-//   } else {
-//       dealerName.style.border = "1px solid green";
-//       errorDealerName.textContent = "";
-//   }
-=======
   if (dealerName.value === "" || !/^[a-zA-Z0-9\s]+$/.test(dealerName.value) || dealerName.value.length < 2) {
       dealerName.style.border = "1px solid red";
       errorDealerName.textContent = "Dealer name must be 2 letters";
@@ -140,7 +127,6 @@ function validateForm() {
       dealerName.style.border = "1px solid green";
       errorDealerName.textContent = "";
   }
->>>>>>> 0a97a5ccf0f3eabd376384ebab1ab8c87bb4508d
 
   // Validate branch
   if (branch.value === "") {
@@ -202,4 +188,4 @@ function setCurrentDateTime() {
 
     // Set total cost input to read-only
     document.getElementById('totalcost').setAttribute('readonly', true);
-});
+})};
